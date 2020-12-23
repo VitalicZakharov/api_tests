@@ -2385,3 +2385,20 @@ def add_records_to_dnc_delete_request_with_correct_body(get_user_token):
 #    print("request_url : ", request_url)
 #    print("request_body : ", request_body)
 #    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_a_valid_list_assigned_to_multiple_campaigns(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)

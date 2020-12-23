@@ -5,7 +5,7 @@ import pytest
 
 # @allure.issue("https://trac.brightpattern.com/ticket/24242")
 @pytest.mark.usefixtures("add_record_post_request_with_correct_body")
-#@pytest.mark.parametrize("add_record_post_request_with_correct_body",["body", "url_path"], [(json.dumps({"Integer": "123","Date/Time": "03-07-2025","Caller id": "Test3","Agent id": "Test3","First name": "Name_First3","Last name": "Name_Last3","Phone1": "9003","Phone2": "9010"}), "add//List_1.txt")])
+#@pytest.mark.parametrize("add_record_post_request_with_correct_body",["body", "url_path"], [({"Integer": "123","Date/Time": "03-07-2025","Caller id": "Test3","Agent id": "Test3","First name": "Name_First3","Last name": "Name_Last3","Phone1": "9003","Phone2": "9010"}, "add//List_1.txt")])
 #class Test_post_request_with_correct_body("add_record_post_request_with_correct_body"):
 class Test_post_request_with_correct_body():
     @allure.epic("test_add_record")
