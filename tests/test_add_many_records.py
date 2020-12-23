@@ -45,28 +45,28 @@ class Test_post_request_with_a_duplicate_earlier_created_keys():
             add_many_records_post_request_with_a_duplicate_earlier_created_keys.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_duplicate_earlier_created_keys.text)
 
-@pytest.mark.usefixtures("add_many_records_post_request_with_incorrect_body_format_typization_obj")
-class Test_post_request_with_incorrect_body_format_typization_obj():
+@pytest.mark.usefixtures("add_many_records_post_request_with_incorrect_body_format_typization")
+class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_add_many_records")
     @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization_obj')
-    def test_check_status_code_post_request_with_incorrect_body_format_typization_obj(self,
-                                                                                  add_many_records_post_request_with_incorrect_body_format_typization_obj):
-        print("request_result_status_code : ", add_many_records_post_request_with_incorrect_body_format_typization_obj.status_code)
+    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization')
+    def test_check_status_code_post_request_with_incorrect_body_format_typization(self,
+                                                                                  add_many_records_post_request_with_incorrect_body_format_typization):
+        print("request_result_status_code : ", add_many_records_post_request_with_incorrect_body_format_typization.status_code)
         assert "400" in str(
-            add_many_records_post_request_with_incorrect_body_format_typization_obj.status_code), "Answer status not 400 ; actual status code : " + str(
-            add_many_records_post_request_with_incorrect_body_format_typization_obj.status_code)
+            add_many_records_post_request_with_incorrect_body_format_typization.status_code), "Answer status not 400 ; actual status code : " + str(
+            add_many_records_post_request_with_incorrect_body_format_typization.status_code)
 
     @allure.epic("test_add_many_records")
     @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization_obj')
-    def test_check_answer_text_post_request_with_incorrect_body_format_typization_obj(self,
-                                                                                  add_many_records_post_request_with_incorrect_body_format_typization_obj):
-        print("request_result_text : ", add_many_records_post_request_with_incorrect_body_format_typization_obj.text)
+    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization')
+    def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
+                                                                                  add_many_records_post_request_with_incorrect_body_format_typization):
+        print("request_result_text : ", add_many_records_post_request_with_incorrect_body_format_typization.text)
         status = "Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $"
         assert status in str(
-            add_many_records_post_request_with_incorrect_body_format_typization_obj.text), "Answer text not " + status + " ; actual message : " + str(
-            add_many_records_post_request_with_incorrect_body_format_typization_obj.text)
+            add_many_records_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
+            add_many_records_post_request_with_incorrect_body_format_typization.text)
 
 
 @pytest.mark.usefixtures("add_many_records_post_request_with_a_missing_required_field")

@@ -583,7 +583,7 @@ def add_record_post_request_with_incorrect_body_format_deleted_quotes(get_user_t
 
 
 @pytest.fixture(scope='class')
-def add_record_post_request_with_incorrect_body_format_typization_str(get_user_token):
+def add_record_post_request_with_incorrect_body_format_typization(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes("First Name: Test6, Phone1: 1006", 'utf-8')
@@ -880,7 +880,7 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
 
 
 @pytest.fixture(scope='class')
-def add_many_records_post_request_with_incorrect_body_format_typization_obj(get_user_token):
+def add_many_records_post_request_with_incorrect_body_format_typization(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2279,7 +2279,7 @@ def add_records_to_dnc_post_request_with_authorize_session_for_user_without_perm
 
 
 @pytest.fixture(scope='class')
-def add_records_to_dnc_post_request_with_incorrect_body_format_typization_str(get_user_token):
+def add_records_to_dnc_post_request_with_incorrect_body_format_typization(get_user_token):
     # wile https://trac.brightpattern.com/ticket/24443
     #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
@@ -2408,7 +2408,6 @@ def delete_all_records_post_request_with_a_valid_list_assigned_to_multiple_campa
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    # Request body
     body = {
     }
     # Convert body request to json
@@ -2423,8 +2422,157 @@ def delete_all_records_post_request_with_a_valid_list_assigned_to_multiple_campa
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete3.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
+    body = {
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_an_invalid_list(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_not_exists.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_do_not_authorize_session():
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_invalid_url(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add_invalid//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_get_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.get(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_put_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.put(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_delete_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.delete(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_incorrect_body_format_typization(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    request_body = bytes("{First name: Name_F55, Last name : Name_L55, Phone1: 7}", 'utf-8')
+    #request_body = [{
+    #    "First name": "Name_F55",
+    #    "Last name": "Name_L55",
+    #    "Phone1": "7"
+    #}]
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+@pytest.fixture(scope='class')
+def delete_all_records_post_request_with_csv_list_format(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.cvs"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Name_F55",
+        "Last name": "Name_L55",
+        "Phone1": "7"
     }
     # Convert body request to json
     request_body = json.dumps(body)

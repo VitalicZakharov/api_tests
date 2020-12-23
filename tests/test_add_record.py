@@ -749,28 +749,28 @@ class Test_post_request_for_corrupted_on_importing_list_all_fields_are_correct()
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
 
 
-@pytest.mark.usefixtures("add_record_post_request_with_incorrect_body_format_typization_str")
-class Test_post_request_with_incorrect_body_format_typization_str():
+@pytest.mark.usefixtures("add_record_post_request_with_incorrect_body_format_typization")
+class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_add_record")
     @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization_str')
-    def test_check_status_code_post_request_with_incorrect_body_format_typization_str(self,
-                                                                                  add_record_post_request_with_incorrect_body_format_typization_str):
-        print("request_result_status_code : ", add_record_post_request_with_incorrect_body_format_typization_str.status_code)
+    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization')
+    def test_check_status_code_post_request_with_incorrect_body_format_typization(self,
+                                                                                  add_record_post_request_with_incorrect_body_format_typization):
+        print("request_result_status_code : ", add_record_post_request_with_incorrect_body_format_typization.status_code)
         assert "400" in str(
-            add_record_post_request_with_incorrect_body_format_typization_str.status_code), "Answer status not 400 ; actual status code : " + str(
-            add_record_post_request_with_incorrect_body_format_typization_str.status_code)
+            add_record_post_request_with_incorrect_body_format_typization.status_code), "Answer status not 400 ; actual status code : " + str(
+            add_record_post_request_with_incorrect_body_format_typization.status_code)
 
     @allure.epic("test_add_record")
     @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization_str')
-    def test_check_answer_text_post_request_with_incorrect_body_format_typization_str(self,
-                                                                                  add_record_post_request_with_incorrect_body_format_typization_str):
-        print("request_result_text : ", add_record_post_request_with_incorrect_body_format_typization_str.text)
+    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization')
+    def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
+                                                                                  add_record_post_request_with_incorrect_body_format_typization):
+        print("request_result_text : ", add_record_post_request_with_incorrect_body_format_typization.text)
         status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
         assert status in str(
-            add_record_post_request_with_incorrect_body_format_typization_str.text), "Answer text not " + status + " ; actual message : " + str(
-            add_record_post_request_with_incorrect_body_format_typization_str.text)
+            add_record_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
+            add_record_post_request_with_incorrect_body_format_typization.text)
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24265")

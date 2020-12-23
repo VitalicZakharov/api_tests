@@ -343,28 +343,28 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
 
 @allure.issue("https://trac.brightpattern.com/ticket/24445")
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
-@pytest.mark.usefixtures("add_records_to_dnc_post_request_with_incorrect_body_format_typization_str")
+@pytest.mark.usefixtures("add_records_to_dnc_post_request_with_incorrect_body_format_typization")
 class Test_post_request_with_incorrect_body_format_typization_str():
     @allure.epic("test_add_records_to_dnc")
     @allure.feature("answer code 400")
     @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization_str')
     def test_check_status_code_post_request_with_incorrect_body_format_typization_str(self,
-                                                                                      add_records_to_dnc_post_request_with_incorrect_body_format_typization_str):
-        print("request_result_status_code : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization_str.status_code)
+                                                                                      add_records_to_dnc_post_request_with_incorrect_body_format_typization):
+        print("request_result_status_code : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization.status_code)
         assert "400" in str(
-            add_records_to_dnc_post_request_with_incorrect_body_format_typization_str.status_code), "Answer status not 400 ; actual status code : " + str(
-            add_records_to_dnc_post_request_with_incorrect_body_format_typization_str.status_code)
+            add_records_to_dnc_post_request_with_incorrect_body_format_typization.status_code), "Answer status not 400 ; actual status code : " + str(
+            add_records_to_dnc_post_request_with_incorrect_body_format_typization.status_code)
 
     @allure.epic("test_add_records_to_dnc")
     @allure.feature("answer code 400")
     @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization_str')
     def test_check_answer_text_post_request_with_incorrect_body_format_typization_str(self,
-                                                                                      add_records_to_dnc_post_request_with_incorrect_body_format_typization_str):
-        print("request_result_text : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization_str.text)
+                                                                                      add_records_to_dnc_post_request_with_incorrect_body_format_typization):
+        print("request_result_text : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)
         status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
         assert status in str(
-            add_records_to_dnc_post_request_with_incorrect_body_format_typization_str.text), "Answer text not " + status + " ; actual message : " + str(
-            add_records_to_dnc_post_request_with_incorrect_body_format_typization_str.text)
+            add_records_to_dnc_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
+            add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
