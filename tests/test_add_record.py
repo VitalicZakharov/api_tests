@@ -887,3 +887,4 @@ class Test_post_request_with_body_from_other_list():
         assert status in str(
             add_record_post_request_with_body_from_other_list.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_body_from_other_list.text)
+
