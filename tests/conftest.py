@@ -2582,7 +2582,7 @@ def delete_all_records_post_request_with_csv_list_format(get_user_token):
 
 
 @pytest.fixture(scope='class')
-def update_records_post_request_with_existent_record_key(get_user_token):
+def update_record_post_request_with_existent_record_key(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2604,7 +2604,7 @@ def update_records_post_request_with_existent_record_key(get_user_token):
 
 
 @pytest.fixture(scope='class')
-def update_records_post_request_with_a_non_existent_record_key(get_user_token):
+def update_record_post_request_with_a_non_existent_record_key(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2623,3 +2623,286 @@ def update_records_post_request_with_a_non_existent_record_key(get_user_token):
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_an_incorrect_integer_value(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "abc",
+        "Date/Time": "02-02-2038",
+        "Caller id": "38",
+        "Agent id": "38",
+        "First name": "Name_F38",
+        "Last name": "Name_L38",
+        "Phone1": "7000",
+        "Phone2": "1038"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_an_incorrect_date_time_value(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "39",
+        "Date/Time": "`~!@#$%^&*()_+[]{}|\?/,.",
+        "Caller id": "39",
+        "Agent id": "agent.id39",
+        "First name": "Name_F39",
+        "Last name": "Name_L39",
+        "Phone1": "7000",
+        "Phone2": "1039"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_an_incorrect_caller_id(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "40",
+        "Date/Time": "02-02-2040",
+        "Caller id": "`~!@#$%^&*()_+[]{}|\?/,.",
+        "Agent id": "agent.id40",
+        "First name": "Name_F40",
+        "Last name": "Name_L40",
+        "Phone1": "7000",
+        "Phone2": "1040"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_an_incorrect_agent_id(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "41",
+        "Date/Time": "02-02-2041",
+        "Caller id": "41",
+        "Agent id": "`~!@#$%^&*()_+[]{}|\?/,.",
+        "First name": "Name_F41",
+        "Last name": "Name_L41",
+        "Phone1": "7000",
+        "Phone2": "1041"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "42",
+        "Date/Time": "02-02-842",
+        "Caller id": "42",
+        "Agent id": "agent.id42",
+        "First name": "Name_F42",
+        "Last name": "Name_L42",
+        "Phone1": "7000",
+        "Phone2": "1042"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_without_a_phone_field_required_field(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "43",
+        "Date/Time": "02-02-2043",
+        "Caller id": "43",
+        "Agent id": "agent.id43",
+        "First name": "Name_F43",
+        "Last name": "Name_L43",
+        "Phone1": "7000"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_without_a_phone_field_required_field_and_key(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "44",
+        "Date/Time": "02-02-2044",
+        "Caller id": "44",
+        "Agent id": "agent.id44",
+        "First name": "Name_F44",
+        "Last name": "Name_L44",
+        "Phone2": "1044"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_without_a_phone_field_empty_value(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "45",
+        "Date/Time": "02-02-2045",
+        "Caller id": "45",
+        "Agent id": "agent.id45",
+        "First name": "Name_F45",
+        "Last name": "Name_L45",
+        "Phone1": "",
+        "Phone2": "1045"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_field(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "46",
+        "Date/Time": "02-02-2046",
+        "Caller id": "46",
+        "Agent id": "agent.id46",
+        "First name": "Name_F46",
+        "Last name": "Name_L46",
+        "Phone1": "7000",
+        "Phone2": "`~!@#$%^&*()_+[]{}|\?/,."
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11_digits(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_3.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Account": "1234567",
+        "First name": "Name_First47",
+        "Last name": "Name_Last47",
+        "Phone1": "+7 000 555 47"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_a_non_existent_field_name(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "unknown": "un48",
+        "Integer": "48",
+        "Date/Time": "02-02-2048",
+        "Caller id": "48",
+        "Agent id": "agent.id48",
+        "First name": "Name_F48",
+        "Last name": "Name_L48",
+        "Phone1": "7000",
+        "Phone2": "1048"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_do_not_authorize_session():
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    # Request body
+    body = {
+        "Integer": "36",
+        "Date/Time": "01-01-2036",
+        "Caller id": "36",
+        "Agent id": "agent.id36",
+        "First name": "Name_F36",
+        "Last name": "Name_L36",
+        "Phone1": "7000",
+        "Phone2": "1036"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_record_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    # Request body
+    body = {
+        "Integer": "36",
+        "Date/Time": "01-01-2036",
+        "Caller id": "36",
+        "Agent id": "agent.id36",
+        "First name": "Name_F36",
+        "Last name": "Name_L36",
+        "Phone1": "7000",
+        "Phone2": "1036"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
