@@ -2579,3 +2579,47 @@ def delete_all_records_post_request_with_csv_list_format(get_user_token):
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_records_post_request_with_existent_record_key(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "36",
+        "Date/Time": "01-01-2036",
+        "Caller id": "36",
+        "Agent id": "agent.id36",
+        "First name": "Name_F36",
+        "Last name": "Name_L36",
+        "Phone1": "7000",
+        "Phone2": "1036"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def update_records_post_request_with_a_non_existent_record_key(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "37",
+        "Date/Time": "02-02-2037",
+        "Caller id": "37",
+        "Agent id": "agent.id37",
+        "First name": "Name_F37",
+        "Last name": "Name_L37",
+        "Phone1": "8",
+        "Phone2": "1000"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
