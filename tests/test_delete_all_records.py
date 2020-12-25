@@ -156,7 +156,7 @@ class Test_post_request_with_invalid_url():
             delete_all_records_post_request_with_invalid_url.text)
 
 
-#@allure.issue("https://trac.brightpattern.com/ticket/24396")
+@allure.issue("https://trac.brightpattern.com/ticket/24576")
 @pytest.mark.usefixtures("delete_all_records_get_request_with_correct_body")
 class Test_get_request_with_correct_body():
     @allure.epic("test_delete_all_records")
@@ -179,7 +179,7 @@ class Test_get_request_with_correct_body():
             delete_all_records_get_request_with_correct_body.text)
 
 
-#@allure.issue("https://trac.brightpattern.com/ticket/24396")
+@allure.issue("https://trac.brightpattern.com/ticket/24576")
 @pytest.mark.usefixtures("delete_all_records_put_request_with_correct_body")
 class Test_put_request_with_correct_body():
     @allure.epic("test_delete_all_records")
@@ -202,7 +202,7 @@ class Test_put_request_with_correct_body():
             delete_all_records_put_request_with_correct_body.text)
 
 
-#@allure.issue("https://trac.brightpattern.com/ticket/24396")
+@allure.issue("https://trac.brightpattern.com/ticket/24576")
 @pytest.mark.usefixtures("delete_all_records_delete_request_with_correct_body")
 class Test_delete_request_with_correct_body():
     @allure.epic("test_delete_all_records")
@@ -225,6 +225,7 @@ class Test_delete_request_with_correct_body():
             delete_all_records_delete_request_with_correct_body.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24577")
 @pytest.mark.usefixtures("delete_all_records_post_request_with_incorrect_body_format_typization")
 class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_delete_all_records")
