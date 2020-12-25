@@ -268,3 +268,4 @@ class Test_post_request_with_csv_list_format():
         assert len(str(
             delete_all_records_post_request_with_csv_list_format.text)) == 0, "Answer text not empty ; actual message : " + str(
             delete_all_records_post_request_with_csv_list_format.text)
+
