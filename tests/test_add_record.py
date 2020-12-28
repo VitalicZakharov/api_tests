@@ -386,7 +386,7 @@ class Test_post_request_with_do_not_authorize_session():
             add_record_post_request_with_do_not_authorize_session.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24237")
+#@allure.issue("https://trac.brightpattern.com/ticket/24237")
 @pytest.mark.usefixtures("add_record_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_add_record")
