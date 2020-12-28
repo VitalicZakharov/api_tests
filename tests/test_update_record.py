@@ -644,7 +644,7 @@ class Test_get_request_with_correct_body():
     @allure.step('test_check_answer_text_get_request_with_correct_body')
     def test_check_answer_text_get_request_with_correct_body(self, update_record_get_request_with_correct_body):
         print("request_result_text : ", update_record_get_request_with_correct_body.text)
-        status = "GET Method Not Allowed"
+        status = "Method Not Allowed"
         assert status in str(
             update_record_get_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_get_request_with_correct_body.text)
