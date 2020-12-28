@@ -773,7 +773,7 @@ class Test_post_request_with_incorrect_body_format_typization():
             add_record_post_request_with_incorrect_body_format_typization.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24265")
+#@allure.issue("https://trac.brightpattern.com/ticket/24265")
 @pytest.mark.usefixtures("add_record_get_request_with_correct_body")
 class Test_get_request_with_correct_body():
     @allure.epic("test_add_record")
@@ -797,7 +797,7 @@ class Test_get_request_with_correct_body():
         # assert len(str(get_request_with_correct_body.text)) == 0, "Answer text not empty ; actual message : " + str(get_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24265")
+#@allure.issue("https://trac.brightpattern.com/ticket/24265")
 @pytest.mark.usefixtures("add_record_put_request_with_correct_body")
 class Test_put_request_with_correct_body():
     @allure.epic("test_add_record")
@@ -820,7 +820,7 @@ class Test_put_request_with_correct_body():
             add_record_put_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24265")
+#@allure.issue("https://trac.brightpattern.com/ticket/24265")
 @pytest.mark.usefixtures("add_record_delete_request_with_correct_body")
 class Test_delete_request_with_correct_body():
     @allure.epic("test_add_record")

@@ -628,7 +628,7 @@ class Test_post_request_with_incorrectly_formatted_phone_number_in_a_phone_field
             add_many_records_post_request_with_incorrectly_formatted_phone_number_in_a_phone_field.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24396")
+#@allure.issue("https://trac.brightpattern.com/ticket/24396")
 @pytest.mark.usefixtures("add_many_records_get_request_with_correct_body")
 class Test_get_request_with_correct_body():
     @allure.epic("test_add_many_records")
@@ -651,7 +651,7 @@ class Test_get_request_with_correct_body():
             add_many_records_get_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24396")
+#@allure.issue("https://trac.brightpattern.com/ticket/24396")
 @pytest.mark.usefixtures("add_many_records_put_request_with_correct_body")
 class Test_put_request_with_correct_body():
     @allure.epic("test_add_many_records")
@@ -674,7 +674,7 @@ class Test_put_request_with_correct_body():
             add_many_records_put_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24396")
+#@allure.issue("https://trac.brightpattern.com/ticket/24396")
 @pytest.mark.usefixtures("add_many_records_delete_request_with_correct_body")
 class Test_delete_request_with_correct_body():
     @allure.epic("test_add_many_records")

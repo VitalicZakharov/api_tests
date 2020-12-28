@@ -344,11 +344,11 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
 @allure.issue("https://trac.brightpattern.com/ticket/24445")
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_with_incorrect_body_format_typization")
-class Test_post_request_with_incorrect_body_format_typization_str():
+class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_add_records_to_dnc")
     @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization_str')
-    def test_check_status_code_post_request_with_incorrect_body_format_typization_str(self,
+    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization')
+    def test_check_status_code_post_request_with_incorrect_body_format_typization(self,
                                                                                       add_records_to_dnc_post_request_with_incorrect_body_format_typization):
         print("request_result_status_code : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization.status_code)
         assert "400" in str(
@@ -357,8 +357,8 @@ class Test_post_request_with_incorrect_body_format_typization_str():
 
     @allure.epic("test_add_records_to_dnc")
     @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization_str')
-    def test_check_answer_text_post_request_with_incorrect_body_format_typization_str(self,
+    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization')
+    def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
                                                                                       add_records_to_dnc_post_request_with_incorrect_body_format_typization):
         print("request_result_text : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)
         status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
@@ -368,7 +368,7 @@ class Test_post_request_with_incorrect_body_format_typization_str():
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
-@allure.issue("https://trac.brightpattern.com/ticket/24437")
+#@allure.issue("https://trac.brightpattern.com/ticket/24437")
 @pytest.mark.usefixtures("add_records_to_dnc_get_request_with_correct_body")
 class Test_get_request_with_correct_body():
     @allure.epic("test_add_records_to_dnc")
@@ -392,7 +392,7 @@ class Test_get_request_with_correct_body():
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
-@allure.issue("https://trac.brightpattern.com/ticket/24437")
+#@allure.issue("https://trac.brightpattern.com/ticket/24437")
 @pytest.mark.usefixtures("add_records_to_dnc_put_request_with_correct_body")
 class Test_put_request_with_correct_body():
     @allure.epic("test_add_records_to_dnc")
@@ -416,7 +416,7 @@ class Test_put_request_with_correct_body():
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
-@allure.issue("https://trac.brightpattern.com/ticket/24437")
+#@allure.issue("https://trac.brightpattern.com/ticket/24437")
 @pytest.mark.usefixtures("add_records_to_dnc_delete_request_with_correct_body")
 class Test_delete_request_with_correct_body():
     @allure.epic("test_add_records_to_dnc")
