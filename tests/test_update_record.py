@@ -469,7 +469,7 @@ class Test_post_request_without_a_last_name_parameter():
             update_record_post_request_without_a_last_name_parameter.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24592")
+#@allure.issue("https://trac.brightpattern.com/ticket/24592")
 @pytest.mark.usefixtures("update_record_post_request_with_incorrect_body_format_deleted_quotes")
 class Test_post_request_with_incorrect_body_format_deleted_quotes():
     @allure.epic("test_update_record")
