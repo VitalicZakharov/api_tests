@@ -313,6 +313,7 @@ class Test_post_request_with_do_not_authorize_session():
             update_record_post_request_with_do_not_authorize_session.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24588")
 @pytest.mark.usefixtures("update_record_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_update_record")
@@ -424,7 +425,7 @@ class Test_post_request_without_a_key_first_name_parameter():
             update_record_post_request_without_a_key_first_name_parameter.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_without_a_key_first_name_parameter.text)
 
-
+#@allure.issue("https://trac.brightpattern.com/ticket/")
 @pytest.mark.usefixtures("update_record_post_request_with_a_wrong_key_first_name_parameter")
 class Test_post_request_with_a_wrong_key_first_name_parameter():
     @allure.epic("test_update_record")
@@ -468,6 +469,7 @@ class Test_post_request_without_a_last_name_parameter():
             update_record_post_request_without_a_last_name_parameter.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24592")
 @pytest.mark.usefixtures("update_record_post_request_with_incorrect_body_format_deleted_quotes")
 class Test_post_request_with_incorrect_body_format_deleted_quotes():
     @allure.epic("test_update_record")
@@ -559,7 +561,6 @@ class Test_post_request_with_invalid_url():
         assert status in str(
             update_record_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_invalid_url.text)
-
 
 @pytest.mark.usefixtures("update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus")
 class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus():

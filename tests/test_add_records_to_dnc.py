@@ -317,6 +317,7 @@ class Test_post_request_with_do_not_authorize_session():
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24443")
+@allure.issue("https://trac.brightpattern.com/ticket/24588")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_add_records_to_dnc")

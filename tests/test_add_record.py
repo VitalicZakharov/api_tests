@@ -27,28 +27,28 @@ class Test_post_request_with_correct_body():
             add_record_post_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/21499")
+#@allure.issue("https://trac.brightpattern.com/ticket/21499")
 #@allure.issue("https://trac.brightpattern.com/ticket/24228")
 @allure.issue("https://trac.brightpattern.com/ticket/24420")
 @pytest.mark.usefixtures("add_record_post_request_with_a_duplicate_earlier_created_keys")
 class Test_post_request_with_a_duplicate_earlier_created_keys():
     @allure.epic("test_add_record")
-    @allure.feature("answer code 500")
+    @allure.feature("answer code 409")
     @allure.step('test_check_status_code_post_request_with_a_duplicate_earlier_created_keys')
     def test_check_status_code_request_with_a_duplicate_earlier_created_keys(self,
                                                                              add_record_post_request_with_a_duplicate_earlier_created_keys):
         print("request_result_status_code : ", add_record_post_request_with_a_duplicate_earlier_created_keys.status_code)
-        assert "500" in str(
-            add_record_post_request_with_a_duplicate_earlier_created_keys.status_code), "Answer status not 500 ; actual status code : " + str(
+        assert "409" in str(
+            add_record_post_request_with_a_duplicate_earlier_created_keys.status_code), "Answer status not 409 ; actual status code : " + str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.status_code)
 
     @allure.epic("test_add_record")
-    @allure.feature("answer code 500")
+    @allure.feature("answer code 409")
     @allure.step('test_check_answer_text_request_with_a_duplicate_earlier_created_keys')
     def test_check_answer_text_request_with_a_duplicate_earlier_created_keys(self,
                                                                              add_record_post_request_with_a_duplicate_earlier_created_keys):
         print("request_result_text : ", add_record_post_request_with_a_duplicate_earlier_created_keys.text)
-        status = "Some error message"
+        status = 'E11000 duplicate key error collection: servicepattern.callingListe14fc92a1d264625a93f281e6135fbe4 index: f6_1_f7_1 dup key: { : "9003", : "900" }'
         assert status in str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text)
@@ -386,7 +386,7 @@ class Test_post_request_with_do_not_authorize_session():
             add_record_post_request_with_do_not_authorize_session.text)
 
 
-#@allure.issue("https://trac.brightpattern.com/ticket/24237")
+@allure.issue("https://trac.brightpattern.com/ticket/24588")
 @pytest.mark.usefixtures("add_record_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_add_record")
@@ -724,26 +724,26 @@ class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbo
             add_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24229")
+#@allure.issue("https://trac.brightpattern.com/ticket/24229")
 @pytest.mark.usefixtures("add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct")
 class Test_post_request_for_corrupted_on_importing_list_all_fields_are_correct():
     @allure.epic("test_add_record")
-    @allure.feature("answer code 500")
+    @allure.feature("answer code 400")
     @allure.step('test_check_status_code_post_request_for_corrupted_on_importing_list_all_fields_are_correct')
     def test_check_status_code_post_request_for_corrupted_on_importing_list_all_fields_are_correct(self,
                                                                                                    add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct):
         print("request_result_status_code : ", add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.status_code)
-        assert "500" in str(
-            add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.status_code), "Answer status not 500 ; actual status code : " + str(
+        assert "400" in str(
+            add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.status_code), "Answer status not 400 ; actual status code : " + str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.status_code)
 
     @allure.epic("test_add_record")
-    @allure.feature("answer code 500")
+    @allure.feature("answer code 400")
     @allure.step('test_check_answer_text_post_request_for_corrupted_on_importing_list_all_fields_are_correct')
     def test_check_answer_text_post_request_for_corrupted_on_importing_list_all_fields_are_correct(self,
                                                                                                    add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct):
         print("request_result_text : ", add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
-        status = "Duplicate key error"
+        status = "error parsing datetime value"
         assert status in str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
