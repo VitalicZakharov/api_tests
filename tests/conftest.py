@@ -2566,7 +2566,7 @@ def delete_all_records_post_request_with_incorrect_body_format_typization(get_us
 
 @pytest.fixture(scope='class')
 def delete_all_records_post_request_with_csv_list_format(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.cvs"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.csv"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {

@@ -85,7 +85,7 @@ class Test_post_request_with_an_incorrect_date_time_value():
     @allure.step('test_check_answer_text_post_request_with_an_incorrect_date_time_value')
     def test_check_answer_text_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
         print("request_result_text : ", update_record_post_request_with_an_incorrect_date_time_value.text)
-        status = 'Invalid format: "`~!@#$%^&*()_+[]{}|\?/,."'
+        status = 'error parsing datetime value'
         assert status in str(
             update_record_post_request_with_an_incorrect_date_time_value.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_an_incorrect_date_time_value.text)
