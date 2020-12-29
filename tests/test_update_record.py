@@ -332,7 +332,7 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
     def test_check_answer_text_post_request_with_authorize_session_for_user_without_permission(self,
                                                                                                update_record_post_request_with_authorize_session_for_user_without_permission):
         print("request_result_text : ", update_record_post_request_with_authorize_session_for_user_without_permission.text)
-        status = "Access denied update"
+        status = "User authenticated but does not have sufficient privileges"
         assert status in str(
             update_record_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_authorize_session_for_user_without_permission.text)

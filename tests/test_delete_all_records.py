@@ -129,7 +129,7 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
     def test_check_answer_text_post_request_with_authorize_session_for_user_without_permission(self,
                                                                                                delete_all_records_post_request_with_authorize_session_for_user_without_permission):
         print("request_result_text : ", delete_all_records_post_request_with_authorize_session_for_user_without_permission.text)
-        status = "Access denied deleteAll"
+        status = "User authenticated but does not have sufficient privileges"
         assert status in str(
             delete_all_records_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
             delete_all_records_post_request_with_authorize_session_for_user_without_permission.text)

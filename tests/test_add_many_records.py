@@ -465,7 +465,7 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
     def test_check_answer_text_post_request_with_authorize_session_for_user_without_permission(self,
                                                                                                add_many_records_post_request_with_authorize_session_for_user_without_permission):
         print("request_result_text : ", add_many_records_post_request_with_authorize_session_for_user_without_permission.text)
-        status = "Access denied addAll"
+        status = "User authenticated but does not have sufficient privileges"
         assert status in str(
             add_many_records_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_authorize_session_for_user_without_permission.text)
