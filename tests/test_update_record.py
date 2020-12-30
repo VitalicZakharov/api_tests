@@ -62,7 +62,8 @@ class Test_post_request_with_an_incorrect_integer_value():
     @allure.step('test_check_answer_text_post_request_with_an_incorrect_integer_value')
     def test_check_answer_text_post_request_with_an_incorrect_integer_value(self, update_record_post_request_with_an_incorrect_integer_value):
         print("request_result_text : ", update_record_post_request_with_an_incorrect_integer_value.text)
-        status = 'For input string: "abc"'
+        #status = 'For input string: "abc"'
+        status = 'Some text about: For input string: "abc"'
         assert status in str(
             update_record_post_request_with_an_incorrect_integer_value.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_an_incorrect_integer_value.text)
@@ -85,7 +86,7 @@ class Test_post_request_with_an_incorrect_date_time_value():
     @allure.step('test_check_answer_text_post_request_with_an_incorrect_date_time_value')
     def test_check_answer_text_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
         print("request_result_text : ", update_record_post_request_with_an_incorrect_date_time_value.text)
-        status = 'error parsing datetime value'
+        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
         assert status in str(
             update_record_post_request_with_an_incorrect_date_time_value.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_an_incorrect_date_time_value.text)
@@ -243,7 +244,7 @@ class Test_post_request_incorrectly_formatted_phone_number_in_a_phone_field():
             update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_field.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/22559")
+#@allure.issue("https://trac.brightpattern.com/ticket/22559")
 @pytest.mark.usefixtures("update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11_digits")
 class Test_post_request_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11_digits():
     @allure.epic("test_update_record")
@@ -267,6 +268,7 @@ class Test_post_request_incorrectly_formatted_phone_number_in_a_phone_field_the_
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/21500")
+@allure.issue("https://trac.brightpattern.com/ticket/24597")
 @pytest.mark.usefixtures("update_record_post_request_with_a_non_existent_field_name")
 class Test_post_request_with_a_non_existent_field_name():
     @allure.epic("test_update_record")
@@ -354,7 +356,8 @@ class Test_post_request_without_parameters_empty_body():
     @allure.step('test_check_answer_text_post_request_without_parameters_empty_body')
     def test_check_answer_text_post_request_without_parameters_empty_body(self, update_record_post_request_without_parameters_empty_body):
         print("request_result_text : ", update_record_post_request_without_parameters_empty_body.text)
-        status = 'missing key: first name, phone1'
+        #status = 'missing key: first name, phone'
+        status = 'missing key: phone'
         assert status in str(
             update_record_post_request_without_parameters_empty_body.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_without_parameters_empty_body.text)
@@ -376,7 +379,7 @@ class Test_post_request_without_a_key_phone_parameter_phone_field_doesnt_present
     @allure.step('test_check_answer_text_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body')
     def test_check_answer_text_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body(self, update_record_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body):
         print("request_result_text : ", update_record_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body.text)
-        status = 'missing key: phone1'
+        status = 'missing key: phone'
         assert status in str(
             update_record_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body.text)
@@ -469,7 +472,7 @@ class Test_post_request_without_a_last_name_parameter():
             update_record_post_request_without_a_last_name_parameter.text)
 
 
-#@allure.issue("https://trac.brightpattern.com/ticket/24592")
+@allure.issue("https://trac.brightpattern.com/ticket/24599")
 @pytest.mark.usefixtures("update_record_post_request_with_incorrect_body_format_deleted_quotes")
 class Test_post_request_with_incorrect_body_format_deleted_quotes():
     @allure.epic("test_update_record")
@@ -583,7 +586,7 @@ class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_p
             update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
 
-
+@allure.issue("https://trac.brightpattern.com/ticket/24601")
 @pytest.mark.usefixtures("update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus")
 class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus():
     @allure.epic("test_update_record")

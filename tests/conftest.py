@@ -2965,7 +2965,7 @@ def update_record_post_request_with_a_wrong_key_phone_parameter(get_user_token):
 
 @pytest.fixture(scope='class')
 def update_record_post_request_without_a_key_first_name_parameter(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_TCTR.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -2981,7 +2981,7 @@ def update_record_post_request_without_a_key_first_name_parameter(get_user_token
 
 @pytest.fixture(scope='class')
 def update_record_post_request_with_a_wrong_key_first_name_parameter(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_TCTR.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
