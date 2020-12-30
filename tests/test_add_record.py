@@ -29,7 +29,7 @@ class Test_post_request_with_correct_body():
 
 #@allure.issue("https://trac.brightpattern.com/ticket/21499")
 #@allure.issue("https://trac.brightpattern.com/ticket/24228")
-@allure.issue("https://trac.brightpattern.com/ticket/24420")
+@allure.issue("https://trac.brightpattern.com/ticket/24597")
 @pytest.mark.usefixtures("add_record_post_request_with_a_duplicate_earlier_created_keys")
 class Test_post_request_with_a_duplicate_earlier_created_keys():
     @allure.epic("test_add_record")
@@ -79,7 +79,7 @@ class Test_post_request_with_empty_key_field_account():
             add_record_post_request_with_empty_key_field_account.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/22524")
+#@allure.issue("https://trac.brightpattern.com/ticket/22524")
 # @allure.issue("https://trac.brightpattern.com/ticket/24228")
 @pytest.mark.usefixtures("add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field")
 class Test_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field():
@@ -99,13 +99,13 @@ class Test_post_request_with_incorrectly_formatted_date_time_number_in_a_date_ti
     def test_check_answer_text_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field(self,
                                                                                                              add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field):
         print("request_result_text : ", add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field.text)
-        status = "error parsing datetime value"
+        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
         assert status in str(
             add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/22559")
+#@allure.issue("https://trac.brightpattern.com/ticket/22559")
 @pytest.mark.usefixtures("add_record_post_request_with_incorrectly_formatted_phone_number_country")
 class Test_post_request_with_incorrectly_formatted_phone_number_country():
     @allure.epic("test_add_record")
@@ -195,7 +195,7 @@ class Test_post_request_with_missing_req_field():
     @allure.step('test_check_answer_text_post_request_with_missing_req_field')
     def test_check_answer_text_post_request_with_missing_req_field(self, add_record_post_request_with_missing_req_field):
         print("request_result_text : ", add_record_post_request_with_missing_req_field.text)
-        status = "missing required field: phone2"
+        status = "missing key: phone2"
         assert status in str(
             add_record_post_request_with_missing_req_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_missing_req_field.text)
@@ -310,7 +310,7 @@ class Test_post_request_without_a_phone_field_req():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_req')
     def test_check_answer_text_post_request_without_a_phone_field_req(self, add_record_post_request_without_a_phone_field_req):
         print("request_result_text : ", add_record_post_request_without_a_phone_field_req.text)
-        status = "missing required field: phone2"
+        status = "missing key: phone2"
         assert status in str(
             add_record_post_request_without_a_phone_field_req.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_without_a_phone_field_req.text)
@@ -386,7 +386,7 @@ class Test_post_request_with_do_not_authorize_session():
             add_record_post_request_with_do_not_authorize_session.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24588")
+#@allure.issue("https://trac.brightpattern.com/ticket/24588")
 @pytest.mark.usefixtures("add_record_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_add_record")
@@ -743,7 +743,7 @@ class Test_post_request_for_corrupted_on_importing_list_all_fields_are_correct()
     def test_check_answer_text_post_request_for_corrupted_on_importing_list_all_fields_are_correct(self,
                                                                                                    add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct):
         print("request_result_text : ", add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
-        status = "error parsing datetime value"
+        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
         assert status in str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
@@ -860,7 +860,7 @@ class Test_post_request_with_correct_but_different_datetime_format():
     @allure.step('test_check_answer_text_post_request_with_correct_but_different_datetime_format')
     def test_check_answer_text_post_request_with_correct_but_different_datetime_format(self, add_record_post_request_with_correct_but_different_datetime_format):
         print("request_result_text : ", add_record_post_request_with_correct_but_different_datetime_format.text)
-        status = "error parsing datetime value"
+        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
         assert status in str(
             add_record_post_request_with_correct_but_different_datetime_format.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_correct_but_different_datetime_format.text)

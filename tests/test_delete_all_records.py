@@ -110,7 +110,7 @@ class Test_post_request_with_do_not_authorize_session():
             delete_all_records_post_request_with_do_not_authorize_session.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24588")
+#@allure.issue("https://trac.brightpattern.com/ticket/24588")
 @pytest.mark.usefixtures("delete_all_records_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_delete_all_records")

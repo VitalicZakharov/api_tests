@@ -158,13 +158,13 @@ def get_user_without_permission_token():
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "123",
-        #"Date/Time": "02/07/2020 10:01 am",
-        "Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
+        #"Date/Time": "03-07-2025",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -181,12 +181,13 @@ def add_record_post_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_a_duplicate_earlier_created_keys(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "1234",
-        "Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
+        #"Date/Time": "03-07-2025",
         "Caller id": "Test4",
         "Agent id": "Test4",
         "First name": "Name_First4",
@@ -221,7 +222,7 @@ def add_record_post_request_with_empty_key_field_account(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -262,12 +263,13 @@ def add_record_post_request_with_incorrectly_formatted_phone_number_country(get_
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrectly_formatted_phone_number_in_a_caller_id_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi/v2/callinglist/add/List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi/v2/callinglist/add/List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "1238",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "1!@#$%^&*()Ab-_{}[\]/|?,.''2",
         "Agent id": "Test8",
         "First name": "Name_First8",
@@ -301,12 +303,13 @@ def add_record_post_request_with_incorrectly_formatted_phone_number_in_a_phone_f
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_missing_req_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "1235",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test5",
         "Agent id": "Test5",
         "First name": "Name_First5",
@@ -322,12 +325,13 @@ def add_record_post_request_with_missing_req_field(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_non_existent_agent_username_in_an_agent_login_id_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "1237",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test7",
         "Agent id": "Ri/!@#$%^&*();:<>,.{}''|?ck",
         "First name": "Name_First7",
@@ -362,12 +366,13 @@ def add_record_post_request_with_space_in_the_key_field(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "12310",
-        "Date/Time": "03-07-813",
+        #"Date/Time": "03-07-813",
+        "Date/Time": "01/07/1025 12:00 AM",
         "Caller id": "Test10",
         "Agent id": "Test10",
         "First name": "Name_First10",
@@ -384,12 +389,13 @@ def add_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(g
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrectly_formatted_value_in_an_integer_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "abc",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test11",
         "Agent id": "Test11",
         "First name": "Name_First11",
@@ -406,12 +412,13 @@ def add_record_post_request_with_incorrectly_formatted_value_in_an_integer_field
 
 @pytest.fixture(scope='class')
 def add_record_post_request_without_a_phone_field_req(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "12312",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test12",
         "Agent id": "Test12",
         "First name": "Name_First12",
@@ -427,12 +434,13 @@ def add_record_post_request_without_a_phone_field_req(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_without_a_phone_field_req_and_key(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "12313",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test13",
         "Agent id": "Test13",
         "First name": "Name_First13",
@@ -510,7 +518,7 @@ def add_record_post_request_with_empty_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_a_first_name_field_only(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -573,7 +581,7 @@ def add_record_post_request_with_a_redundant_field(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrect_body_format_deleted_quotes(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     request_body = bytes("{\"First Name: Test6, Phone1: 1006\"}", 'utf-8')
@@ -584,7 +592,7 @@ def add_record_post_request_with_incorrect_body_format_deleted_quotes(get_user_t
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrect_body_format_typization(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes("First Name: Test6, Phone1: 1006", 'utf-8')
     print("request_url : ", request_url)
@@ -594,16 +602,9 @@ def add_record_post_request_with_incorrect_body_format_typization(get_user_token
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrect_body_format_a_redundant_comma_in_the_end(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-    # Request body
-#    body = {
-#        "First Name": "Test6",
-#        "Phone1": "1006",
-#    }
-    request_body = bytes("{\"First Name\": \"Test6\", \"Phone1\": \"1006\",}", 'utf-8')
-    # Convert body request to json
-    #request_body = json.dumps(body)
+    request_body = bytes('{"First Name": "Test6", "Phone1": "1006",}', 'utf-8')
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -613,8 +614,7 @@ def add_record_post_request_with_incorrect_body_format_a_redundant_comma_in_the_
 def add_record_post_request_with_a_duplicate_key_field_in_the_body(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-    # Request body
-    request_body = bytes("{\"First Name\": \"Test6\", \"Phone1\": \"1006\", \"Phone1\": \"1006\"}", 'utf-8')
+    request_body = bytes('{"First Name": "Test6", "Phone1": "1006", "Phone1": "1006"}', 'utf-8')
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -622,7 +622,7 @@ def add_record_post_request_with_a_duplicate_key_field_in_the_body(get_user_toke
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_empty_first_name_and_phone(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -728,12 +728,13 @@ def add_record_post_request_for_corrupted_on_importing_list_all_fields_are_corre
 
 @pytest.fixture(scope='class')
 def add_record_get_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "123",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -750,12 +751,13 @@ def add_record_get_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_put_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "123",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -772,12 +774,13 @@ def add_record_put_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_delete_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "123",
-        "Date/Time": "03-07-2025",
+        #"Date/Time": "03-07-2025",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -799,7 +802,8 @@ def add_many_records_post_request_with_correct_body(get_user_token):
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            #"Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -809,7 +813,8 @@ def add_many_records_post_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            #"Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -819,7 +824,8 @@ def add_many_records_post_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            #"Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
@@ -843,7 +849,8 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
     body = [
         {
             "Integer": "123211",
-            "Date/Time": "01-07-2025",
+            #"Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20",
             "Agent id": "Test20",
             "First name": "Name_First20",
@@ -853,7 +860,8 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
         },
         {
             "Integer": "123212",
-            "Date/Time": "02-07-2025",
+            #"Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20_2",
             "Agent id": "Test20_2",
             "First name": "Name_First20_2",
@@ -863,7 +871,8 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
         },
         {
             "Integer": "123213",
-            "Date/Time": "03-07-2025",
+            #"Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20_3",
             "Agent id": "Test20_3",
             "First name": "Name_First20_3",
@@ -887,7 +896,8 @@ def add_many_records_post_request_with_incorrect_body_format_typization(get_user
     request_body = bytes(str(
         {
             "Integer": "123211",
-            "Date/Time": "01-07-2025",
+            #"Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20",
             "Agent id": "Test20",
             "First name": "Name_First20",
@@ -901,13 +911,13 @@ def add_many_records_post_request_with_incorrect_body_format_typization(get_user
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_correct_but_different_datetime_format(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "123",
-        "Date/Time": "02/07/2020 10:01 am",
-        #"Date/Time": "03-07-2025",
+        #"Date/Time": "02/07/2020 10:01 am",
+        "Date/Time": "03-07-2025",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
