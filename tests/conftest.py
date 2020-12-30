@@ -796,7 +796,7 @@ def add_record_delete_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = [
@@ -1493,7 +1493,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
     body = [
         {
             "Integer": "123341",
-            "Date/Time": "01-07-2034",
+            "Date/Time": "01/07/25 12:00 AM",
             "Caller id": "10034",
             "Agent id": "Test34.1",
             "First name": "Name_First34",
@@ -1503,18 +1503,18 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         },
         {
             "Integer": "123342",
-            "Date/Time": "02-07-2034",
+            "Date/Time": "01/07/25 12:00 AM",
             "Caller id": "100342",
             "Agent id": "Test34.2",
             "First name": "Name_First34_2",
             "Last name": "Name_Last34_2",
-            "Phone1": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.2",
+            "Phone1": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.",
             "Phone2": "9342"
 
         },
         {
             "Integer": "123343",
-            "Date/Time": "03-07-2034",
+            "Date/Time": "01/07/25 12:00 AM",
             "Caller id": "100343",
             "Agent id": "Test34.3",
             "First name": "Name_First34_3",
@@ -1926,7 +1926,7 @@ def add_record_post_request_with_body_from_other_list(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_body_from_other_list(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_TCTR.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = [

@@ -400,7 +400,7 @@ class Test_post_request_with_an_incorrectly_formatted_phone_number_in_a_phone_fi
             add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
 
 @allure.issue("https://trac.brightpattern.com/ticket/24411")
-@pytest.mark.usefixtures("add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11")
+@pytest.mark.usefixtures("add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11")
 class Test_post_request_with_an_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11():
     @allure.epic("test_add_many_records")
     @allure.feature("answer code 200")
@@ -606,7 +606,7 @@ class Test_post_request_with_invalid_url():
             add_many_records_post_request_with_invalid_url.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24412")
+@allure.issue("https://trac.brightpattern.com/ticket/24410")
 @pytest.mark.usefixtures("add_many_records_post_request_with_incorrectly_formatted_phone_number_in_a_phone_field")
 class Test_post_request_with_incorrectly_formatted_phone_number_in_a_phone_field():
     @allure.epic("test_add_many_records")
@@ -698,7 +698,8 @@ class Test_delete_request_with_correct_body():
             add_many_records_delete_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24404")
+#@allure.issue("https://trac.brightpattern.com/ticket/24404")
+@allure.issue("https://trac.brightpattern.com/ticket/24597")
 @pytest.mark.usefixtures("add_many_records_post_request_with_body_from_other_list")
 class Test_post_request_with_body_from_other_list():
     @allure.epic("test_add_many_records")
