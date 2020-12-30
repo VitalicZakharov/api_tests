@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_to_any_non_existent_dnc_list")
 class Test_post_request_to_any_non_existent_dnc_list():
     @allure.epic("test_add_records_to_dnc")
@@ -23,7 +23,7 @@ class Test_post_request_to_any_non_existent_dnc_list():
             add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not")
 class Test_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not():
     @allure.epic("test_add_records_to_dnc")
@@ -46,7 +46,7 @@ class Test_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_in
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/22859")
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal")
 class Test_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal():
     @allure.epic("test_add_records_to_dnc")
@@ -68,7 +68,7 @@ class Test_post_request_containing_both_correctly_and_incorrectly_formatted_numb
             add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns")
 class Test_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns():
     @allure.epic("test_add_records_to_dnc")
@@ -91,7 +91,7 @@ class Test_post_request_containing_a_correctly_formatted_number_and_a_comment_to
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/22851")
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic")
 class Test_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic():
     @allure.epic("test_add_records_to_dnc")
@@ -114,7 +114,7 @@ class Test_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/22859")
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion")
 class Test_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion():
     @allure.epic("test_add_records_to_dnc")
@@ -136,7 +136,7 @@ class Test_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion
             add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text")
 class Test_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text():
     @allure.epic("test_add_records_to_dnc")
@@ -158,7 +158,7 @@ class Test_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_
             add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text")
 class Test_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text():
     @allure.epic("test_add_records_to_dnc")
@@ -180,7 +180,7 @@ class Test_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_
             add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text")
 class Test_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text():
     @allure.epic("test_add_records_to_dnc")
@@ -202,7 +202,7 @@ class Test_post_request_add_2_records_containing_a_special_symbols_postal_code_t
             add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic")
 class Test_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic():
     @allure.epic("test_add_records_to_dnc")
@@ -224,7 +224,7 @@ class Test_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic():
             add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @allure.issue("https://trac.brightpattern.com/ticket/22859")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic")
 class Test_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic():
@@ -247,7 +247,7 @@ class Test_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geogr
             add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text")
 class Test_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text():
     @allure.epic("test_add_records_to_dnc")
@@ -269,7 +269,7 @@ class Test_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of
             add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes")
 class Test_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes():
     @allure.epic("test_add_records_to_dnc")
@@ -291,7 +291,7 @@ class Test_post_request_add_a_record_containing_an_incorrectly_formatted_us_area
             add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_with_do_not_authorize_session")
 class Test_post_request_with_do_not_authorize_session():
     @allure.epic("test_add_records_to_dnc")
@@ -316,7 +316,7 @@ class Test_post_request_with_do_not_authorize_session():
             add_records_to_dnc_post_request_with_do_not_authorize_session.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 #@allure.issue("https://trac.brightpattern.com/ticket/24588")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
@@ -343,7 +343,7 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/24445")
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_with_incorrect_body_format_typization")
 class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_add_records_to_dnc")
@@ -368,7 +368,7 @@ class Test_post_request_with_incorrect_body_format_typization():
             add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 #@allure.issue("https://trac.brightpattern.com/ticket/24437")
 @pytest.mark.usefixtures("add_records_to_dnc_get_request_with_correct_body")
 class Test_get_request_with_correct_body():
@@ -392,7 +392,7 @@ class Test_get_request_with_correct_body():
             add_records_to_dnc_get_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 #@allure.issue("https://trac.brightpattern.com/ticket/24437")
 @pytest.mark.usefixtures("add_records_to_dnc_put_request_with_correct_body")
 class Test_put_request_with_correct_body():
@@ -416,7 +416,7 @@ class Test_put_request_with_correct_body():
             add_records_to_dnc_put_request_with_correct_body.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
 #@allure.issue("https://trac.brightpattern.com/ticket/24437")
 @pytest.mark.usefixtures("add_records_to_dnc_delete_request_with_correct_body")
 class Test_delete_request_with_correct_body():
