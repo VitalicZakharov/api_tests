@@ -69,7 +69,7 @@ class Test_post_request_with_an_incorrect_integer_value():
             update_record_post_request_with_an_incorrect_integer_value.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/22524")
+#@allure.issue("https://trac.brightpattern.com/ticket/22524")
 @allure.issue("https://trac.brightpattern.com/ticket/24641")
 @pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_date_time_value")
 class Test_post_request_with_an_incorrect_date_time_value():
