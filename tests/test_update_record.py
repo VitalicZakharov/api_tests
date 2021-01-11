@@ -70,6 +70,7 @@ class Test_post_request_with_an_incorrect_integer_value():
 
 
 @allure.issue("https://trac.brightpattern.com/ticket/22524")
+@allure.issue("https://trac.brightpattern.com/ticket/24641")
 @pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_date_time_value")
 class Test_post_request_with_an_incorrect_date_time_value():
     @allure.epic("test_update_record")
@@ -86,7 +87,7 @@ class Test_post_request_with_an_incorrect_date_time_value():
     @allure.step('test_check_answer_text_post_request_with_an_incorrect_date_time_value')
     def test_check_answer_text_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
         print("request_result_text : ", update_record_post_request_with_an_incorrect_date_time_value.text)
-        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
+        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
         assert status in str(
             update_record_post_request_with_an_incorrect_date_time_value.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_an_incorrect_date_time_value.text)
