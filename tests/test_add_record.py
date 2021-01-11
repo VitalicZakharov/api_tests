@@ -99,7 +99,7 @@ class Test_post_request_with_incorrectly_formatted_date_time_number_in_a_date_ti
     def test_check_answer_text_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field(self,
                                                                                                              add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field):
         print("request_result_text : ", add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field.text)
-        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
+        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
         assert status in str(
             add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field.text)
@@ -743,7 +743,7 @@ class Test_post_request_for_corrupted_on_importing_list_all_fields_are_correct()
     def test_check_answer_text_post_request_for_corrupted_on_importing_list_all_fields_are_correct(self,
                                                                                                    add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct):
         print("request_result_text : ", add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
-        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
+        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
         assert status in str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
@@ -860,7 +860,7 @@ class Test_post_request_with_correct_but_different_datetime_format():
     @allure.step('test_check_answer_text_post_request_with_correct_but_different_datetime_format')
     def test_check_answer_text_post_request_with_correct_but_different_datetime_format(self, add_record_post_request_with_correct_but_different_datetime_format):
         print("request_result_text : ", add_record_post_request_with_correct_but_different_datetime_format.text)
-        status = "Error parsing datetime value, please enter date in the correct format: 'MM/dd/yyyy HH:mm a'. For example '10/28/2020 21:28 AM'"
+        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
         assert status in str(
             add_record_post_request_with_correct_but_different_datetime_format.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_correct_but_different_datetime_format.text)
