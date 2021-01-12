@@ -794,6 +794,7 @@ def add_record_delete_request_with_correct_body(get_user_token):
     print("request_body : ", request_body)
     return requests.delete(request_url, data=request_body, headers=HEADERS)
 
+
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_correct_body(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1_new.txt"
@@ -3165,3 +3166,299 @@ def update_record_delete_request_with_correct_body(get_user_token):
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.delete(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_start_index_from_0(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_start_index_from_2(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 2,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_start_index_from_3(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 3,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_maxsize_1_and_fromindex_more_than_0(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 1,
+        "maxSize": 1
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_invalid_fromindex_value_fromindex_alphabetical(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 'a',
+        "maxSize": 1
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_invalid_fromindex_value_maxsize_alphabetical(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 'a'
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_campaign_maxsize_but_without_fromindex(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "maxSize": 10
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_campaign_fromindex_but_without_maxsize(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_valid_list_and_campaign_that_are_not_associated(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//campaign_that_are_not_associated"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 10
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_maxsize_set_to_1000(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 1000
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_maxsize_set_to_1001(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 1001
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_do_not_authorize_session():
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_invalid_url(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//invalid_callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_to_the_non_existent_list(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_not_exists.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_get_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.get(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_put_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.put(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_delete_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromIndex": 0,
+        "maxSize": 100
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.delete(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_all_records_post_request_with_incorrect_body_format_typization(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    request_body = bytes('["fromIndex": 0,"maxSize: 100]', 'utf-8')
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
