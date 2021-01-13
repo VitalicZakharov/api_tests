@@ -3344,7 +3344,7 @@ def get_all_records_post_request_with_maxsize_set_to_1001(get_user_token):
 
 @pytest.fixture(scope='class')
 def get_all_records_post_request_with_do_not_authorize_session():
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str("token")})
     # Request body
     body = {
@@ -3360,7 +3360,7 @@ def get_all_records_post_request_with_do_not_authorize_session():
 
 @pytest.fixture(scope='class')
 def get_all_records_post_request_with_invalid_url(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//invalid_callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//invalid_getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -3376,7 +3376,7 @@ def get_all_records_post_request_with_invalid_url(get_user_token):
 
 @pytest.fixture(scope='class')
 def get_all_records_post_request_to_the_non_existent_list(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_not_exists.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_not_exists.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -3392,7 +3392,7 @@ def get_all_records_post_request_to_the_non_existent_list(get_user_token):
 
 @pytest.fixture(scope='class')
 def get_all_records_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
     # Request body
     body = {
@@ -3408,7 +3408,7 @@ def get_all_records_post_request_with_authorize_session_for_user_without_permiss
 
 @pytest.fixture(scope='class')
 def get_all_records_get_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -3424,7 +3424,7 @@ def get_all_records_get_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def get_all_records_put_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -3440,7 +3440,7 @@ def get_all_records_put_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def get_all_records_delete_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -3456,7 +3456,7 @@ def get_all_records_delete_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def get_all_records_post_request_with_incorrect_body_format_typization(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//List_Completed.txt//Camp_1"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes('["fromIndex": 0,"maxSize: 100]', 'utf-8')
     print("request_url : ", request_url)
