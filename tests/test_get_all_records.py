@@ -408,6 +408,7 @@ class Test_delete_request_with_correct_body():
             get_all_records_delete_request_with_correct_body.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24665")
 @pytest.mark.usefixtures("get_all_records_post_request_with_incorrect_body_format_typization")
 class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_get_all_records")
