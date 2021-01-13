@@ -3486,3 +3486,97 @@ def get_campaigns_post_request_to_get_campaigns_info(get_user_token):
 #    print("request_body : ", request_body)
 #    return requests.get(request_url, data=request_body, headers=HEADERS)
     return requests.get(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_2(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_3(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_valid_list_campaign_maxsize_and_fromtime_in_the_future(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2073-03-01T13:15:06.456",
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_valid_list_campaign_maxsize_but_without_fromtime(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_valid_list_campaign_fromtime_but_without_maxsize(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//campaign_that_are_not_associated"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2073-03-01T13:15:06.456",
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
