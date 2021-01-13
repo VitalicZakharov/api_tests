@@ -3462,3 +3462,27 @@ def get_all_records_post_request_with_incorrect_body_format_typization(get_user_
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_post_request_to_get_campaigns_info(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+#    body = {
+#        "Integer": "123",
+#        "Date/Time": "01/07/2025 12:00 AM",
+#        #"Date/Time": "03-07-2025",
+#        "Caller id": "Test3",
+#        "Agent id": "Test3",
+#        "First name": "Name_First3",
+#        "Last name": "Name_Last3",
+#        "Phone1": "9003",
+#        "Phone2": "9010"
+#    }
+    # Convert body request to json
+#    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+#    print("request_body : ", request_body)
+#    return requests.get(request_url, data=request_body, headers=HEADERS)
+    return requests.get(request_url, headers=HEADERS)
