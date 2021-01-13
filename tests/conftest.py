@@ -3580,3 +3580,19 @@ def get_completed_records_post_request_with_valid_list_and_campaign_that_are_not
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_an_invalid_list_and_valid_campaign(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//invalid_List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2073-03-01T13:15:06.456",
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)

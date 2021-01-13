@@ -116,16 +116,16 @@ class Test_post_request_with_valid_list_campaign_fromtime_but_without_maxsize():
 @pytest.mark.usefixtures("get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated")
 class Test_post_request_with_valid_list_and_campaign_that_are_not_associated():
     @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 400")
+    @allure.feature("answer code 404")
     @allure.step('test_check_status_code_post_request_with_valid_list_and_campaign_that_are_not_associated')
     def test_check_status_code_post_request_with_valid_list_and_campaign_that_are_not_associated(self, get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated):
         print("request_result_status_code : ", get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code)
-        assert "400" in str(
-            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code), "Answer status not 400 ; actual status code : " + str(
+        assert "404" in str(
+            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code), "Answer status not 404 ; actual status code : " + str(
             get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code)
 
     @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 400")
+    @allure.feature("answer code 404")
     @allure.step('test_check_answer_text_post_request_with_valid_list_and_campaign_that_are_not_associated')
     def test_check_answer_text_post_request_with_valid_list_and_campaign_that_are_not_associated(self, get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated):
         print("request_result_text : ", get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text)
@@ -133,3 +133,25 @@ class Test_post_request_with_valid_list_and_campaign_that_are_not_associated():
         assert status in str(
             get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text), "Answer text not " + status + " ; actual message : " + str(
             get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text)
+
+
+@pytest.mark.usefixtures("get_completed_records_post_request_with_an_invalid_list_and_valid_campaign")
+class Test_post_request_with_an_invalid_list_and_valid_campaign():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_an_invalid_list_and_valid_campaign')
+    def test_check_status_code_post_request_with_an_invalid_list_and_valid_campaign(self, get_completed_records_post_request_with_an_invalid_list_and_valid_campaign):
+        print("request_result_status_code : ", get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code)
+        assert "404" in str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code), "Answer status not 404 ; actual status code : " + str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_an_invalid_list_and_valid_campaign')
+    def test_check_answer_text_post_request_with_an_invalid_list_and_valid_campaign(self, get_completed_records_post_request_with_an_invalid_list_and_valid_campaign):
+        print("request_result_text : ", get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
+        status = 'calling list not found'
+        assert status in str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
