@@ -297,8 +297,8 @@ class Test_post_request_with_invalid_url():
 class Test_post_request_to_the_non_existent_list():
     @allure.epic("test_get_all_records")
     @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_invalid_url')
-    def test_check_status_code_post_request_with_invalid_url(self, get_all_records_post_request_to_the_non_existent_list):
+    @allure.step('test_check_status_code_post_request_to_the_non_existent_list')
+    def test_check_status_code_post_request_to_the_non_existent_list(self, get_all_records_post_request_to_the_non_existent_list):
         print("request_result_status_code : ", get_all_records_post_request_to_the_non_existent_list.status_code)
         assert "404" in str(
             get_all_records_post_request_to_the_non_existent_list.status_code), "Answer status not 404 ; actual status code : " + str(
@@ -306,10 +306,10 @@ class Test_post_request_to_the_non_existent_list():
 
     @allure.epic("test_get_all_records")
     @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_invalid_url')
-    def test_check_answer_text_post_request_with_invalid_url(self, get_all_records_post_request_to_the_non_existent_list):
+    @allure.step('test_check_answer_text_post_request_to_the_non_existent_list')
+    def test_check_answer_text_post_request_to_the_non_existent_list(self, get_all_records_post_request_to_the_non_existent_list):
         print("request_result_text : ", get_all_records_post_request_to_the_non_existent_list.text)
-        status = "HTTP 404 Not Found"
+        status = "calling list not found"
         assert status in str(
             get_all_records_post_request_to_the_non_existent_list.text), "Answer text not " + status + " ; actual message : " + str(
             get_all_records_post_request_to_the_non_existent_list.text)

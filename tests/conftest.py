@@ -2444,7 +2444,7 @@ def delete_all_records_post_request_with_a_valid_list_assigned_to_multiple_campa
 
 @pytest.fixture(scope='class')
 def delete_all_records_post_request_with_an_invalid_list(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_not_exists.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//invalid_List_Delete3.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
