@@ -336,7 +336,7 @@ class Test_post_request_with_invalid_fromtime_value_fromtime_alphabetical():
             get_completed_records_post_request_with_invalid_fromtime_value_fromtime_alphabetical.text)
 
 
-#@allure.issue("https://trac.brightpattern.com/ticket/22721")
+@allure.issue("https://trac.brightpattern.com/ticket/24692")
 @pytest.mark.usefixtures("get_completed_records_post_request_with_invalid_maxsize_value_maxsize_alphabetical")
 class Test_post_request_with_invalid_maxsize_value_maxsize_alphabetical():
     @allure.epic("test_get_completed_records")
@@ -452,6 +452,7 @@ class Test_delete_request_with_correct_body():
             get_completed_records_delete_request_with_correct_body.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24691")
 @pytest.mark.usefixtures("get_completed_records_post_request_with_incorrect_body_format_typization")
 class Test_post_request_with_incorrect_body_format_typization():
     @allure.epic("test_get_completed_records")
