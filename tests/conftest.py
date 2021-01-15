@@ -3249,7 +3249,7 @@ def get_all_records_post_request_with_invalid_fromindex_value_fromindex_alphabet
 
 
 @pytest.fixture(scope='class')
-def get_all_records_post_request_with_invalid_fromindex_value_maxsize_alphabetical(get_user_token):
+def get_all_records_post_request_with_invalid_maxsize_value_maxsize_alphabetical(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getAll//List_Completed.txt//Camp_1"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -3593,6 +3593,224 @@ def get_completed_records_post_request_with_an_invalid_list_and_valid_campaign(g
     }
     # Convert body request to json
     request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_a_non_existent_query_parameter(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2073-03-01T13:15:06.456",
+        "wtf": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_a_wrong_fromtime_format(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-03:15:06.456",
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_maxsize_set_to_1000(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "1000"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_maxSize_set_to_greater_than_1000(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "1001"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_do_not_authorize_session():
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_invalid_url(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//invalid_getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+#@pytest.fixture(scope='class')
+#def get_completed_records_post_request_to_the_non_existent_list(get_user_token):
+#    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//invalid_List_Completed.txt//Camp_1"
+#    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+#    # Request body
+#    body = {
+#        "fromTime": "2013-03-01T13:15:06.456",
+#        "maxSize": "2"
+#    }
+#    # Convert body request to json
+#    request_body = json.dumps(body)
+#    print("request_url : ", request_url)
+#    print("request_body : ", request_body)
+#    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_invalid_fromtime_value_fromtime_alphabetical(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "ab",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_invalid_maxsize_value_maxsize_alphabetical(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "ab"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_get_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.get(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_put_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.put(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_delete_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.delete(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_completed_records_post_request_with_incorrect_body_format_typization(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    request_body = bytes('{"fromTime": "2013-03-01T13:15:06.456","maxSize: 2"}', 'utf-8')
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
