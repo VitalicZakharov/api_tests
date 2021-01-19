@@ -155,6 +155,9 @@ def get_user_without_permission_token():
     return str(token)[
            str(token).find("'access_token': '") + len("'access_token': '"):str(token).find("', 'token_type'")]
 
+#=======================================================================================================================
+#============================================ AddRecord fixtures =======================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_correct_body(get_user_token):
@@ -796,6 +799,59 @@ def add_record_delete_request_with_correct_body(get_user_token):
 
 
 @pytest.fixture(scope='class')
+def add_record_post_request_with_correct_but_different_datetime_format(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "123",
+        #"Date/Time": "02/07/2020 10:01 am",
+        "Date/Time": "03-07-2025",
+        "Caller id": "Test3",
+        "Agent id": "Test3",
+        "First name": "Name_First3",
+        "Last name": "Name_Last3",
+        "Phone1": "9003",
+        "Phone2": "9010"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def add_record_post_request_with_body_from_other_list(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_TCTR.txt"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "Integer": "123",
+        "Date/Time": "02/07/2020 10:01 am",
+        #"Date/Time": "03-07-2025",
+        "Caller id": "Test3",
+        "Agent id": "Test3",
+        "First name": "Name_First3",
+        "Last name": "Name_Last3",
+        "Phone1": "9003",
+        "Phone2": "9010"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#============================================ AddManyRecords fixtures ==================================================
+#=======================================================================================================================
+
+@pytest.fixture(scope='class')
 def add_many_records_post_request_with_correct_body(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
@@ -910,27 +966,6 @@ def add_many_records_post_request_with_incorrect_body_format_typization(get_user
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
 
-@pytest.fixture(scope='class')
-def add_record_post_request_with_correct_but_different_datetime_format(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
-    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-    # Request body
-    body = {
-        "Integer": "123",
-        #"Date/Time": "02/07/2020 10:01 am",
-        "Date/Time": "03-07-2025",
-        "Caller id": "Test3",
-        "Agent id": "Test3",
-        "First name": "Name_First3",
-        "Last name": "Name_Last3",
-        "Phone1": "9003",
-        "Phone2": "9010"
-    }
-    # Convert body request to json
-    request_body = json.dumps(body)
-    print("request_url : ", request_url)
-    print("request_body : ", request_body)
-    return requests.post(request_url, data=request_body, headers=HEADERS)
 
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_a_missing_required_field(get_user_token):
@@ -1885,47 +1920,6 @@ def add_many_records_delete_request_with_correct_body(get_user_token):
 
 
 @pytest.fixture(scope='class')
-def add_records_to_dnc_post_request_to_any_non_existent_dnc_list(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_not_exists.txt"
-    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_not_exists"
-    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-    # Request body
-    body = [
-        "123456789",
-        "9999999999"
-    ]
-    # Convert body request to json
-    request_body = json.dumps(body)
-    print("request_url : ", request_url)
-    print("request_body : ", request_body)
-    return requests.post(request_url, data=request_body, headers=HEADERS)
-
-
-@pytest.fixture(scope='class')
-def add_record_post_request_with_body_from_other_list(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_TCTR.txt"
-    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-    # Request body
-    body = {
-        "Integer": "123",
-        "Date/Time": "02/07/2020 10:01 am",
-        #"Date/Time": "03-07-2025",
-        "Caller id": "Test3",
-        "Agent id": "Test3",
-        "First name": "Name_First3",
-        "Last name": "Name_Last3",
-        "Phone1": "9003",
-        "Phone2": "9010"
-    }
-    # Convert body request to json
-    request_body = json.dumps(body)
-    print("request_url : ", request_url)
-    print("request_body : ", request_body)
-    return requests.post(request_url, data=request_body, headers=HEADERS)
-
-
-@pytest.fixture(scope='class')
 def add_many_records_post_request_with_body_from_other_list(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
@@ -1961,6 +1955,31 @@ def add_many_records_post_request_with_body_from_other_list(get_user_token):
             "Phone1": "90193",
             "Phone2": "9193"
         }
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#=========================================== AddRecordsToDnc fixtures ==================================================
+#=======================================================================================================================
+
+@pytest.fixture(scope='class')
+def add_records_to_dnc_post_request_to_any_non_existent_dnc_list(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_not_exists.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_not_exists"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "123456789",
+        "9999999999"
     ]
     # Convert body request to json
     request_body = json.dumps(body)
@@ -2396,6 +2415,13 @@ def add_records_to_dnc_delete_request_with_correct_body(get_user_token):
 #    print("request_body : ", request_body)
 #    return requests.post(request_url, data=request_body, headers=HEADERS)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#========================================== DeleteAllRecords fixtures ==================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def delete_all_records_post_request_with_a_valid_list_assigned_to_multiple_campaigns(get_user_token):
@@ -2591,6 +2617,13 @@ def delete_all_records_post_request_with_csv_list_format(get_user_token):
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#========================================= GetUpdatedRecords fixtures ==================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def update_record_post_request_with_existent_record_key(get_user_token):
@@ -3167,6 +3200,13 @@ def update_record_delete_request_with_correct_body(get_user_token):
     print("request_body : ", request_body)
     return requests.delete(request_url, data=request_body, headers=HEADERS)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#============================================= GetAllRecords fixtures ==================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def get_all_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_start_index_from_0(get_user_token):
@@ -3463,6 +3503,13 @@ def get_all_records_post_request_with_incorrect_body_format_typization(get_user_
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#============================================== GetСampaigns fixtures ==================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def get_campaigns_post_request_to_get_campaigns_info(get_user_token):
@@ -3487,6 +3534,13 @@ def get_campaigns_post_request_to_get_campaigns_info(get_user_token):
 #    return requests.get(request_url, data=request_body, headers=HEADERS)
     return requests.get(request_url, headers=HEADERS)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#======================================= GetCompletedRecords fixtures ==================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def get_completed_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_2(get_user_token):
@@ -3816,6 +3870,10 @@ def get_completed_records_post_request_with_incorrect_body_format_typization(get
     return requests.post(request_url, data=request_body, headers=HEADERS)
 
 #=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
 #==================================== GetUpdatedRecords fixtures =======================================================
 #=======================================================================================================================
 
@@ -4113,6 +4171,17 @@ def get_updated_records_post_request_with_incorrect_body_format_typization(get_u
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#========================================= QueryARecord fixtures =======================================================
+#=======================================================================================================================
+
+
+
 
 #=======================================================================================================================
 #=======================================================================================================================
