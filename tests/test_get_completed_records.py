@@ -1,6 +1,9 @@
 import pytest
 import allure
 
+#=======================================================================================================================
+#==================================================== Code 200 =========================================================
+#=======================================================================================================================
 
 # @allure.issue("https://trac.brightpattern.com/ticket/24242")
 @pytest.mark.usefixtures("get_completed_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_2")
@@ -69,6 +72,35 @@ class Test_post_request_with_valid_list_campaign_maxsize_and_fromtime_in_the_fut
             get_completed_records_post_request_with_valid_list_campaign_maxsize_and_fromtime_in_the_future.text)
 
 
+@pytest.mark.usefixtures("get_completed_records_post_request_with_maxsize_set_to_1000")
+class Test_post_request_with_maxsize_set_to_1000():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 200")
+    @allure.step('test_check_status_code_post_request_with_maxsize_set_to_1000')
+    def test_check_status_code_post_request_with_maxsize_set_to_1000(self, get_completed_records_post_request_with_maxsize_set_to_1000):
+        print("request_result_status_code : ", get_completed_records_post_request_with_maxsize_set_to_1000.status_code)
+        assert "200" in str(
+            get_completed_records_post_request_with_maxsize_set_to_1000.status_code), "Answer status not 200 ; actual status code : " + str(
+            get_completed_records_post_request_with_maxsize_set_to_1000.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 200")
+    @allure.step('test_check_answer_text_post_request_with_maxsize_set_to_1000')
+    def test_check_answer_text_post_request_with_maxsize_set_to_1000(self, get_completed_records_post_request_with_maxsize_set_to_1000):
+        print("request_result_text : ", get_completed_records_post_request_with_maxsize_set_to_1000.text)
+        status = 'something'
+        assert status in str(
+            get_completed_records_post_request_with_maxsize_set_to_1000.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_maxsize_set_to_1000.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 400 =========================================================
+#=======================================================================================================================
+
 @pytest.mark.usefixtures("get_completed_records_post_request_with_valid_list_campaign_maxsize_but_without_fromtime")
 class Test_post_request_with_valid_list_campaign_maxsize_but_without_fromtime():
     @allure.epic("test_get_completed_records")
@@ -111,51 +143,6 @@ class Test_post_request_with_valid_list_campaign_fromtime_but_without_maxsize():
         assert status in str(
             get_completed_records_post_request_with_valid_list_campaign_fromtime_but_without_maxsize.text), "Answer text not " + status + " ; actual message : " + str(
             get_completed_records_post_request_with_valid_list_campaign_fromtime_but_without_maxsize.text)
-
-
-@pytest.mark.usefixtures("get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated")
-class Test_post_request_with_valid_list_and_campaign_that_are_not_associated():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_valid_list_and_campaign_that_are_not_associated')
-    def test_check_status_code_post_request_with_valid_list_and_campaign_that_are_not_associated(self, get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated):
-        print("request_result_status_code : ", get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code)
-        assert "404" in str(
-            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code), "Answer status not 404 ; actual status code : " + str(
-            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_valid_list_and_campaign_that_are_not_associated')
-    def test_check_answer_text_post_request_with_valid_list_and_campaign_that_are_not_associated(self, get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated):
-        print("request_result_text : ", get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text)
-        status = 'campaign is not found'
-        assert status in str(
-            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text)
-
-
-@pytest.mark.usefixtures("get_completed_records_post_request_with_an_invalid_list_and_valid_campaign")
-class Test_post_request_with_an_invalid_list_and_valid_campaign():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_an_invalid_list_and_valid_campaign')
-    def test_check_status_code_post_request_with_an_invalid_list_and_valid_campaign(self, get_completed_records_post_request_with_an_invalid_list_and_valid_campaign):
-        print("request_result_status_code : ", get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code)
-        assert "404" in str(
-            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code), "Answer status not 404 ; actual status code : " + str(
-            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_an_invalid_list_and_valid_campaign')
-    def test_check_answer_text_post_request_with_an_invalid_list_and_valid_campaign(self, get_completed_records_post_request_with_an_invalid_list_and_valid_campaign):
-        print("request_result_text : ", get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
-        status = 'calling list not found'
-        assert status in str(
-            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
-
 
 @pytest.mark.usefixtures("get_completed_records_post_request_with_a_non_existent_query_parameter")
 class Test_post_request_with_a_non_existent_query_parameter():
@@ -201,28 +188,6 @@ class Test_post_request_with_a_wrong_fromtime_format():
             get_completed_records_post_request_with_a_wrong_fromtime_format.text)
 
 
-@pytest.mark.usefixtures("get_completed_records_post_request_with_maxsize_set_to_1000")
-class Test_post_request_with_maxsize_set_to_1000():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 200")
-    @allure.step('test_check_status_code_post_request_with_maxsize_set_to_1000')
-    def test_check_status_code_post_request_with_maxsize_set_to_1000(self, get_completed_records_post_request_with_maxsize_set_to_1000):
-        print("request_result_status_code : ", get_completed_records_post_request_with_maxsize_set_to_1000.status_code)
-        assert "200" in str(
-            get_completed_records_post_request_with_maxsize_set_to_1000.status_code), "Answer status not 200 ; actual status code : " + str(
-            get_completed_records_post_request_with_maxsize_set_to_1000.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 200")
-    @allure.step('test_check_answer_text_post_request_with_maxsize_set_to_1000')
-    def test_check_answer_text_post_request_with_maxsize_set_to_1000(self, get_completed_records_post_request_with_maxsize_set_to_1000):
-        print("request_result_text : ", get_completed_records_post_request_with_maxsize_set_to_1000.text)
-        status = 'something'
-        assert status in str(
-            get_completed_records_post_request_with_maxsize_set_to_1000.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_maxsize_set_to_1000.text)
-
-
 @pytest.mark.usefixtures("get_completed_records_post_request_maxSize_set_to_greater_than_1000")
 class Test_post_request_maxSize_set_to_greater_than_1000():
     @allure.epic("test_get_completed_records")
@@ -243,74 +208,6 @@ class Test_post_request_maxSize_set_to_greater_than_1000():
         assert status in str(
             get_completed_records_post_request_maxSize_set_to_greater_than_1000.text), "Answer text not " + status + " ; actual message : " + str(
             get_completed_records_post_request_maxSize_set_to_greater_than_1000.text)
-
-
-@pytest.mark.usefixtures("get_completed_records_post_request_with_do_not_authorize_session")
-class Test_post_request_with_do_not_authorize_session():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 401")
-    @allure.step('test_check_status_code_post_request_with_do_not_authorize_session')
-    def test_check_status_code_post_request_with_do_not_authorize_session(self,
-                                                                          get_completed_records_post_request_with_do_not_authorize_session):
-        print("request_result_status_code : ", get_completed_records_post_request_with_do_not_authorize_session.status_code)
-        assert "401" in str(
-            get_completed_records_post_request_with_do_not_authorize_session.status_code), "Answer status not 401 ; actual status code : " + str(
-            get_completed_records_post_request_with_do_not_authorize_session.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 401")
-    @allure.step('test_check_answer_text_post_request_with_do_not_authorize_session')
-    def test_check_answer_text_post_request_with_do_not_authorize_session(self,
-                                                                          get_completed_records_post_request_with_do_not_authorize_session):
-        print("request_result_text : ", get_completed_records_post_request_with_do_not_authorize_session.text)
-        status = "Session is not authenticated"
-        assert status in str(
-            get_completed_records_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_do_not_authorize_session.text)
-
-
-@pytest.mark.usefixtures("get_completed_records_post_request_with_invalid_url")
-class Test_post_request_with_invalid_url():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_invalid_url')
-    def test_check_status_code_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
-        print("request_result_status_code : ", get_completed_records_post_request_with_invalid_url.status_code)
-        assert "404" in str(
-            get_completed_records_post_request_with_invalid_url.status_code), "Answer status not 404 ; actual status code : " + str(
-            get_completed_records_post_request_with_invalid_url.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_invalid_url')
-    def test_check_answer_text_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
-        print("request_result_text : ", get_completed_records_post_request_with_invalid_url.text)
-        status = "HTTP 404 Not Found"
-        assert status in str(
-            get_completed_records_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_invalid_url.text)
-
-
-#@pytest.mark.usefixtures("get_completed_records_post_request_to_the_non_existent_list")
-#class Test_post_request_to_the_non_existent_list():
-#    @allure.epic("test_get_completed_records")
-#    @allure.feature("answer code 404")
-#    @allure.step('test_check_status_code_post_request_to_the_non_existent_list')
-#    def test_check_status_code_post_request_to_the_non_existent_list(self, get_completed_records_post_request_to_the_non_existent_list):
-#        print("request_result_status_code : ", get_completed_records_post_request_to_the_non_existent_list.status_code)
-#        assert "404" in str(
-#            get_completed_records_post_request_to_the_non_existent_list.status_code), "Answer status not 404 ; actual status code : " + str(
-#            get_completed_records_post_request_to_the_non_existent_list.status_code)
-#
-#    @allure.epic("test_get_completed_records")
-#    @allure.feature("answer code 404")
-#    @allure.step('test_check_answer_text_post_request_to_the_non_existent_list')
-#    def test_check_answer_text_post_request_to_the_non_existent_list(self, get_completed_records_post_request_to_the_non_existent_list):
-#        print("request_result_text : ", get_completed_records_post_request_to_the_non_existent_list.text)
-#        status = "calling list not found"
-#        assert status in str(
-#            get_completed_records_post_request_to_the_non_existent_list.text), "Answer text not " + status + " ; actual message : " + str(
-#            get_completed_records_post_request_to_the_non_existent_list.text)
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/22720")
@@ -359,6 +256,173 @@ class Test_post_request_with_invalid_maxsize_value_maxsize_alphabetical():
             get_completed_records_post_request_with_invalid_maxsize_value_maxsize_alphabetical.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24691")
+@pytest.mark.usefixtures("get_completed_records_post_request_with_incorrect_body_format_typization")
+class Test_post_request_with_incorrect_body_format_typization():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 400")
+    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization')
+    def test_check_status_code_post_request_with_incorrect_body_format_typization(self,
+                                                                                  get_completed_records_post_request_with_incorrect_body_format_typization):
+        print("request_result_status_code : ", get_completed_records_post_request_with_incorrect_body_format_typization.status_code)
+        assert "400" in str(
+            get_completed_records_post_request_with_incorrect_body_format_typization.status_code), "Answer status not 400 ; actual status code : " + str(
+            get_completed_records_post_request_with_incorrect_body_format_typization.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 400")
+    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization')
+    def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
+                                                                                  get_completed_records_post_request_with_incorrect_body_format_typization):
+        print("request_result_text : ", get_completed_records_post_request_with_incorrect_body_format_typization.text)
+        status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
+        assert status in str(
+            get_completed_records_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_incorrect_body_format_typization.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 404 =========================================================
+#=======================================================================================================================
+
+@pytest.mark.usefixtures("get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated")
+class Test_post_request_with_valid_list_and_campaign_that_are_not_associated():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_valid_list_and_campaign_that_are_not_associated')
+    def test_check_status_code_post_request_with_valid_list_and_campaign_that_are_not_associated(self, get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated):
+        print("request_result_status_code : ", get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code)
+        assert "404" in str(
+            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code), "Answer status not 404 ; actual status code : " + str(
+            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_valid_list_and_campaign_that_are_not_associated')
+    def test_check_answer_text_post_request_with_valid_list_and_campaign_that_are_not_associated(self, get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated):
+        print("request_result_text : ", get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text)
+        status = 'campaign is not found'
+        assert status in str(
+            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_valid_list_and_campaign_that_are_not_associated.text)
+
+
+@pytest.mark.usefixtures("get_completed_records_post_request_with_an_invalid_list_and_valid_campaign")
+class Test_post_request_with_an_invalid_list_and_valid_campaign():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_an_invalid_list_and_valid_campaign')
+    def test_check_status_code_post_request_with_an_invalid_list_and_valid_campaign(self, get_completed_records_post_request_with_an_invalid_list_and_valid_campaign):
+        print("request_result_status_code : ", get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code)
+        assert "404" in str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code), "Answer status not 404 ; actual status code : " + str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_an_invalid_list_and_valid_campaign')
+    def test_check_answer_text_post_request_with_an_invalid_list_and_valid_campaign(self, get_completed_records_post_request_with_an_invalid_list_and_valid_campaign):
+        print("request_result_text : ", get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
+        status = 'calling list not found'
+        assert status in str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
+
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 401 =========================================================
+#=======================================================================================================================
+
+@pytest.mark.usefixtures("get_completed_records_post_request_with_do_not_authorize_session")
+class Test_post_request_with_do_not_authorize_session():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 401")
+    @allure.step('test_check_status_code_post_request_with_do_not_authorize_session')
+    def test_check_status_code_post_request_with_do_not_authorize_session(self,
+                                                                          get_completed_records_post_request_with_do_not_authorize_session):
+        print("request_result_status_code : ", get_completed_records_post_request_with_do_not_authorize_session.status_code)
+        assert "401" in str(
+            get_completed_records_post_request_with_do_not_authorize_session.status_code), "Answer status not 401 ; actual status code : " + str(
+            get_completed_records_post_request_with_do_not_authorize_session.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 401")
+    @allure.step('test_check_answer_text_post_request_with_do_not_authorize_session')
+    def test_check_answer_text_post_request_with_do_not_authorize_session(self,
+                                                                          get_completed_records_post_request_with_do_not_authorize_session):
+        print("request_result_text : ", get_completed_records_post_request_with_do_not_authorize_session.text)
+        status = "Session is not authenticated"
+        assert status in str(
+            get_completed_records_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_do_not_authorize_session.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 404 =========================================================
+#=======================================================================================================================
+
+@pytest.mark.usefixtures("get_completed_records_post_request_with_invalid_url")
+class Test_post_request_with_invalid_url():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_invalid_url')
+    def test_check_status_code_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
+        print("request_result_status_code : ", get_completed_records_post_request_with_invalid_url.status_code)
+        assert "404" in str(
+            get_completed_records_post_request_with_invalid_url.status_code), "Answer status not 404 ; actual status code : " + str(
+            get_completed_records_post_request_with_invalid_url.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_invalid_url')
+    def test_check_answer_text_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
+        print("request_result_text : ", get_completed_records_post_request_with_invalid_url.text)
+        status = "HTTP 404 Not Found"
+        assert status in str(
+            get_completed_records_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_invalid_url.text)
+
+
+#@pytest.mark.usefixtures("get_completed_records_post_request_to_the_non_existent_list")
+#class Test_post_request_to_the_non_existent_list():
+#    @allure.epic("test_get_completed_records")
+#    @allure.feature("answer code 404")
+#    @allure.step('test_check_status_code_post_request_to_the_non_existent_list')
+#    def test_check_status_code_post_request_to_the_non_existent_list(self, get_completed_records_post_request_to_the_non_existent_list):
+#        print("request_result_status_code : ", get_completed_records_post_request_to_the_non_existent_list.status_code)
+#        assert "404" in str(
+#            get_completed_records_post_request_to_the_non_existent_list.status_code), "Answer status not 404 ; actual status code : " + str(
+#            get_completed_records_post_request_to_the_non_existent_list.status_code)
+#
+#    @allure.epic("test_get_completed_records")
+#    @allure.feature("answer code 404")
+#    @allure.step('test_check_answer_text_post_request_to_the_non_existent_list')
+#    def test_check_answer_text_post_request_to_the_non_existent_list(self, get_completed_records_post_request_to_the_non_existent_list):
+#        print("request_result_text : ", get_completed_records_post_request_to_the_non_existent_list.text)
+#        status = "calling list not found"
+#        assert status in str(
+#            get_completed_records_post_request_to_the_non_existent_list.text), "Answer text not " + status + " ; actual message : " + str(
+#            get_completed_records_post_request_to_the_non_existent_list.text)
+
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 403 =========================================================
+#=======================================================================================================================
+
 @pytest.mark.usefixtures("get_completed_records_post_request_with_authorize_session_for_user_without_permission")
 class Test_post_request_with_authorize_session_for_user_without_permission():
     @allure.epic("test_get_completed_records")
@@ -382,6 +446,13 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
             get_completed_records_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
             get_completed_records_post_request_with_authorize_session_for_user_without_permission.text)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 405 =========================================================
+#=======================================================================================================================
 
 @pytest.mark.usefixtures("get_completed_records_get_request_with_correct_body")
 class Test_get_request_with_correct_body():
@@ -451,27 +522,6 @@ class Test_delete_request_with_correct_body():
             get_completed_records_delete_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
             get_completed_records_delete_request_with_correct_body.text)
 
-
-@allure.issue("https://trac.brightpattern.com/ticket/24691")
-@pytest.mark.usefixtures("get_completed_records_post_request_with_incorrect_body_format_typization")
-class Test_post_request_with_incorrect_body_format_typization():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_typization')
-    def test_check_status_code_post_request_with_incorrect_body_format_typization(self,
-                                                                                  get_completed_records_post_request_with_incorrect_body_format_typization):
-        print("request_result_status_code : ", get_completed_records_post_request_with_incorrect_body_format_typization.status_code)
-        assert "400" in str(
-            get_completed_records_post_request_with_incorrect_body_format_typization.status_code), "Answer status not 400 ; actual status code : " + str(
-            get_completed_records_post_request_with_incorrect_body_format_typization.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_typization')
-    def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
-                                                                                  get_completed_records_post_request_with_incorrect_body_format_typization):
-        print("request_result_text : ", get_completed_records_post_request_with_incorrect_body_format_typization.text)
-        status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
-        assert status in str(
-            get_completed_records_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_incorrect_body_format_typization.text)
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
