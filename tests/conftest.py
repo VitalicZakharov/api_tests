@@ -3952,7 +3952,7 @@ def get_updated_records_post_request_with_maxsize_set_to_greater_than_1000(get_u
     # Request body
     body = {
         "fromTime": "2003-03-01T13:15:06.456",
-        "maxSize": "1000"
+        "maxSize": "1001"
     }
     # Convert body request to json
     request_body = json.dumps(body)
