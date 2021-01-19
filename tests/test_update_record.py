@@ -1,6 +1,10 @@
 import pytest
 import allure
 
+#=======================================================================================================================
+#==================================================== Code 200 =========================================================
+#=======================================================================================================================
+
 # @allure.issue("https://trac.brightpattern.com/ticket/24242")
 @pytest.mark.usefixtures("update_record_post_request_with_existent_record_key")
 class Test_post_request_with_existent_record_key():
@@ -21,76 +25,6 @@ class Test_post_request_with_existent_record_key():
         assert len(str(
             update_record_post_request_with_existent_record_key.text)) == 0, "Answer text not empty ; actual message : " + str(
             update_record_post_request_with_existent_record_key.text)
-
-
-@pytest.mark.usefixtures("update_record_post_request_with_a_non_existent_record_key")
-class Test_post_request_with_a_non_existent_record_key():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_a_non_existent_record_key')
-    def test_check_status_code_post_request_with_a_non_existent_record_key(self, update_record_post_request_with_a_non_existent_record_key):
-        print("request_result_status_code : ", update_record_post_request_with_a_non_existent_record_key.status_code)
-        assert "404" in str(
-            update_record_post_request_with_a_non_existent_record_key.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_a_non_existent_record_key.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_a_non_existent_record_key')
-    def test_check_answer_text_post_request_with_a_non_existent_record_key(self, update_record_post_request_with_a_non_existent_record_key):
-        print("request_result_text : ", update_record_post_request_with_a_non_existent_record_key.text)
-        status = "record is not found"
-        assert status in str(
-            update_record_post_request_with_a_non_existent_record_key.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_a_non_existent_record_key.text)
-
-
-@allure.issue("https://trac.brightpattern.com/ticket/22527")
-@pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_integer_value")
-class Test_post_request_with_an_incorrect_integer_value():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_an_incorrect_integer_value')
-    def test_check_status_code_post_request_with_an_incorrect_integer_value(self, update_record_post_request_with_an_incorrect_integer_value):
-        print("request_result_status_code : ", update_record_post_request_with_an_incorrect_integer_value.status_code)
-        assert "400" in str(
-            update_record_post_request_with_an_incorrect_integer_value.status_code), "Answer status not 400 ; actual status code : " + str(
-            update_record_post_request_with_an_incorrect_integer_value.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_an_incorrect_integer_value')
-    def test_check_answer_text_post_request_with_an_incorrect_integer_value(self, update_record_post_request_with_an_incorrect_integer_value):
-        print("request_result_text : ", update_record_post_request_with_an_incorrect_integer_value.text)
-        #status = 'For input string: "abc"'
-        status = 'Some text about: For input string: "abc"'
-        assert status in str(
-            update_record_post_request_with_an_incorrect_integer_value.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_an_incorrect_integer_value.text)
-
-
-#@allure.issue("https://trac.brightpattern.com/ticket/22524")
-@allure.issue("https://trac.brightpattern.com/ticket/24641")
-@pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_date_time_value")
-class Test_post_request_with_an_incorrect_date_time_value():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_an_incorrect_date_time_value')
-    def test_check_status_code_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
-        print("request_result_status_code : ", update_record_post_request_with_an_incorrect_date_time_value.status_code)
-        assert "400" in str(
-            update_record_post_request_with_an_incorrect_date_time_value.status_code), "Answer status not 400 ; actual status code : " + str(
-            update_record_post_request_with_an_incorrect_date_time_value.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_an_incorrect_date_time_value')
-    def test_check_answer_text_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
-        print("request_result_text : ", update_record_post_request_with_an_incorrect_date_time_value.text)
-        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
-        assert status in str(
-            update_record_post_request_with_an_incorrect_date_time_value.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_an_incorrect_date_time_value.text)
 
 
 @pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_caller_id")
@@ -175,6 +109,268 @@ class Test_post_request_without_a_phone_field_required_field():
         assert len(str(
             update_record_post_request_without_a_phone_field_required_field.text)) == 0, "Answer text not empty ; actual message : " + str(
             update_record_post_request_without_a_phone_field_required_field.text)
+
+
+@pytest.mark.usefixtures("update_record_post_request_without_a_last_name_parameter")
+class Test_post_request_without_a_last_name_parameter():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 200")
+    @allure.step('test_check_status_code_post_request_without_a_last_name_parameter')
+    def test_check_status_code_post_request_without_a_last_name_parameter(self, update_record_post_request_without_a_last_name_parameter):
+        print("request_result_status_code : ", update_record_post_request_without_a_last_name_parameter.status_code)
+        assert "200" in str(
+            update_record_post_request_without_a_last_name_parameter.status_code), "Answer status not 200 ; actual status code : " + str(
+            update_record_post_request_without_a_last_name_parameter.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 200")
+    @allure.step('test_check_answer_text_post_request_without_a_last_name_parameter')
+    def test_check_answer_text_post_request_without_a_last_name_parameter(self, update_record_post_request_without_a_last_name_parameter):
+        print("request_result_text : ", update_record_post_request_without_a_last_name_parameter.text)
+        assert len(str(
+            update_record_post_request_without_a_last_name_parameter.text)) == 0, "Answer text not empty ; actual message : " + str(
+            update_record_post_request_without_a_last_name_parameter.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 404 =========================================================
+#=======================================================================================================================
+
+@pytest.mark.usefixtures("update_record_post_request_with_a_non_existent_record_key")
+class Test_post_request_with_a_non_existent_record_key():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_a_non_existent_record_key')
+    def test_check_status_code_post_request_with_a_non_existent_record_key(self, update_record_post_request_with_a_non_existent_record_key):
+        print("request_result_status_code : ", update_record_post_request_with_a_non_existent_record_key.status_code)
+        assert "404" in str(
+            update_record_post_request_with_a_non_existent_record_key.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_a_non_existent_record_key.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_a_non_existent_record_key')
+    def test_check_answer_text_post_request_with_a_non_existent_record_key(self, update_record_post_request_with_a_non_existent_record_key):
+        print("request_result_text : ", update_record_post_request_with_a_non_existent_record_key.text)
+        status = "record is not found"
+        assert status in str(
+            update_record_post_request_with_a_non_existent_record_key.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_a_non_existent_record_key.text)
+
+
+@pytest.mark.usefixtures("update_record_post_request_with_a_wrong_key_phone_parameter")
+class Test_post_request_with_a_wrong_key_phone_parameter():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_a_wrong_key_phone_parameter')
+    def test_check_status_code_post_request_with_a_wrong_key_phone_parameter(self, update_record_post_request_with_a_wrong_key_phone_parameter):
+        print("request_result_status_code : ", update_record_post_request_with_a_wrong_key_phone_parameter.status_code)
+        assert "404" in str(
+            update_record_post_request_with_a_wrong_key_phone_parameter.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_a_wrong_key_phone_parameter.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_a_wrong_key_phone_parameter')
+    def test_check_answer_text_post_request_with_a_wrong_key_phone_parameter(self, update_record_post_request_with_a_wrong_key_phone_parameter):
+        print("request_result_text : ", update_record_post_request_with_a_wrong_key_phone_parameter.text)
+        status = "record is not found"
+        assert status in str(
+            update_record_post_request_with_a_wrong_key_phone_parameter.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_a_wrong_key_phone_parameter.text)
+
+
+#@allure.issue("https://trac.brightpattern.com/ticket/")
+@pytest.mark.usefixtures("update_record_post_request_with_a_wrong_key_first_name_parameter")
+class Test_post_request_with_a_wrong_key_first_name_parameter():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_a_wrong_key_first_name_parameter')
+    def test_check_status_code_post_request_with_a_wrong_key_first_name_parameter(self, update_record_post_request_with_a_wrong_key_first_name_parameter):
+        print("request_result_status_code : ", update_record_post_request_with_a_wrong_key_first_name_parameter.status_code)
+        assert "404" in str(
+            update_record_post_request_with_a_wrong_key_first_name_parameter.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_a_wrong_key_first_name_parameter.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_a_wrong_key_first_name_parameter')
+    def test_check_answer_text_post_request_with_a_wrong_key_first_name_parameter(self, update_record_post_request_with_a_wrong_key_first_name_parameter):
+        print("request_result_text : ", update_record_post_request_with_a_wrong_key_first_name_parameter.text)
+        status = "record is not found"
+        assert status in str(
+            update_record_post_request_with_a_wrong_key_first_name_parameter.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_a_wrong_key_first_name_parameter.text)
+
+
+@allure.issue("https://trac.brightpattern.com/ticket/24599")
+@pytest.mark.usefixtures("update_record_post_request_with_incorrect_body_format_deleted_quotes")
+class Test_post_request_with_incorrect_body_format_deleted_quotes():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_deleted_quotes')
+    def test_check_status_code_post_request_with_incorrect_body_format_deleted_quotes(self,
+                                                                                      update_record_post_request_with_incorrect_body_format_deleted_quotes):
+        print("request_result_status_code : ", update_record_post_request_with_incorrect_body_format_deleted_quotes.status_code)
+        assert "404" in str(
+            update_record_post_request_with_incorrect_body_format_deleted_quotes.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_incorrect_body_format_deleted_quotes.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_deleted_quotes')
+    def test_check_answer_text_post_request_with_incorrect_body_format_deleted_quotes(self,
+                                                                                      update_record_post_request_with_incorrect_body_format_deleted_quotes):
+        print("request_result_text : ", update_record_post_request_with_incorrect_body_format_deleted_quotes.text)
+        status = "record is not found"
+        assert status in str(
+            update_record_post_request_with_incorrect_body_format_deleted_quotes.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_incorrect_body_format_deleted_quotes.text)
+
+
+@pytest.mark.usefixtures("update_record_post_request_to_the_non_existent_list")
+class Test_post_request_to_the_non_existent_list():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_to_the_non_existent_list')
+    def test_check_status_code_post_request_to_the_non_existent_list(self, update_record_post_request_to_the_non_existent_list):
+        print("request_result_status_code : ", update_record_post_request_to_the_non_existent_list.status_code)
+        assert "404" in str(
+            update_record_post_request_to_the_non_existent_list.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_to_the_non_existent_list.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_to_the_non_existent_list')
+    def test_check_answer_text_post_request_to_the_non_existent_list(self, update_record_post_request_to_the_non_existent_list):
+        print("request_result_text : ", update_record_post_request_to_the_non_existent_list.text)
+        status = "calling list not found"
+        assert status in str(
+            update_record_post_request_to_the_non_existent_list.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_to_the_non_existent_list.text)
+
+
+@pytest.mark.usefixtures("update_record_post_request_with_invalid_url")
+class Test_post_request_with_invalid_url():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_invalid_url')
+    def test_check_status_code_post_request_with_invalid_url(self, update_record_post_request_with_invalid_url):
+        print("request_result_status_code : ", update_record_post_request_with_invalid_url.status_code)
+        assert "404" in str(
+            update_record_post_request_with_invalid_url.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_invalid_url.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_invalid_url')
+    def test_check_answer_text_post_request_with_invalid_url(self, update_record_post_request_with_invalid_url):
+        print("request_result_text : ", update_record_post_request_with_invalid_url.text)
+        status = "HTTP 404 Not Found"
+        assert status in str(
+            update_record_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_invalid_url.text)
+
+@pytest.mark.usefixtures("update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus")
+class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
+    def test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(self, update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
+        print("request_result_status_code : ", update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
+        assert "404" in str(
+            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
+    def test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(self, update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
+        print("request_result_text : ", update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
+        status = "record is not found"
+        assert status in str(
+            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
+
+@allure.issue("https://trac.brightpattern.com/ticket/24601")
+@pytest.mark.usefixtures("update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus")
+class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus')
+    def test_check_status_code_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus(self, update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus):
+        print("request_result_status_code : ", update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.status_code)
+        assert "404" in str(
+            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.status_code), "Answer status not 404 ; actual status code : " + str(
+            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus')
+    def test_check_answer_text_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus(self, update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus):
+        print("request_result_text : ", update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)
+        status = "record is not found"
+        assert status in str(
+            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 400 =========================================================
+#=======================================================================================================================
+
+@allure.issue("https://trac.brightpattern.com/ticket/22527")
+@pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_integer_value")
+class Test_post_request_with_an_incorrect_integer_value():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 400")
+    @allure.step('test_check_status_code_post_request_with_an_incorrect_integer_value')
+    def test_check_status_code_post_request_with_an_incorrect_integer_value(self, update_record_post_request_with_an_incorrect_integer_value):
+        print("request_result_status_code : ", update_record_post_request_with_an_incorrect_integer_value.status_code)
+        assert "400" in str(
+            update_record_post_request_with_an_incorrect_integer_value.status_code), "Answer status not 400 ; actual status code : " + str(
+            update_record_post_request_with_an_incorrect_integer_value.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 400")
+    @allure.step('test_check_answer_text_post_request_with_an_incorrect_integer_value')
+    def test_check_answer_text_post_request_with_an_incorrect_integer_value(self, update_record_post_request_with_an_incorrect_integer_value):
+        print("request_result_text : ", update_record_post_request_with_an_incorrect_integer_value.text)
+        #status = 'For input string: "abc"'
+        status = 'Some text about: For input string: "abc"'
+        assert status in str(
+            update_record_post_request_with_an_incorrect_integer_value.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_an_incorrect_integer_value.text)
+
+
+#@allure.issue("https://trac.brightpattern.com/ticket/22524")
+@allure.issue("https://trac.brightpattern.com/ticket/24641")
+@pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_date_time_value")
+class Test_post_request_with_an_incorrect_date_time_value():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 400")
+    @allure.step('test_check_status_code_post_request_with_an_incorrect_date_time_value')
+    def test_check_status_code_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
+        print("request_result_status_code : ", update_record_post_request_with_an_incorrect_date_time_value.status_code)
+        assert "400" in str(
+            update_record_post_request_with_an_incorrect_date_time_value.status_code), "Answer status not 400 ; actual status code : " + str(
+            update_record_post_request_with_an_incorrect_date_time_value.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 400")
+    @allure.step('test_check_answer_text_post_request_with_an_incorrect_date_time_value')
+    def test_check_answer_text_post_request_with_an_incorrect_date_time_value(self, update_record_post_request_with_an_incorrect_date_time_value):
+        print("request_result_text : ", update_record_post_request_with_an_incorrect_date_time_value.text)
+        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
+        assert status in str(
+            update_record_post_request_with_an_incorrect_date_time_value.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_an_incorrect_date_time_value.text)
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/22524")
@@ -292,55 +488,6 @@ class Test_post_request_with_a_non_existent_field_name():
             update_record_post_request_with_a_non_existent_field_name.text)
 
 
-@pytest.mark.usefixtures("update_record_post_request_with_do_not_authorize_session")
-class Test_post_request_with_do_not_authorize_session():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 401")
-    @allure.step('test_check_status_code_post_request_with_do_not_authorize_session')
-    def test_check_status_code_post_request_with_do_not_authorize_session(self,
-                                                                          update_record_post_request_with_do_not_authorize_session):
-        print("request_result_status_code : ", update_record_post_request_with_do_not_authorize_session.status_code)
-        assert "401" in str(
-            update_record_post_request_with_do_not_authorize_session.status_code), "Answer status not 401 ; actual status code : " + str(
-            update_record_post_request_with_do_not_authorize_session.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 401")
-    @allure.step('test_check_answer_text_post_request_with_do_not_authorize_session')
-    def test_check_answer_text_post_request_with_do_not_authorize_session(self,
-                                                                          update_record_post_request_with_do_not_authorize_session):
-        print("request_result_text : ", update_record_post_request_with_do_not_authorize_session.text)
-        status = "Session is not authenticated"
-        assert status in str(
-            update_record_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_do_not_authorize_session.text)
-
-
-#@allure.issue("https://trac.brightpattern.com/ticket/24588")
-@pytest.mark.usefixtures("update_record_post_request_with_authorize_session_for_user_without_permission")
-class Test_post_request_with_authorize_session_for_user_without_permission():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 403")
-    @allure.step('test_check_status_code_post_request_with_authorize_session_for_user_without_permission')
-    def test_check_status_code_post_request_with_authorize_session_for_user_without_permission(self,
-                                                                                               update_record_post_request_with_authorize_session_for_user_without_permission):
-        print("request_result_status_code : ", update_record_post_request_with_authorize_session_for_user_without_permission.status_code)
-        assert "403" in str(
-            update_record_post_request_with_authorize_session_for_user_without_permission.status_code), "Answer status not 403 ; actual status code : " + str(
-            update_record_post_request_with_authorize_session_for_user_without_permission.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 403")
-    @allure.step('test_check_answer_text_post_request_with_authorize_session_for_user_without_permission')
-    def test_check_answer_text_post_request_with_authorize_session_for_user_without_permission(self,
-                                                                                               update_record_post_request_with_authorize_session_for_user_without_permission):
-        print("request_result_text : ", update_record_post_request_with_authorize_session_for_user_without_permission.text)
-        status = "User authenticated but does not have sufficient privileges"
-        assert status in str(
-            update_record_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_authorize_session_for_user_without_permission.text)
-
-
 @pytest.mark.usefixtures("update_record_post_request_without_parameters_empty_body")
 class Test_post_request_without_parameters_empty_body():
     @allure.epic("test_update_record")
@@ -386,28 +533,6 @@ class Test_post_request_without_a_key_phone_parameter_phone_field_doesnt_present
             update_record_post_request_without_a_key_phone_parameter_phone_field_doesnt_present_in_body.text)
 
 
-@pytest.mark.usefixtures("update_record_post_request_with_a_wrong_key_phone_parameter")
-class Test_post_request_with_a_wrong_key_phone_parameter():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_a_wrong_key_phone_parameter')
-    def test_check_status_code_post_request_with_a_wrong_key_phone_parameter(self, update_record_post_request_with_a_wrong_key_phone_parameter):
-        print("request_result_status_code : ", update_record_post_request_with_a_wrong_key_phone_parameter.status_code)
-        assert "404" in str(
-            update_record_post_request_with_a_wrong_key_phone_parameter.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_a_wrong_key_phone_parameter.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_a_wrong_key_phone_parameter')
-    def test_check_answer_text_post_request_with_a_wrong_key_phone_parameter(self, update_record_post_request_with_a_wrong_key_phone_parameter):
-        print("request_result_text : ", update_record_post_request_with_a_wrong_key_phone_parameter.text)
-        status = "record is not found"
-        assert status in str(
-            update_record_post_request_with_a_wrong_key_phone_parameter.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_a_wrong_key_phone_parameter.text)
-
-
 @pytest.mark.usefixtures("update_record_post_request_without_a_key_first_name_parameter")
 class Test_post_request_without_a_key_first_name_parameter():
     @allure.epic("test_update_record")
@@ -428,74 +553,6 @@ class Test_post_request_without_a_key_first_name_parameter():
         assert status in str(
             update_record_post_request_without_a_key_first_name_parameter.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_without_a_key_first_name_parameter.text)
-
-#@allure.issue("https://trac.brightpattern.com/ticket/")
-@pytest.mark.usefixtures("update_record_post_request_with_a_wrong_key_first_name_parameter")
-class Test_post_request_with_a_wrong_key_first_name_parameter():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_a_wrong_key_first_name_parameter')
-    def test_check_status_code_post_request_with_a_wrong_key_first_name_parameter(self, update_record_post_request_with_a_wrong_key_first_name_parameter):
-        print("request_result_status_code : ", update_record_post_request_with_a_wrong_key_first_name_parameter.status_code)
-        assert "404" in str(
-            update_record_post_request_with_a_wrong_key_first_name_parameter.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_a_wrong_key_first_name_parameter.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_a_wrong_key_first_name_parameter')
-    def test_check_answer_text_post_request_with_a_wrong_key_first_name_parameter(self, update_record_post_request_with_a_wrong_key_first_name_parameter):
-        print("request_result_text : ", update_record_post_request_with_a_wrong_key_first_name_parameter.text)
-        status = "record is not found"
-        assert status in str(
-            update_record_post_request_with_a_wrong_key_first_name_parameter.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_a_wrong_key_first_name_parameter.text)
-
-
-@pytest.mark.usefixtures("update_record_post_request_without_a_last_name_parameter")
-class Test_post_request_without_a_last_name_parameter():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 200")
-    @allure.step('test_check_status_code_post_request_without_a_last_name_parameter')
-    def test_check_status_code_post_request_without_a_last_name_parameter(self, update_record_post_request_without_a_last_name_parameter):
-        print("request_result_status_code : ", update_record_post_request_without_a_last_name_parameter.status_code)
-        assert "200" in str(
-            update_record_post_request_without_a_last_name_parameter.status_code), "Answer status not 200 ; actual status code : " + str(
-            update_record_post_request_without_a_last_name_parameter.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 200")
-    @allure.step('test_check_answer_text_post_request_without_a_last_name_parameter')
-    def test_check_answer_text_post_request_without_a_last_name_parameter(self, update_record_post_request_without_a_last_name_parameter):
-        print("request_result_text : ", update_record_post_request_without_a_last_name_parameter.text)
-        assert len(str(
-            update_record_post_request_without_a_last_name_parameter.text)) == 0, "Answer text not empty ; actual message : " + str(
-            update_record_post_request_without_a_last_name_parameter.text)
-
-
-@allure.issue("https://trac.brightpattern.com/ticket/24599")
-@pytest.mark.usefixtures("update_record_post_request_with_incorrect_body_format_deleted_quotes")
-class Test_post_request_with_incorrect_body_format_deleted_quotes():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_incorrect_body_format_deleted_quotes')
-    def test_check_status_code_post_request_with_incorrect_body_format_deleted_quotes(self,
-                                                                                      update_record_post_request_with_incorrect_body_format_deleted_quotes):
-        print("request_result_status_code : ", update_record_post_request_with_incorrect_body_format_deleted_quotes.status_code)
-        assert "404" in str(
-            update_record_post_request_with_incorrect_body_format_deleted_quotes.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_incorrect_body_format_deleted_quotes.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_deleted_quotes')
-    def test_check_answer_text_post_request_with_incorrect_body_format_deleted_quotes(self,
-                                                                                      update_record_post_request_with_incorrect_body_format_deleted_quotes):
-        print("request_result_text : ", update_record_post_request_with_incorrect_body_format_deleted_quotes.text)
-        status = "record is not found"
-        assert status in str(
-            update_record_post_request_with_incorrect_body_format_deleted_quotes.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_incorrect_body_format_deleted_quotes.text)
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/22826")
@@ -523,93 +580,6 @@ class Test_post_request_with_incorrect_body_format_a_redundant_comma_in_the_end(
             update_record_post_request_with_incorrect_body_format_a_redundant_comma_in_the_end.text)
 
 
-@pytest.mark.usefixtures("update_record_post_request_to_the_non_existent_list")
-class Test_post_request_to_the_non_existent_list():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_to_the_non_existent_list')
-    def test_check_status_code_post_request_to_the_non_existent_list(self, update_record_post_request_to_the_non_existent_list):
-        print("request_result_status_code : ", update_record_post_request_to_the_non_existent_list.status_code)
-        assert "404" in str(
-            update_record_post_request_to_the_non_existent_list.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_to_the_non_existent_list.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_to_the_non_existent_list')
-    def test_check_answer_text_post_request_to_the_non_existent_list(self, update_record_post_request_to_the_non_existent_list):
-        print("request_result_text : ", update_record_post_request_to_the_non_existent_list.text)
-        status = "calling list not found"
-        assert status in str(
-            update_record_post_request_to_the_non_existent_list.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_to_the_non_existent_list.text)
-
-
-@pytest.mark.usefixtures("update_record_post_request_with_invalid_url")
-class Test_post_request_with_invalid_url():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_invalid_url')
-    def test_check_status_code_post_request_with_invalid_url(self, update_record_post_request_with_invalid_url):
-        print("request_result_status_code : ", update_record_post_request_with_invalid_url.status_code)
-        assert "404" in str(
-            update_record_post_request_with_invalid_url.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_invalid_url.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_invalid_url')
-    def test_check_answer_text_post_request_with_invalid_url(self, update_record_post_request_with_invalid_url):
-        print("request_result_text : ", update_record_post_request_with_invalid_url.text)
-        status = "HTTP 404 Not Found"
-        assert status in str(
-            update_record_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_invalid_url.text)
-
-@pytest.mark.usefixtures("update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus")
-class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
-    def test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(self, update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
-        print("request_result_status_code : ", update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
-        assert "404" in str(
-            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
-    def test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(self, update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
-        print("request_result_text : ", update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
-        status = "record is not found"
-        assert status in str(
-            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
-
-@allure.issue("https://trac.brightpattern.com/ticket/24601")
-@pytest.mark.usefixtures("update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus")
-class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus():
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus')
-    def test_check_status_code_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus(self, update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus):
-        print("request_result_status_code : ", update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.status_code)
-        assert "404" in str(
-            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.status_code), "Answer status not 404 ; actual status code : " + str(
-            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.status_code)
-
-    @allure.epic("test_update_record")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus')
-    def test_check_answer_text_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus(self, update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus):
-        print("request_result_text : ", update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)
-        status = "record is not found"
-        assert status in str(
-            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text), "Answer text not " + status + " ; actual message : " + str(
-            update_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)
-
-
 @pytest.mark.usefixtures("update_record_post_request_with_body_from_other_list")
 class Test_post_request_with_body_from_other_list():
     @allure.epic("test_update_record")
@@ -631,6 +601,76 @@ class Test_post_request_with_body_from_other_list():
             update_record_post_request_with_body_from_other_list.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_body_from_other_list.text)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 401 =========================================================
+#=======================================================================================================================
+
+@pytest.mark.usefixtures("update_record_post_request_with_do_not_authorize_session")
+class Test_post_request_with_do_not_authorize_session():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 401")
+    @allure.step('test_check_status_code_post_request_with_do_not_authorize_session')
+    def test_check_status_code_post_request_with_do_not_authorize_session(self,
+                                                                          update_record_post_request_with_do_not_authorize_session):
+        print("request_result_status_code : ", update_record_post_request_with_do_not_authorize_session.status_code)
+        assert "401" in str(
+            update_record_post_request_with_do_not_authorize_session.status_code), "Answer status not 401 ; actual status code : " + str(
+            update_record_post_request_with_do_not_authorize_session.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 401")
+    @allure.step('test_check_answer_text_post_request_with_do_not_authorize_session')
+    def test_check_answer_text_post_request_with_do_not_authorize_session(self,
+                                                                          update_record_post_request_with_do_not_authorize_session):
+        print("request_result_text : ", update_record_post_request_with_do_not_authorize_session.text)
+        status = "Session is not authenticated"
+        assert status in str(
+            update_record_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_do_not_authorize_session.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 403 =========================================================
+#=======================================================================================================================
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24588")
+@pytest.mark.usefixtures("update_record_post_request_with_authorize_session_for_user_without_permission")
+class Test_post_request_with_authorize_session_for_user_without_permission():
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 403")
+    @allure.step('test_check_status_code_post_request_with_authorize_session_for_user_without_permission')
+    def test_check_status_code_post_request_with_authorize_session_for_user_without_permission(self,
+                                                                                               update_record_post_request_with_authorize_session_for_user_without_permission):
+        print("request_result_status_code : ", update_record_post_request_with_authorize_session_for_user_without_permission.status_code)
+        assert "403" in str(
+            update_record_post_request_with_authorize_session_for_user_without_permission.status_code), "Answer status not 403 ; actual status code : " + str(
+            update_record_post_request_with_authorize_session_for_user_without_permission.status_code)
+
+    @allure.epic("test_update_record")
+    @allure.feature("answer code 403")
+    @allure.step('test_check_answer_text_post_request_with_authorize_session_for_user_without_permission')
+    def test_check_answer_text_post_request_with_authorize_session_for_user_without_permission(self,
+                                                                                               update_record_post_request_with_authorize_session_for_user_without_permission):
+        print("request_result_text : ", update_record_post_request_with_authorize_session_for_user_without_permission.text)
+        status = "User authenticated but does not have sufficient privileges"
+        assert status in str(
+            update_record_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
+            update_record_post_request_with_authorize_session_for_user_without_permission.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 405 =========================================================
+#=======================================================================================================================
 
 #@allure.issue("https://trac.brightpattern.com/ticket/24582")
 @pytest.mark.usefixtures("update_record_get_request_with_correct_body")
@@ -699,3 +739,7 @@ class Test_delete_request_with_correct_body():
         assert status in str(
             update_record_delete_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_delete_request_with_correct_body.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
