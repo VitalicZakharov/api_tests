@@ -88,12 +88,9 @@ class Test_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_da
     @allure.step('test_check_answer_text_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date')
     def test_check_answer_text_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date(self, get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date):
         print("request_result_text : ", get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date.text)
-#        status = 'some answer'
-#        assert status in str(
-#            get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date.text), "Answer text not " + status + " ; actual message : " + str(
-#            get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date.text)
-        assert len(str(
-            get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date.text)) == 0, "Answer text not empty ; actual message : " + str(
+        status = '[]'
+        assert status in str(
+            get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date.text), "Answer text not " + status + " ; actual message : " + str(
             get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date.text)
 
 
