@@ -1,27 +1,9 @@
 import pytest
 import allure
 
-#@allure.issue("https://trac.brightpattern.com/ticket/24636")
-@pytest.mark.usefixtures("add_records_to_dnc_post_request_to_any_non_existent_dnc_list")
-class Test_post_request_to_any_non_existent_dnc_list():
-    @allure.epic("test_add_records_to_dnc")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_to_any_non_existent_dnc_list')
-    def test_check_status_code_post_request_to_any_non_existent_dnc_list(self, add_records_to_dnc_post_request_to_any_non_existent_dnc_list):
-        print("request_result_status_code : ", add_records_to_dnc_post_request_to_any_non_existent_dnc_list.status_code)
-        assert "404" in str(
-            add_records_to_dnc_post_request_to_any_non_existent_dnc_list.status_code), "Answer status not 404 ; actual status code : " + str(
-            add_records_to_dnc_post_request_to_any_non_existent_dnc_list.status_code)
-
-    @allure.epic("test_add_records_to_dnc")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_to_any_non_existent_dnc_list')
-    def test_check_answer_text_post_request_to_any_non_existent_dnc_list(self, add_records_to_dnc_post_request_to_any_non_existent_dnc_list):
-        print("request_result_text : ", add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text)
-        status = "Object does not exist"
-        assert status in add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text, "Answer text not " + status + " ; actual message : " + str(
-            add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text)
-
+#=======================================================================================================================
+#==================================================== Code 200 =========================================================
+#=======================================================================================================================
 
 #@allure.issue("https://trac.brightpattern.com/ticket/24636")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not")
@@ -90,29 +72,6 @@ class Test_post_request_containing_a_correctly_formatted_number_and_a_comment_to
             add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/22851")
-#@allure.issue("https://trac.brightpattern.com/ticket/24443")
-@pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic")
-class Test_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic():
-    @allure.epic("test_add_records_to_dnc")
-    @allure.feature("answer code 403")
-    @allure.step('test_check_status_code_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic')
-    def test_check_status_code_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(self, add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic):
-        print("request_result_status_code : ", add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.status_code)
-        assert "403" in str(
-            add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.status_code), "Answer status not 403 ; actual status code : " + str(
-            add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.status_code)
-
-    @allure.epic("test_add_records_to_dnc")
-    @allure.feature("answer code 403")
-    @allure.step('test_check_answer_text_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic')
-    def test_check_answer_text_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(self, add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic):
-        print("request_result_text : ", add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.text)
-        status = "this type of list is not supported by the API"
-        assert status in add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.text, "Answer text not " + status + " ; actual message : " + str(
-            add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.text)
-
-
 @allure.issue("https://trac.brightpattern.com/ticket/22859")
 #@allure.issue("https://trac.brightpattern.com/ticket/24636")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion")
@@ -134,7 +93,6 @@ class Test_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion
         status = "{\"added\":1}"
         assert status in add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion.text)
-
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/24638")
@@ -292,30 +250,64 @@ class Test_post_request_add_a_record_containing_an_incorrectly_formatted_us_area
         assert status in add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes.text)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
 
+#=======================================================================================================================
+#==================================================== Code 404 =========================================================
+#=======================================================================================================================
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24636")
+@pytest.mark.usefixtures("add_records_to_dnc_post_request_to_any_non_existent_dnc_list")
+class Test_post_request_to_any_non_existent_dnc_list():
+    @allure.epic("test_add_records_to_dnc")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_to_any_non_existent_dnc_list')
+    def test_check_status_code_post_request_to_any_non_existent_dnc_list(self, add_records_to_dnc_post_request_to_any_non_existent_dnc_list):
+        print("request_result_status_code : ", add_records_to_dnc_post_request_to_any_non_existent_dnc_list.status_code)
+        assert "404" in str(
+            add_records_to_dnc_post_request_to_any_non_existent_dnc_list.status_code), "Answer status not 404 ; actual status code : " + str(
+            add_records_to_dnc_post_request_to_any_non_existent_dnc_list.status_code)
+
+    @allure.epic("test_add_records_to_dnc")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_to_any_non_existent_dnc_list')
+    def test_check_answer_text_post_request_to_any_non_existent_dnc_list(self, add_records_to_dnc_post_request_to_any_non_existent_dnc_list):
+        print("request_result_text : ", add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text)
+        status = "Object does not exist"
+        assert status in add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text, "Answer text not " + status + " ; actual message : " + str(
+            add_records_to_dnc_post_request_to_any_non_existent_dnc_list.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 403 =========================================================
+#=======================================================================================================================
+
+@allure.issue("https://trac.brightpattern.com/ticket/22851")
 #@allure.issue("https://trac.brightpattern.com/ticket/24443")
-@pytest.mark.usefixtures("add_records_to_dnc_post_request_with_do_not_authorize_session")
-class Test_post_request_with_do_not_authorize_session():
+@pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic")
+class Test_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic():
     @allure.epic("test_add_records_to_dnc")
-    @allure.feature("answer code 401")
-    @allure.step('test_check_status_code_post_request_with_do_not_authorize_session')
-    def test_check_status_code_post_request_with_do_not_authorize_session(self,
-                                                                          add_records_to_dnc_post_request_with_do_not_authorize_session):
-        print("request_result_status_code : ", add_records_to_dnc_post_request_with_do_not_authorize_session.status_code)
-        assert "401" in str(
-            add_records_to_dnc_post_request_with_do_not_authorize_session.status_code), "Answer status not 401 ; actual status code : " + str(
-            add_records_to_dnc_post_request_with_do_not_authorize_session.status_code)
+    @allure.feature("answer code 403")
+    @allure.step('test_check_status_code_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic')
+    def test_check_status_code_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(self, add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic):
+        print("request_result_status_code : ", add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.status_code)
+        assert "403" in str(
+            add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.status_code), "Answer status not 403 ; actual status code : " + str(
+            add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.status_code)
 
     @allure.epic("test_add_records_to_dnc")
-    @allure.feature("answer code 401")
-    @allure.step('test_check_answer_text_post_request_with_do_not_authorize_session')
-    def test_check_answer_text_post_request_with_do_not_authorize_session(self,
-                                                                          add_records_to_dnc_post_request_with_do_not_authorize_session):
-        print("request_result_text : ", add_records_to_dnc_post_request_with_do_not_authorize_session.text)
-        status = "Session is not authenticated"
-        assert status in str(
-            add_records_to_dnc_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
-            add_records_to_dnc_post_request_with_do_not_authorize_session.text)
+    @allure.feature("answer code 403")
+    @allure.step('test_check_answer_text_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic')
+    def test_check_answer_text_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(self, add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic):
+        print("request_result_text : ", add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.text)
+        status = "this type of list is not supported by the API"
+        assert status in add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.text, "Answer text not " + status + " ; actual message : " + str(
+            add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic.text)
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/24443")
@@ -343,6 +335,45 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
             add_records_to_dnc_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_with_authorize_session_for_user_without_permission.text)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 401 =========================================================
+#=======================================================================================================================
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
+@pytest.mark.usefixtures("add_records_to_dnc_post_request_with_do_not_authorize_session")
+class Test_post_request_with_do_not_authorize_session():
+    @allure.epic("test_add_records_to_dnc")
+    @allure.feature("answer code 401")
+    @allure.step('test_check_status_code_post_request_with_do_not_authorize_session')
+    def test_check_status_code_post_request_with_do_not_authorize_session(self,
+                                                                          add_records_to_dnc_post_request_with_do_not_authorize_session):
+        print("request_result_status_code : ", add_records_to_dnc_post_request_with_do_not_authorize_session.status_code)
+        assert "401" in str(
+            add_records_to_dnc_post_request_with_do_not_authorize_session.status_code), "Answer status not 401 ; actual status code : " + str(
+            add_records_to_dnc_post_request_with_do_not_authorize_session.status_code)
+
+    @allure.epic("test_add_records_to_dnc")
+    @allure.feature("answer code 401")
+    @allure.step('test_check_answer_text_post_request_with_do_not_authorize_session')
+    def test_check_answer_text_post_request_with_do_not_authorize_session(self,
+                                                                          add_records_to_dnc_post_request_with_do_not_authorize_session):
+        print("request_result_text : ", add_records_to_dnc_post_request_with_do_not_authorize_session.text)
+        status = "Session is not authenticated"
+        assert status in str(
+            add_records_to_dnc_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
+            add_records_to_dnc_post_request_with_do_not_authorize_session.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 400 =========================================================
+#=======================================================================================================================
 
 @allure.issue("https://trac.brightpattern.com/ticket/24445")
 #@allure.issue("https://trac.brightpattern.com/ticket/24443")
@@ -369,6 +400,36 @@ class Test_post_request_with_incorrect_body_format_typization():
             add_records_to_dnc_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)
 
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24443")
+#@pytest.mark.usefixtures("add_records_to_dnc_post_request_with_body_from_other_list")
+#class Test_post_request_with_body_from_other_list():
+#    @allure.epic("test_add_records_to_dnc")
+#    @allure.feature("answer code 400")
+#    @allure.step('test_check_status_code_post_request_with_body_from_other_list')
+#    def test_check_status_code_post_request_with_body_from_other_list(self, add_records_to_dnc_post_request_with_body_from_other_list):
+#        print("request_result_status_code : ", add_records_to_dnc_post_request_with_body_from_other_list.status_code)
+#        assert "400" in str(
+#            add_records_to_dnc_post_request_with_body_from_other_list.status_code), "Answer status not 400 ; actual status code : " + str(
+#            add_records_to_dnc_post_request_with_body_from_other_list.status_code)
+
+#    @allure.epic("test_add_records_to_dnc")
+#    @allure.feature("answer code 400")
+#    @allure.step('test_check_answer_text_post_request_with_body_from_other_list')
+#    def test_check_answer_text_post_request_with_body_from_other_list(self, add_records_to_dnc_post_request_with_body_from_other_list):
+#        print("request_result_text : ", add_records_to_dnc_post_request_with_body_from_other_list.text)
+#        status = "Some valid message"
+#        assert status in str(
+#            add_records_to_dnc_post_request_with_body_from_other_list.text), "Answer text not " + status + " ; actual message : " + str(
+#            add_records_to_dnc_post_request_with_body_from_other_list.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 405 =========================================================
+#=======================================================================================================================
 
 #@allure.issue("https://trac.brightpattern.com/ticket/24443")
 #@allure.issue("https://trac.brightpattern.com/ticket/24437")
@@ -441,25 +502,6 @@ class Test_delete_request_with_correct_body():
             add_records_to_dnc_delete_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_delete_request_with_correct_body.text)
 
-
-#@allure.issue("https://trac.brightpattern.com/ticket/24443")
-#@pytest.mark.usefixtures("add_records_to_dnc_post_request_with_body_from_other_list")
-#class Test_post_request_with_body_from_other_list():
-#    @allure.epic("test_add_records_to_dnc")
-#    @allure.feature("answer code 400")
-#    @allure.step('test_check_status_code_post_request_with_body_from_other_list')
-#    def test_check_status_code_post_request_with_body_from_other_list(self, add_records_to_dnc_post_request_with_body_from_other_list):
-#        print("request_result_status_code : ", add_records_to_dnc_post_request_with_body_from_other_list.status_code)
-#        assert "400" in str(
-#            add_records_to_dnc_post_request_with_body_from_other_list.status_code), "Answer status not 400 ; actual status code : " + str(
-#            add_records_to_dnc_post_request_with_body_from_other_list.status_code)
-
-#    @allure.epic("test_add_records_to_dnc")
-#    @allure.feature("answer code 400")
-#    @allure.step('test_check_answer_text_post_request_with_body_from_other_list')
-#    def test_check_answer_text_post_request_with_body_from_other_list(self, add_records_to_dnc_post_request_with_body_from_other_list):
-#        print("request_result_text : ", add_records_to_dnc_post_request_with_body_from_other_list.text)
-#        status = "Some valid message"
-#        assert status in str(
-#            add_records_to_dnc_post_request_with_body_from_other_list.text), "Answer text not " + status + " ; actual message : " + str(
-#            add_records_to_dnc_post_request_with_body_from_other_list.text)
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
