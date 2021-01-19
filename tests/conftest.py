@@ -3815,6 +3815,9 @@ def get_completed_records_post_request_with_incorrect_body_format_typization(get
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
 
+#=======================================================================================================================
+#==================================== GetUpdatedRecords fixtures =======================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='class')
 def get_updated_records_post_request_with_valid_list_campaign_fromtime_and_maxsize_3(get_user_token):
@@ -3846,3 +3849,271 @@ def get_updated_records_post_request_with_valid_list_campaign_fromtime_and_maxsi
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_valid_list_campaign_and_maxsize_without_fromtime(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "maxSize": "1"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_valid_list_campaign_and_fromtime_without_maxsize(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-01T13:15:06.456"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_valid_list_and_campaign_that_are_not_associated(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//campaign_that_are_not_associated"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-01T13:15:06.456",
+        "maxSize": "1"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_wrong_fromtime_format(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-0:15:06.456",
+        "maxSize": "1"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_to_the_non_existent_list(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_not_exists.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-01T13:15:06.456",
+        "maxSize": "3"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_maxsize_set_to_1000(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-01T13:15:06.456",
+        "maxSize": "1000"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_maxsize_set_to_greater_than_1000(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2003-03-01T13:15:06.456",
+        "maxSize": "1000"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_do_not_authorize_session():
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_invalid_url(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//invalid_getChanged//List_1000.csv//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_invalid_fromtime_value_fromtime_alphabetical(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "abc",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_invalid_maxsize_value_maxsize_alphabetical(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2013-03-01T13:15:06.456",
+        "maxSize": "abc"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2022-08-04T14:04:14.000",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_get_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2022-08-04T14:04:14.000",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.get(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_put_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2022-08-04T14:04:14.000",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.put(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_delete_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "fromTime": "2022-08-04T14:04:14.000",
+        "maxSize": "2"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.delete(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_updated_records_post_request_with_incorrect_body_format_typization(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getChanged//List_Completed.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    request_body = bytes('{"fromTime": "2013-03-01T13:15:06.456","maxSize: 2"}', 'utf-8')
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
