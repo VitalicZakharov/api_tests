@@ -45,13 +45,13 @@ class Test_post_request_with_an_existent_campaign_for_completed_record():
     @allure.step('test_check_answer_text_post_request_with_an_existent_campaign_for_completed_record')
     def test_check_answer_text_post_request_with_an_existent_campaign_for_completed_record(self, query_a_record_post_request_with_an_existent_campaign_for_completed_record):
         print("request_result_text : ", query_a_record_post_request_with_an_existent_campaign_for_completed_record.text)
-        status = '[{"last name": "Name_Last_C1", "first name": "Name_First_C1", "agent id": "Test.C1", "phone2": "8005", "date/time": "07-07-2071", "caller id": "101", "integer": "1", "phone1": "7005"}]'
+        status = '{"entry":{"last name":"Name_Last_C1","first name":"Name_First_C1","agent id":"Test.C1","phone2":"8005","date/time":"07-07-2071","caller id":"101","integer":"1","phone1":"7005"},"status":{"totalAttempts":0,"completed":false}}'
         assert status in str(
             query_a_record_post_request_with_an_existent_campaign_for_completed_record.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_an_existent_campaign_for_completed_record.text)
 
 
-# @allure.issue("https://trac.brightpattern.com/ticket/24242")
+@allure.issue("https://trac.brightpattern.com/ticket/22667")
 @pytest.mark.usefixtures("query_a_record_post_request_with_a_non_existent_campaign")
 class Test_post_request_with_a_non_existent_campaign():
     @allure.epic("test_query_a_record")
@@ -90,7 +90,7 @@ class Test_post_request_without_a_last_name_parameter():
     @allure.step('test_check_answer_text_post_request_without_a_last_name_parameter')
     def test_check_answer_text_post_request_without_a_last_name_parameter(self, query_a_record_post_request_without_a_last_name_parameter):
         print("request_result_text : ", query_a_record_post_request_without_a_last_name_parameter.text)
-        status = '{"entry": {"last name": "User1","first name": "Test1","phone": "1001","date/time": "02/02/2020 12:30 PM","integer": "789"}}'
+        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
         assert status in str(
             query_a_record_post_request_without_a_last_name_parameter.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_without_a_last_name_parameter.text)
@@ -112,7 +112,7 @@ class Test_post_request_with_a_redundant_field():
     @allure.step('test_check_answer_text_post_request_with_a_redundant_field')
     def test_check_answer_text_post_request_with_a_redundant_field(self, query_a_record_post_request_with_a_redundant_field):
         print("request_result_text : ", query_a_record_post_request_with_a_redundant_field.text)
-        status = '{"entry": {"last name": "User1","first name": "Test1","phone": "1001","date/time": "02/02/2020 12:30 PM","integer": "789"}}'
+        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
         assert status in str(
             query_a_record_post_request_with_a_redundant_field.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_a_redundant_field.text)
@@ -134,10 +134,32 @@ class Test_post_request_with_with_incorrectly_formatted_value_in_an_integer_fiel
     @allure.step('test_check_answer_text_post_request_with_with_incorrectly_formatted_value_in_an_integer_field')
     def test_check_answer_text_post_request_with_with_incorrectly_formatted_value_in_an_integer_field(self, query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field):
         print("request_result_text : ", query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field.text)
-        status = '{"entry": {"last name": "User1","first name": "Test1","phone": "1001","date/time": "02/02/2020 12:30 PM","integer": "789"}}'
+        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
         assert status in str(
             query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field.text)
+
+
+@pytest.mark.usefixtures("query_a_record_post_request_with_an_empty_key_last_name")
+class Test_post_request_with_an_empty_key_last_name():
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 200")
+    @allure.step('test_check_status_code_post_request_with_an_empty_key_last_name')
+    def test_check_status_code_post_request_with_an_empty_key_last_name(self, query_a_record_post_request_with_an_empty_key_last_name):
+        print("request_result_status_code : ", query_a_record_post_request_with_an_empty_key_last_name.status_code)
+        assert "200" in str(
+            query_a_record_post_request_with_an_empty_key_last_name.status_code), "Answer status not 200 ; actual status code : " + str(
+            query_a_record_post_request_with_an_empty_key_last_name.status_code)
+
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 200")
+    @allure.step('test_check_answer_text_post_request_with_an_empty_key_last_name')
+    def test_check_answer_text_post_request_with_an_empty_key_last_name(self, query_a_record_post_request_with_an_empty_key_last_name):
+        print("request_result_text : ", query_a_record_post_request_with_an_empty_key_last_name.text)
+        status = '{"entry":{"last name":"Name_Last_C1","first name":"Name_First_C1","agent id":"Test.C1","phone2":"8005","date/time":"07-07-2071","caller id":"101","integer":"1","phone1":"7005"},"status":{"totalAttempts":0,"completed":false}}'
+        assert status in str(
+            query_a_record_post_request_with_an_empty_key_last_name.text), "Answer text not " + status + " ; actual message : " + str(
+            query_a_record_post_request_with_an_empty_key_last_name.text)
 
 #=======================================================================================================================
 #=======================================================================================================================
@@ -190,7 +212,7 @@ class Test_post_request_with_a_wrong_key_phone_parameter():
             query_a_record_post_request_with_a_wrong_key_phone_parameter.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_a_wrong_key_phone_parameter.text)
 
-
+@allure.issue("https://trac.brightpattern.com/ticket/24743")
 @pytest.mark.usefixtures("query_a_record_post_request_with_a_wrong_key_first_name_parameter")
 class Test_post_request_with_a_wrong_key_first_name_parameter():
     @allure.epic("test_query_a_record")
@@ -213,6 +235,7 @@ class Test_post_request_with_a_wrong_key_first_name_parameter():
             query_a_record_post_request_with_a_wrong_key_first_name_parameter.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24751")
 @pytest.mark.usefixtures("query_a_record_post_request_with_incorrect_body_format_delete_some_quotes")
 class Test_post_request_with_incorrect_body_format_delete_some_quotes():
     @allure.epic("test_query_a_record")
@@ -301,6 +324,7 @@ class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_p
             query_a_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24753")
 @pytest.mark.usefixtures("query_a_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus")
 class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus():
     @allure.epic("test_query_a_record")
@@ -330,6 +354,7 @@ class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbo
 #==================================================== Code 400 =========================================================
 #=======================================================================================================================
 
+@allure.issue("https://trac.brightpattern.com/ticket/24743")
 @pytest.mark.usefixtures("query_a_record_post_request_with_an_empty_key_first_name")
 class Test_post_request_with_an_empty_key_first_name():
     @allure.epic("test_query_a_record")
@@ -350,28 +375,6 @@ class Test_post_request_with_an_empty_key_first_name():
         assert status in str(
             query_a_record_post_request_with_an_empty_key_first_name.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_an_empty_key_first_name.text)
-
-
-@pytest.mark.usefixtures("query_a_record_post_request_with_an_empty_key_last_name")
-class Test_post_request_with_an_empty_key_last_name():
-    @allure.epic("test_query_a_record")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_status_code_post_request_with_an_empty_key_last_name')
-    def test_check_status_code_post_request_with_an_empty_key_last_name(self, query_a_record_post_request_with_an_empty_key_last_name):
-        print("request_result_status_code : ", query_a_record_post_request_with_an_empty_key_last_name.status_code)
-        assert "400" in str(
-            query_a_record_post_request_with_an_empty_key_last_name.status_code), "Answer status not 400 ; actual status code : " + str(
-            query_a_record_post_request_with_an_empty_key_last_name.status_code)
-
-    @allure.epic("test_query_a_record")
-    @allure.feature("answer code 400")
-    @allure.step('test_check_answer_text_post_request_with_an_empty_key_last_name')
-    def test_check_answer_text_post_request_with_an_empty_key_last_name(self, query_a_record_post_request_with_an_empty_key_last_name):
-        print("request_result_text : ", query_a_record_post_request_with_an_empty_key_last_name.text)
-        status = 'missing key: last_name'
-        assert status in str(
-            query_a_record_post_request_with_an_empty_key_last_name.text), "Answer text not " + status + " ; actual message : " + str(
-            query_a_record_post_request_with_an_empty_key_last_name.text)
 
 
 @pytest.mark.usefixtures("query_a_record_post_request_with_an_empty_key_phone")
@@ -434,7 +437,7 @@ class Test_post_request_without_parameters():
     @allure.step('test_check_answer_text_post_request_without_parameters')
     def test_check_answer_text_post_request_without_parameters(self, query_a_record_post_request_without_parameters):
         print("request_result_text : ", query_a_record_post_request_without_parameters.text)
-        status = 'missing key: first name, phone'
+        status = 'missing key: phone'
         assert status in str(
             query_a_record_post_request_without_parameters.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_without_parameters.text)
@@ -462,6 +465,7 @@ class Test_post_request_without_a_key_phone_parameter():
             query_a_record_post_request_without_a_key_phone_parameter.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24743")
 @pytest.mark.usefixtures("query_a_record_post_request_without_a_key_first_name_parameter")
 class Test_post_request_without_a_key_first_name_parameter():
     @allure.epic("test_query_a_record")
@@ -484,6 +488,7 @@ class Test_post_request_without_a_key_first_name_parameter():
             query_a_record_post_request_without_a_key_first_name_parameter.text)
 
 
+#@allure.issue("https://trac.brightpattern.com/ticket/24228")
 @pytest.mark.usefixtures("query_a_record_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end")
 class Test_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end():
     @allure.epic("test_query_a_record")
@@ -500,7 +505,7 @@ class Test_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_e
     @allure.step('test_check_answer_text_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end')
     def test_check_answer_text_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end(self, query_a_record_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end):
         print("request_result_text : ", query_a_record_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end.text)
-        status = 'Bad request (format not understood). Presumably there is a redundant comma in the request'
+        status = 'Expected name at line 1 column 64 path $'
         assert status in str(
             query_a_record_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_incorrect_body_format_add_a_redudant_comma_in_the_end.text)
@@ -567,6 +572,83 @@ class Test_post_request_with_authorize_session_for_user_without_permission():
         assert status in str(
             query_a_record_post_request_with_authorize_session_for_user_without_permission.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_authorize_session_for_user_without_permission.text)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#==================================================== Code 405 =========================================================
+#=======================================================================================================================
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24265")
+@pytest.mark.usefixtures("query_a_record_get_request_with_correct_body")
+class Test_get_request_with_correct_body():
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 405")
+    @allure.step('test_check_status_code_get_request_with_correct_body')
+    def test_check_status_code_get_request_with_correct_body(self, query_a_record_get_request_with_correct_body):
+        print("request_result_status_code : ", query_a_record_get_request_with_correct_body.status_code)
+        assert "405" in str(
+            query_a_record_get_request_with_correct_body.status_code), "Answer status not 405 ; actual status code : " + str(
+            query_a_record_get_request_with_correct_body.status_code)
+
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 405")
+    @allure.step('test_check_answer_text_get_request_with_correct_body')
+    def test_check_answer_text_get_request_with_correct_body(self, query_a_record_get_request_with_correct_body):
+        print("request_result_text : ", query_a_record_get_request_with_correct_body.text)
+        status = "Method Not Allowed"
+        assert status in str(
+            query_a_record_get_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
+            query_a_record_get_request_with_correct_body.text)
+        # assert len(str(get_request_with_correct_body.text)) == 0, "Answer text not empty ; actual message : " + str(get_request_with_correct_body.text)
+
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24265")
+@pytest.mark.usefixtures("query_a_record_put_request_with_correct_body")
+class Test_put_request_with_correct_body():
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 405")
+    @allure.step('test_check_status_code_put_request_with_correct_body')
+    def test_check_status_code_put_request_with_correct_body(self, query_a_record_put_request_with_correct_body):
+        print("request_result_status_code : ", query_a_record_put_request_with_correct_body.status_code)
+        assert "405" in str(
+            query_a_record_put_request_with_correct_body.status_code), "Answer status not 405 ; actual status code : " + str(
+            query_a_record_put_request_with_correct_body.status_code)
+
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 405")
+    @allure.step('test_check_answer_text_put_request_with_correct_body')
+    def test_check_answer_text_put_request_with_correct_body(self, query_a_record_put_request_with_correct_body):
+        print("request_result_text : ", query_a_record_put_request_with_correct_body.text)
+        status = "Method Not Allowed"
+        assert status in str(
+            query_a_record_put_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
+            query_a_record_put_request_with_correct_body.text)
+
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24265")
+@pytest.mark.usefixtures("query_a_record_delete_request_with_correct_body")
+class Test_delete_request_with_correct_body():
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 405")
+    @allure.step('test_check_status_code_delete_request_with_correct_body')
+    def test_check_status_code_delete_request_with_correct_body(self, query_a_record_delete_request_with_correct_body):
+        print("request_result_status_code : ", query_a_record_delete_request_with_correct_body.status_code)
+        assert "405" in str(
+            query_a_record_delete_request_with_correct_body.status_code), "Answer status not 405 ; actual status code : " + str(
+            query_a_record_delete_request_with_correct_body.status_code)
+
+    @allure.epic("test_query_a_record")
+    @allure.feature("answer code 405")
+    @allure.step('test_check_answer_text_delete_request_with_correct_body')
+    def test_check_answer_text_delete_request_with_correct_body(self, query_a_record_delete_request_with_correct_body):
+        print("request_result_text : ", query_a_record_delete_request_with_correct_body.text)
+        status = "Method Not Allowed"
+        assert status in str(
+            query_a_record_delete_request_with_correct_body.text), "Answer text not " + status + " ; actual message : " + str(
+            query_a_record_delete_request_with_correct_body.text)
 
 #=======================================================================================================================
 #=======================================================================================================================

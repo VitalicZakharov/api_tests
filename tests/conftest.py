@@ -4277,15 +4277,14 @@ def query_a_record_post_request_with_an_empty_key_first_name(get_user_token):
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
-        "unknown": "un55",
-        "Integer": "55",
-        "Date/Time": "02-02-2055",
-        "Caller id": "55",
-        "Agent id": "agent.id55",
+        "Integer": "1",
+        "Date/Time": "07/07/71 12:00:00 AM",
+        "Caller id": "101",
+        "Agent id": "Test.C1",
         "First name": "",
-        "Last name": "Name_L55",
-        "Phone1": "7055",
-        "Phone2": "1055"
+        "Last name": "Name_Last_C1",
+        "Phone1": "7005",
+        "Phone2": "8005"
     }
     # Convert body request to json
     request_body = json.dumps(body)
@@ -4300,15 +4299,14 @@ def query_a_record_post_request_with_an_empty_key_last_name(get_user_token):
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
-        "unknown": "un56",
-        "Integer": "56",
-        "Date/Time": "02-02-2056",
-        "Caller id": "56",
-        "Agent id": "agent.id56",
-        "First name": "Name_F56",
+        "Integer": "1",
+        "Date/Time": "07/07/71 12:00:00 AM",
+        "Caller id": "101",
+        "Agent id": "Test.C1",
+        "First name": "Name_First_C1",
         "Last name": "",
-        "Phone1": "7056",
-        "Phone2": "1056"
+        "Phone1": "7005",
+        "Phone2": "8005"
     }
     # Convert body request to json
     request_body = json.dumps(body)
@@ -4628,6 +4626,54 @@ def query_a_record_post_request_with_the_value_phone_number_in_a_phone_field_usi
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def query_a_record_get_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//get//List_TCTR.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Test1",
+        "Phone": "1001"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.get(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def query_a_record_put_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//get//List_TCTR.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Test1",
+        "Phone": "1001"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.put(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def query_a_record_delete_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//get//List_TCTR.txt//Camp_1"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = {
+        "First name": "Test1",
+        "Phone": "1001"
+    }
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.delete(request_url, data=request_body, headers=HEADERS)
 
 #=======================================================================================================================
 #=======================================================================================================================
