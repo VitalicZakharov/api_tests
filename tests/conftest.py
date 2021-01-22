@@ -4678,3 +4678,428 @@ def query_a_record_delete_request_with_correct_body(get_user_token):
 #=======================================================================================================================
 #=======================================================================================================================
 #=======================================================================================================================
+
+#=======================================================================================================================
+#====================================== ReplaceRecordsInDnc fixtures ===================================================
+#=======================================================================================================================
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_to_any_non_existent_dnc_list(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_not_exists"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "001",
+        "One",
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "9000",
+        "9001",
+        "9002",
+        "9002",
+        "9003"
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "abc",
+        "9004",
+        "~!@#$%^&*()_=+|/?,.",
+        "9005",
+        " ",
+        "",
+        "+9006"
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "9007",
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "9008",
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_state_province.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_state_province"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "1415-418-6591"
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_record_exclusion.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_record_exclusion"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "field 1",
+        "@test6 field2"
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "90210",
+            "California"
+        ],
+        [
+            "10001",
+            "New York"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "02871",
+            "Rhode Island"
+        ],
+        [
+            "19147",
+            "Pennsylvania"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "Comment1 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Comment11 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "Comment2 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Comment22 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "field 1",
+            "field 2"
+        ],
+        [
+
+        ],
+        [
+            "field 3",
+            "field 4"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        "22201",
+        "Virginia"
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_area_code"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "417",
+            "Springfield"
+        ],
+        [
+            "418",
+            "Quebec"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes(get_user_token):
+    #wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_area_code"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "001",
+            "One"
+        ],
+        [
+            "002a",
+            "Two"
+        ],
+        [
+            "T 3 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Three 3 !@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_with_do_not_authorize_session():
+    # wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    # Request body
+    body = [
+        [
+            "9007",
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "9008",
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    # wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    # Request body
+    body = [
+        [
+            "9007",
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "9008",
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_post_request_with_incorrect_body_format_typization(get_user_token):
+    # wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    request_body = bytes("First Name: Test6, Phone1: 1006", 'utf-8')
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.post(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_get_request_with_correct_body(get_user_token):
+    # wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "9007",
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "9008",
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.get(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_put_request_with_correct_body(get_user_token):
+    # wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "9007",
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "9008",
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.put(request_url, data=request_body, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def replace_records_in_dnc_delete_request_with_correct_body(get_user_token):
+    # wile https://trac.brightpattern.com/ticket/24443
+    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    # Request body
+    body = [
+        [
+            "9007",
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ],
+        [
+            "9008",
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+        ]
+    ]
+    # Convert body request to json
+    request_body = json.dumps(body)
+    print("request_url : ", request_url)
+    print("request_body : ", request_body)
+    return requests.delete(request_url, data=request_body, headers=HEADERS)
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
