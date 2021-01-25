@@ -40,12 +40,20 @@ TENANT_PATH = path.abspath(path.join(__file__, "..")) + "\\artifacts\\tenant_exa
 #=======================================================================================================================
 #=======================================================================================================================
 
+#=======================================================================================================================
+#============================================= tests preconditions =====================================================
+#=======================================================================================================================
+
 @pytest.fixture(scope='session',autouse=True)
 def precondition():
     deactivate_tenant()
     tenant_deletion()
     tenant_import()
     activate_tenant()
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
 
 #=======================================================================================================================
 #============================================== tenant functions =======================================================
@@ -185,19 +193,10 @@ def mariadb_campaign_off(camp_id):
     cur = conn.cursor()
 
     try:
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
         cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='" + camp_id + "'")
     except mariadb.Error as e:
         print(f"Error: {e}")
         conn.close()
-#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#            print("Something is wrong with your user name or password")
-#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#            print("Database does not exist")
-#        else:
-#            print(err)
     else:
         conn.commit()
         print("Campaign with id '" + camp_id + "' disabled")
@@ -209,19 +208,10 @@ def mariadb_campaign_on(camp_id):
     cur = conn.cursor()
 
     try:
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
         cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='" + camp_id + "'")
     except mariadb.Error as e:
         print(f"Error: {e}")
         conn.close()
-#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#            print("Something is wrong with your user name or password")
-#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#            print("Database does not exist")
-#        else:
-#            print(err)
     else:
         conn.commit()
         print("Campaign with id '" + camp_id + "' enabled")
@@ -233,19 +223,10 @@ def mariadb_campaign_start(camp_id):
     cur = conn.cursor()
 
     try:
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
         cur.execute("UPDATE sp_config.skills SET OUT_RUNTIME_STATE='RUNNING' WHERE ID='" + camp_id + "'")
     except mariadb.Error as e:
         print(f"Error: {e}")
         conn.close()
-#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#            print("Something is wrong with your user name or password")
-#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#            print("Database does not exist")
-#        else:
-#            print(err)
     else:
         conn.commit()
         print("Campaign with id '" + camp_id + "' started")
@@ -257,19 +238,10 @@ def mariadb_campaign_paused(camp_id):
     cur = conn.cursor()
 
     try:
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
-#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
         cur.execute("UPDATE sp_config.skills SET OUT_RUNTIME_STATE='PAUSED' WHERE ID='" + camp_id + "'")
     except mariadb.Error as e:
         print(f"Error: {e}")
         conn.close()
-#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#            print("Something is wrong with your user name or password")
-#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#            print("Database does not exist")
-#        else:
-#            print(err)
     else:
         conn.commit()
         print("Campaign with id '" + camp_id + "' paused")
