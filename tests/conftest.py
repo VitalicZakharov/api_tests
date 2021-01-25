@@ -2138,11 +2138,11 @@ def add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2244,12 +2244,12 @@ def add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_p
     # Request body
     body = [
         [
-            "Comment1 !@#$%^&*()_+=-[]{}\|,.<>?/`",
-            "Comment11 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment1 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
+            "Comment11 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
-            "Comment2 !@#$%^&*()_+=-[]{}\|,.<>?/`",
-            "Comment22 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment2 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
+            "Comment22 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2345,8 +2345,8 @@ def add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_forma
             "Two"
         ],
         [
-            "T 3 !@#$%^&*()_+=-[]{}\|,.<>?/`",
-            "Three 3 !@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "T 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
+            "Three 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2366,11 +2366,11 @@ def add_records_to_dnc_post_request_with_do_not_authorize_session():
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2390,11 +2390,11 @@ def add_records_to_dnc_post_request_with_authorize_session_for_user_without_perm
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2426,11 +2426,11 @@ def add_records_to_dnc_get_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2450,11 +2450,11 @@ def add_records_to_dnc_put_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2474,11 +2474,11 @@ def add_records_to_dnc_delete_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2486,30 +2486,6 @@ def add_records_to_dnc_delete_request_with_correct_body(get_user_token):
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.delete(request_url, data=request_body, headers=HEADERS)
-
-
-#@pytest.fixture(scope='class')
-#def add_records_to_dnc_post_request_with_body_from_other_list(get_user_token):
-#    # wile https://trac.brightpattern.com/ticket/24443
-#    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
-#    request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
-#    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-#    # Request body
-#    body = [
-#        [
-#            "90210",
-#            "California"
-#        ],
-#        [
-#            "10001",
-#            "New York"
-#        ]
-#    ]
-#    # Convert body request to json
-#    request_body = json.dumps(body)
-#    print("request_url : ", request_url)
-#    print("request_body : ", request_body)
-#    return requests.post(request_url, data=request_body, headers=HEADERS)
 
 #=======================================================================================================================
 #=======================================================================================================================
@@ -4912,11 +4888,11 @@ def replace_records_in_dnc_post_request_containing_a_correctly_formatted_number_
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5018,12 +4994,12 @@ def replace_records_in_dnc_post_request_add_2_records_containing_a_special_symbo
     # Request body
     body = [
         [
-            "Comment1 !@#$%^&*()_+=-[]{}\|,.<>?/`",
-            "Comment11 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment1 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
+            "Comment11 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
-            "Comment2 !@#$%^&*()_+=-[]{}\|,.<>?/`",
-            "Comment22 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment2 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
+            "Comment22 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5119,8 +5095,8 @@ def replace_records_in_dnc_post_request_add_a_record_containing_an_incorrectly_f
             "Two"
         ],
         [
-            "T 3 !@#$%^&*()_+=-[]{}\|,.<>?/`",
-            "Three 3 !@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "T 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
+            "Three 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5140,11 +5116,11 @@ def replace_records_in_dnc_post_request_with_do_not_authorize_session():
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5164,11 +5140,11 @@ def replace_records_in_dnc_post_request_with_authorize_session_for_user_without_
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5200,11 +5176,11 @@ def replace_records_in_dnc_get_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5224,11 +5200,11 @@ def replace_records_in_dnc_put_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5248,11 +5224,11 @@ def replace_records_in_dnc_delete_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
         ]
     ]
     # Convert body request to json
