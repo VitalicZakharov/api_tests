@@ -1,9 +1,11 @@
 import sys
 
-import pytest  # , allure
+import pytest
 from oauthlib.oauth2 import BackendApplicationClient
 from requests_oauthlib import OAuth2Session
 import json, os, os.path as path, requests
+import mariadb
+#from mysql.connector import errorcode
 
 FIRST_DOMAIN_NAME = "ntm1"
 DOMAIN = FIRST_DOMAIN_NAME + ".bugfocus.com"
@@ -39,7 +41,9 @@ def precondition():
     tenant_import()
     activate_tenant()
 
-#@pytest.mark.usefixtures("precondition")
+#=======================================================================================================================
+#============================================== tenant functions =======================================================
+#=======================================================================================================================
 
 def tenant_import(name="get_sys_user_token"):
     HEADERS_IMP.update({'Authorization': 'Bearer ' + str(get_sys_user_token())})
@@ -100,6 +104,13 @@ def tenant_deletion(name="get_sys_user_token"):
     assert "tenant deleted" in str(
         result.text), "Tenant deletion answer not 'tenant deleted' ; actual message : " + str(result.text)
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#=============================================== token functions =======================================================
+#=======================================================================================================================
 
 # @pytest.fixture(scope='session')
 def get_sys_user_token():
@@ -154,6 +165,113 @@ def get_user_without_permission_token():
     print("got user token", token)
     return str(token)[
            str(token).find("'access_token': '") + len("'access_token': '"):str(token).find("', 'token_type'")]
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
+
+#=======================================================================================================================
+#================================================== DB functions =======================================================
+#=======================================================================================================================
+
+def mariadb_campaign_off(camp_id):
+    conn = mariadb.connect(user="super",password="password",host=DOMAIN,database="sp_config")
+    cur = conn.cursor()
+
+    try:
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
+        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='CONFIGURATION' WHERE ID='" + camp_id + "'")
+    except mariadb.Error as e:
+        print(f"Error: {e}")
+        conn.close()
+#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+#            print("Something is wrong with your user name or password")
+#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+#            print("Database does not exist")
+#        else:
+#            print(err)
+    else:
+        conn.commit()
+        print("Campaign with id '" + camp_id + "' disabled")
+    conn.close()
+
+
+def mariadb_campaign_on(camp_id):
+    conn = mariadb.connect(user="super",password="password",host=DOMAIN,database="sp_config")
+    cur = conn.cursor()
+
+    try:
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
+        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='" + camp_id + "'")
+    except mariadb.Error as e:
+        print(f"Error: {e}")
+        conn.close()
+#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+#            print("Something is wrong with your user name or password")
+#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+#            print("Database does not exist")
+#        else:
+#            print(err)
+    else:
+        conn.commit()
+        print("Campaign with id '" + camp_id + "' enabled")
+    conn.close()
+
+
+def mariadb_campaign_start(camp_id):
+    conn = mariadb.connect(user="super",password="password",host=DOMAIN,database="sp_config")
+    cur = conn.cursor()
+
+    try:
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
+        cur.execute("UPDATE sp_config.skills SET OUT_RUNTIME_STATE='RUNNING' WHERE ID='" + camp_id + "'")
+    except mariadb.Error as e:
+        print(f"Error: {e}")
+        conn.close()
+#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+#            print("Something is wrong with your user name or password")
+#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+#            print("Database does not exist")
+#        else:
+#            print(err)
+    else:
+        conn.commit()
+        print("Campaign with id '" + camp_id + "' started")
+    conn.close()
+
+
+def mariadb_campaign_paused(camp_id):
+    conn = mariadb.connect(user="super",password="password",host=DOMAIN,database="sp_config")
+    cur = conn.cursor()
+
+    try:
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='1B557010-3DD4-4334-95A3-171A44D12596'")
+#        cur.execute("UPDATE sp_config.skills SET OUT_AVAILABILITY='OPERATION' WHERE ID='2D89FC06-D5F6-4262-8051-65C127688F0E'")
+        cur.execute("UPDATE sp_config.skills SET OUT_RUNTIME_STATE='PAUSED' WHERE ID='" + camp_id + "'")
+    except mariadb.Error as e:
+        print(f"Error: {e}")
+        conn.close()
+#        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+#            print("Something is wrong with your user name or password")
+#        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+#            print("Database does not exist")
+#        else:
+#            print(err)
+    else:
+        conn.commit()
+        print("Campaign with id '" + camp_id + "' paused")
+    conn.close()
+
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
 
 #=======================================================================================================================
 #============================================ AddRecord fixtures =======================================================
@@ -3512,26 +3630,91 @@ def get_all_records_post_request_with_incorrect_body_format_typization(get_user_
 #=======================================================================================================================
 
 @pytest.fixture(scope='class')
-def get_campaigns_post_request_to_get_campaigns_info(get_user_token):
+def get_campaigns_get_request_to_get_campaigns_info(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-    # Request body
-#    body = {
-#        "Integer": "123",
-#        "Date/Time": "01/07/2025 12:00 AM",
-#        #"Date/Time": "03-07-2025",
-#        "Caller id": "Test3",
-#        "Agent id": "Test3",
-#        "First name": "Name_First3",
-#        "Last name": "Name_Last3",
-#        "Phone1": "9003",
-#        "Phone2": "9010"
-#    }
-    # Convert body request to json
-#    request_body = json.dumps(body)
     print("request_url : ", request_url)
-#    print("request_body : ", request_body)
-#    return requests.get(request_url, data=request_body, headers=HEADERS)
+    return requests.get(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_get_request_all_campaigns_disabled(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
+    mariadb_campaign_off('B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05')
+    mariadb_campaign_off('1B557010-3DD4-4334-95A3-171A44D12596')
+    mariadb_campaign_off('2D89FC06-D5F6-4262-8051-65C127688F0E')
+    res = requests.get(request_url, headers=HEADERS)
+    mariadb_campaign_on('B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05')
+    mariadb_campaign_on('1B557010-3DD4-4334-95A3-171A44D12596')
+    mariadb_campaign_on('2D89FC06-D5F6-4262-8051-65C127688F0E')
+    return res
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_get_request_with_do_not_authorize_session():
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str("token")})
+    print("request_url : ", request_url)
+    return requests.get(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_get_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
+    print("request_url : ", request_url)
+    return requests.get(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_post_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
+    return requests.post(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_put_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
+    return requests.put(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_delete_request_with_correct_body(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
+    return requests.delete(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_get_request_started_predictive_campaign(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
+    mariadb_campaign_start('B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05')
+    return requests.get(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_get_request_started_preview_campaign(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
+    mariadb_campaign_start('1B557010-3DD4-4334-95A3-171A44D12596')
+    return requests.get(request_url, headers=HEADERS)
+
+
+@pytest.fixture(scope='class')
+def get_campaigns_get_request_with_invalid_url(get_user_token):
+    request_url = "https://" + DOMAIN + "//configapi//v2//campaign//invalid_getAll//"
+    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
+    print("request_url : ", request_url)
     return requests.get(request_url, headers=HEADERS)
 
 #=======================================================================================================================
