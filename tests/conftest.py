@@ -7,8 +7,16 @@ import json, os, os.path as path, requests
 import mariadb
 #from mysql.connector import errorcode
 
+#=======================================================================================================================
+#=============================================== envirment data ========================================================
+#=======================================================================================================================
+
 FIRST_DOMAIN_NAME = "ntm1"
 DOMAIN = FIRST_DOMAIN_NAME + ".bugfocus.com"
+EXAMPLE = "example.com"
+BASE_URL = "https://" + DOMAIN + "//configapi//v2//"
+AUTH_URL = "oauth//token"
+SCOPE = [EXAMPLE]
 
 # wanda
 CLIENT_SECRET_WP = "cm9zB2oE0Ltef2f1C4BGpxi8fZz0xFeuDwlW8RqkCMmdXYkXqt4xLF7hQ0h9WRLx"
@@ -22,17 +30,15 @@ CLIENT_ID = "alan.jenks"
 SYS_CLIENT_SECRET = "FwwKctoaWZ85lcSHNPLrH2Ec9ypPal0G3SiYDCWbtpPg01KXEQ0BNOvuVKBHTmsh"
 SYS_CLIENT_ID = "admin"
 
-EXAMPLE = "example.com"
-BASE_URL = "https://" + DOMAIN + "//configapi//v2//"
-AUTH_URL = "oauth//token"
-SCOPE = [EXAMPLE]
-
 HEADERS = {'content-type': 'application/json'}
 AUTH_HEAD = {'content-type': 'application/x-www-form-urlencoded'}
 HEADERS_IMP = {'content-type': 'application/zip'}
 
 TENANT_PATH = path.abspath(path.join(__file__, "..")) + "\\artifacts\\tenant_example.com.zip"
 
+#=======================================================================================================================
+#=======================================================================================================================
+#=======================================================================================================================
 
 @pytest.fixture(scope='session',autouse=True)
 def precondition():
