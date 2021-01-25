@@ -1,11 +1,8 @@
-import sys
-
 import pytest
 from oauthlib.oauth2 import BackendApplicationClient
 from requests_oauthlib import OAuth2Session
 import json, os, os.path as path, requests
 import mariadb
-#from mysql.connector import errorcode
 
 #=======================================================================================================================
 #=============================================== envirment data ========================================================
@@ -263,7 +260,6 @@ def add_record_post_request_with_correct_body(get_user_token):
     body = {
         "Integer": "123",
         "Date/Time": "01/07/2025 12:00 AM",
-        #"Date/Time": "03-07-2025",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -286,7 +282,6 @@ def add_record_post_request_with_a_duplicate_earlier_created_keys(get_user_token
     body = {
         "Integer": "1234",
         "Date/Time": "01/07/2025 12:00 AM",
-        #"Date/Time": "03-07-2025",
         "Caller id": "Test4",
         "Agent id": "Test4",
         "First name": "Name_First4",
@@ -367,7 +362,6 @@ def add_record_post_request_with_incorrectly_formatted_phone_number_in_a_caller_
     # Request body
     body = {
         "Integer": "1238",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "1!@#$%^&*()Ab-_{}[\]/|?,.''2",
         "Agent id": "Test8",
@@ -407,7 +401,6 @@ def add_record_post_request_with_missing_req_field(get_user_token):
     # Request body
     body = {
         "Integer": "1235",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test5",
         "Agent id": "Test5",
@@ -429,7 +422,6 @@ def add_record_post_request_with_non_existent_agent_username_in_an_agent_login_i
     # Request body
     body = {
         "Integer": "1237",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test7",
         "Agent id": "Ri/!@#$%^&*();:<>,.{}''|?ck",
@@ -470,7 +462,6 @@ def add_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(g
     # Request body
     body = {
         "Integer": "12310",
-        #"Date/Time": "03-07-813",
         "Date/Time": "01/07/1025 12:00 AM",
         "Caller id": "Test10",
         "Agent id": "Test10",
@@ -493,7 +484,6 @@ def add_record_post_request_with_incorrectly_formatted_value_in_an_integer_field
     # Request body
     body = {
         "Integer": "abc",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test11",
         "Agent id": "Test11",
@@ -516,7 +506,6 @@ def add_record_post_request_without_a_phone_field_req(get_user_token):
     # Request body
     body = {
         "Integer": "12312",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test12",
         "Agent id": "Test12",
@@ -538,7 +527,6 @@ def add_record_post_request_without_a_phone_field_req_and_key(get_user_token):
     # Request body
     body = {
         "Integer": "12313",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test13",
         "Agent id": "Test13",
@@ -683,7 +671,7 @@ def add_record_post_request_with_incorrect_body_format_deleted_quotes(get_user_t
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    request_body = bytes("{\"First Name: Test6, Phone1: 1006\"}", 'utf-8')
+    request_body = bytes('{"First Name: Test6, Phone1: 1006"}', 'utf-8')
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -810,7 +798,6 @@ def add_record_post_request_for_corrupted_on_importing_list_all_fields_are_corre
     body = {
         "Integer": "123",
         "Date/Time": "03-07-2025",
-        #"Date/Time": "02/07/2020 10:01 am",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -832,7 +819,6 @@ def add_record_get_request_with_correct_body(get_user_token):
     # Request body
     body = {
         "Integer": "123",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test3",
         "Agent id": "Test3",
@@ -855,7 +841,6 @@ def add_record_put_request_with_correct_body(get_user_token):
     # Request body
     body = {
         "Integer": "123",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test3",
         "Agent id": "Test3",
@@ -878,7 +863,6 @@ def add_record_delete_request_with_correct_body(get_user_token):
     # Request body
     body = {
         "Integer": "123",
-        #"Date/Time": "03-07-2025",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "Test3",
         "Agent id": "Test3",
@@ -901,7 +885,6 @@ def add_record_post_request_with_correct_but_different_datetime_format(get_user_
     # Request body
     body = {
         "Integer": "123",
-        #"Date/Time": "02/07/2020 10:01 am",
         "Date/Time": "03-07-2025",
         "Caller id": "Test3",
         "Agent id": "Test3",
@@ -925,7 +908,6 @@ def add_record_post_request_with_body_from_other_list(get_user_token):
     body = {
         "Integer": "123",
         "Date/Time": "02/07/2020 10:01 am",
-        #"Date/Time": "03-07-2025",
         "Caller id": "Test3",
         "Agent id": "Test3",
         "First name": "Name_First3",
@@ -955,7 +937,6 @@ def add_many_records_post_request_with_correct_body(get_user_token):
     body = [
         {
             "Integer": "123171",
-            #"Date/Time": "01-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
@@ -966,7 +947,6 @@ def add_many_records_post_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123172",
-            #"Date/Time": "02-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
@@ -977,7 +957,6 @@ def add_many_records_post_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123173",
-            #"Date/Time": "03-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
@@ -1002,7 +981,6 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
     body = [
         {
             "Integer": "123211",
-            #"Date/Time": "01-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20",
             "Agent id": "Test20",
@@ -1013,7 +991,6 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
         },
         {
             "Integer": "123212",
-            #"Date/Time": "02-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20_2",
             "Agent id": "Test20_2",
@@ -1024,7 +1001,6 @@ def add_many_records_post_request_with_a_duplicate_earlier_created_keys(get_user
         },
         {
             "Integer": "123213",
-            #"Date/Time": "03-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20_3",
             "Agent id": "Test20_3",
@@ -1049,7 +1025,6 @@ def add_many_records_post_request_with_incorrect_body_format_typization(get_user
     request_body = bytes(str(
         {
             "Integer": "123211",
-            #"Date/Time": "01-07-2025",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test20",
             "Agent id": "Test20",
@@ -1159,7 +1134,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
             "Integer": "123231",
             "Date/Time": "01-07-2023",
             "Caller id": "10023",
-            "Agent id": "`~!@#$%^&*()_+ []{}|\?/,.1",
+            "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.1",
             "First name": "Name_First23",
             "Last name": "Name_Last23",
             "Phone1": "9023",
@@ -1169,7 +1144,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
             "Integer": "123232",
             "Date/Time": "02-07-2023",
             "Caller id": "100232",
-            "Agent id": "`~!@#$%^&*()_+ []{}|\?/,.2",
+            "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.2",
             "First name": "Name_First23_2",
             "Last name": "Name_Last23_2",
             "Phone1": "90232",
@@ -1179,7 +1154,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
             "Integer": "123233",
             "Date/Time": "03-07-2023",
             "Caller id": "100233",
-            "Agent id": "`~!@#$%^&*()_+ []{}|\?/,.3",
+            "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.3",
             "First name": "Name_First23_3",
             "Last name": "Name_Last23_3",
             "Phone1": "90233",
@@ -1202,7 +1177,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         {
             "Integer": "123241",
             "Date/Time": "01-07-2024",
-            "Caller id": "`a~!@#$%^&*()_+ []{}|\?/,.1",
+            "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.1",
             "Agent id": "Test24.1",
             "First name": "Name_First24",
             "Last name": "Name_Last24",
@@ -1212,7 +1187,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         {
             "Integer": "123242",
             "Date/Time": "02-07-2024",
-            "Caller id": "`a~!@#$%^&*()_+ []{}|\?/,.2",
+            "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.2",
             "Agent id": "Test24.2",
             "First name": "Name_First24_2",
             "Last name": "Name_Last24_2",
@@ -1222,7 +1197,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         {
             "Integer": "123243",
             "Date/Time": "03-07-2024",
-            "Caller id": "`a~!@#$%^&*()_+ []{}|\?/,.3",
+            "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.3",
             "Agent id": "Test24.3",
             "First name": "Name_First24_3",
             "Last name": "Name_Last24_3",
@@ -1801,11 +1776,8 @@ def add_many_records_post_request_with_a_duplicated_in_one_request_values(get_us
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    request_body = bytes("[{\"Last Name\":\"User6\",\"Phone1\":\"1006\"},{\"Incorrect\":\"Test7\",\"Last Name\":\"User7\",\"Phone1\":\"1007\"},{\"First Name\":\"Test8\",\"Last Name\":\"User8\"},{\"First Name\":\"Test11\",\"Phone1\":\"1011\"},{\"First Name\":\"Test11\",\"Last Name\":\"User11\",\"Phone1\":\"1011\"}]", 'utf-8')
-#        { "First Name":"Test9", "Phone":"1009"},
+    request_body = bytes('[{"Last Name":"User6","Phone1":"1006"},{"Incorrect":"Test7","Last Name":"User7","Phone1":"1007"},{"First Name":"Test8","Last Name":"User8"},{"First Name":"Test11","Phone1":"1011"},{"First Name":"Test11","Last Name":"User11","Phone1":"1011"}]', 'utf-8')
 
-    # Convert body request to json
-    #request_body = json.dumps(body)
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -1816,9 +1788,8 @@ def add_many_records_post_request_with_an_incorrect_body_format(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    request_body = "[{\"First Name\":\"Test17\",Phone1:10017\"},{\"First Name\":\"Test18\",\"Last Name\":\"User18\",\"Phone1\":\"10018\"}]"
-    # Convert body request to json
-    #request_body = json.dumps(body)
+    request_body = '[{"First Name":"Test17",Phone1:10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
+
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -1829,8 +1800,7 @@ def add_many_records_post_request_with_an_incorrect_body_format_redundant_comma_
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    request_body = bytes("[{\"First Name\":\"Test12\",\"Phone1\":\"10012\"},{\"First Name\":\"Test13\",\"Phone1\":\"10013\"}**,**]", 'utf-8')
-    # Convert body request to json
+    request_body = bytes('[{"First Name":"Test12","Phone1":"10012"},{"First Name":"Test13","Phone1":"10013"}**,**]', 'utf-8')
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -2068,8 +2038,6 @@ def add_many_records_post_request_with_body_from_other_list(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_to_any_non_existent_dnc_list(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_not_exists.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_not_exists"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2086,8 +2054,6 @@ def add_records_to_dnc_post_request_to_any_non_existent_dnc_list(get_user_token)
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2107,8 +2073,6 @@ def add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dn
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2130,8 +2094,6 @@ def add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_fo
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2154,8 +2116,6 @@ def add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_state_province.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_state_province"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2171,8 +2131,6 @@ def add_records_to_dnc_post_request_containing_a_correctly_spelled_us_state_to_a
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_record_exclusion.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_record_exclusion"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2189,8 +2147,6 @@ def add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_reco
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2213,8 +2169,6 @@ def add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2237,8 +2191,6 @@ def add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_co
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2261,8 +2213,6 @@ def add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_p
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2288,8 +2238,6 @@ def add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_g
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2306,8 +2254,6 @@ def add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_o
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2330,8 +2276,6 @@ def add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2358,8 +2302,6 @@ def add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_forma
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_with_do_not_authorize_session():
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str("token")})
     # Request body
@@ -2382,8 +2324,6 @@ def add_records_to_dnc_post_request_with_do_not_authorize_session():
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
     # Request body
@@ -2406,8 +2346,6 @@ def add_records_to_dnc_post_request_with_authorize_session_for_user_without_perm
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_post_request_with_incorrect_body_format_typization(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes("First Name: Test6, Phone1: 1006", 'utf-8')
@@ -2418,8 +2356,6 @@ def add_records_to_dnc_post_request_with_incorrect_body_format_typization(get_us
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_get_request_with_correct_body(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2442,8 +2378,6 @@ def add_records_to_dnc_get_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_put_request_with_correct_body(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2466,8 +2400,6 @@ def add_records_to_dnc_put_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_records_to_dnc_delete_request_with_correct_body(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -2664,11 +2596,6 @@ def delete_all_records_post_request_with_incorrect_body_format_typization(get_us
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//deleteAll//List_Delete1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes("{First name: Name_F55, Last name : Name_L55, Phone1: 7}", 'utf-8')
-    #request_body = [{
-    #    "First name": "Name_F55",
-    #    "Last name": "Name_L55",
-    #    "Phone1": "7"
-    #}]
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -2770,7 +2697,7 @@ def update_record_post_request_with_an_incorrect_date_time_value(get_user_token)
     # Request body
     body = {
         "Integer": "39",
-        "Date/Time": "`~!@#$%^&*()_+[]{}|\?/,.",
+        "Date/Time": "`~!@#$%^&*()_+[]{}|\\?/,.",
         "Caller id": "39",
         "Agent id": "agent.id39",
         "First name": "Name_F39",
@@ -2793,7 +2720,7 @@ def update_record_post_request_with_an_incorrect_caller_id(get_user_token):
     body = {
         "Integer": "40",
         "Date/Time": "02-02-2040",
-        "Caller id": "`~!@#$%^&*()_+[]{}|\?/,.",
+        "Caller id": "`~!@#$%^&*()_+[]{}|\\?/,.",
         "Agent id": "agent.id40",
         "First name": "Name_F40",
         "Last name": "Name_L40",
@@ -2816,7 +2743,7 @@ def update_record_post_request_with_an_incorrect_agent_id(get_user_token):
         "Integer": "41",
         "Date/Time": "02-02-2041",
         "Caller id": "41",
-        "Agent id": "`~!@#$%^&*()_+[]{}|\?/,.",
+        "Agent id": "`~!@#$%^&*()_+[]{}|\\?/,.",
         "First name": "Name_F41",
         "Last name": "Name_L41",
         "Phone1": "7000",
@@ -2928,7 +2855,7 @@ def update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_fie
         "First name": "Name_F46",
         "Last name": "Name_L46",
         "Phone1": "7000",
-        "Phone2": "`~!@#$%^&*()_+[]{}|\?/,."
+        "Phone2": "`~!@#$%^&*()_+[]{}|\\?/,."
     }
     # Convert body request to json
     request_body = json.dumps(body)
@@ -3883,22 +3810,6 @@ def get_completed_records_post_request_with_invalid_url(get_user_token):
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
-
-
-#@pytest.fixture(scope='class')
-#def get_completed_records_post_request_to_the_non_existent_list(get_user_token):
-#    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//getCompleted//invalid_List_Completed.txt//Camp_1"
-#    HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
-#    # Request body
-#    body = {
-#        "fromTime": "2013-03-01T13:15:06.456",
-#        "maxSize": "2"
-#    }
-#    # Convert body request to json
-#    request_body = json.dumps(body)
-#    print("request_url : ", request_url)
-#    print("request_body : ", request_body)
-#    return requests.post(request_url, data=request_body, headers=HEADERS)
 
 
 @pytest.fixture(scope='class')
@@ -4857,8 +4768,6 @@ def replace_records_in_dnc_post_request_containing_correctly_formatted_numbers_t
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -4880,8 +4789,6 @@ def replace_records_in_dnc_post_request_containing_both_correctly_and_incorrectl
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -4904,8 +4811,6 @@ def replace_records_in_dnc_post_request_containing_a_correctly_formatted_number_
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_containing_a_correctly_spelled_us_state_to_a_dnc_of_type_geographic(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_state_province.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_state_province"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -4921,8 +4826,6 @@ def replace_records_in_dnc_post_request_containing_a_correctly_spelled_us_state_
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_record_exclusion.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_record_exclusion"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -4939,8 +4842,6 @@ def replace_records_in_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -4963,8 +4864,6 @@ def replace_records_in_dnc_post_request_add_a_new_and_an_existing_records_contai
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -4987,8 +4886,6 @@ def replace_records_in_dnc_post_request_add_a_record_containing_a_valid_us_posta
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5011,8 +4908,6 @@ def replace_records_in_dnc_post_request_add_2_records_containing_a_special_symbo
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5038,8 +4933,6 @@ def replace_records_in_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_ty
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_postal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_postal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5056,8 +4949,6 @@ def replace_records_in_dnc_post_request_add_only_1_record_with_a_comment_for_a_d
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_area_code"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5080,8 +4971,6 @@ def replace_records_in_dnc_post_request_add_a_record_containing_a_valid_us_area_
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes(get_user_token):
-    #wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_area_code.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_area_code"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5108,8 +4997,6 @@ def replace_records_in_dnc_post_request_add_a_record_containing_an_incorrectly_f
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_with_do_not_authorize_session():
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str("token")})
     # Request body
@@ -5132,8 +5019,6 @@ def replace_records_in_dnc_post_request_with_do_not_authorize_session():
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_with_authorize_session_for_user_without_permission(get_user_without_permission_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_without_permission_token)})
     # Request body
@@ -5156,8 +5041,6 @@ def replace_records_in_dnc_post_request_with_authorize_session_for_user_without_
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_post_request_with_incorrect_body_format_typization(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes("First Name: Test6, Phone1: 1006", 'utf-8')
@@ -5168,8 +5051,6 @@ def replace_records_in_dnc_post_request_with_incorrect_body_format_typization(ge
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_get_request_with_correct_body(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5192,8 +5073,6 @@ def replace_records_in_dnc_get_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_put_request_with_correct_body(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
@@ -5216,8 +5095,6 @@ def replace_records_in_dnc_put_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def replace_records_in_dnc_delete_request_with_correct_body(get_user_token):
-    # wile https://trac.brightpattern.com/ticket/24443
-    #request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//add//List_dnc_internal.txt"
     request_url = "https://" + DOMAIN + "//configapi//v2//donotcalllist//replaceAll//List_dnc_internal"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
