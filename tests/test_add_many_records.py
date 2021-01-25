@@ -21,7 +21,7 @@ class Test_post_request_with_correct_body():
     @allure.step('test_check_answer_text_post_request_with_correct_body')
     def test_check_answer_text_post_request_with_correct_body(self, add_many_records_post_request_with_correct_body):
         print("request_result_text : ", add_many_records_post_request_with_correct_body.text)
-        status = "{\"added\":3}"
+        status = '{"added":3}'
         assert status in add_many_records_post_request_with_correct_body.text, "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_correct_body.text)
 
@@ -87,7 +87,7 @@ class Test_post_request_with_a_non_existent_field_name():
     @allure.step('test_check_answer_text_post_request_with_a_non_existent_field_name')
     def test_check_answer_text_post_request_with_a_non_existent_field_name(self, add_many_records_post_request_with_a_non_existent_field_name):
         print("request_result_text : ", add_many_records_post_request_with_a_non_existent_field_name.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in str(
             add_many_records_post_request_with_a_non_existent_field_name.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_non_existent_field_name.text)
@@ -109,7 +109,7 @@ class Test_post_request_with_non_existent_agent_username_in_an_agent_login_id_fi
     @allure.step('test_check_answer_text_post_request_with_non_existent_agent_username_in_an_agent_login_id_field')
     def test_check_answer_text_post_request_with_non_existent_agent_username_in_an_agent_login_id_field(self, add_many_records_post_request_with_non_existent_agent_username_in_an_agent_login_id_field):
         print("request_result_text : ", add_many_records_post_request_with_non_existent_agent_username_in_an_agent_login_id_field.text)
-        status = "{\"added\":3}"
+        status = '{"added":3}'
         assert status in add_many_records_post_request_with_non_existent_agent_username_in_an_agent_login_id_field.text, "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_non_existent_agent_username_in_an_agent_login_id_field.text)
 
@@ -130,7 +130,7 @@ class Test_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_i
     @allure.step('test_check_answer_text_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_id_field')
     def test_check_answer_text_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_id_field(self, add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_id_field):
         print("request_result_text : ", add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_id_field.text)
-        status = "{\"added\":3}"
+        status = '{"added":3}'
         assert status in add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_id_field.text, "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_a_caller_id_field.text)
 
@@ -173,7 +173,7 @@ class Test_post_request_with_a_date_time_field_set_to_a_moment_in_the_past():
     @allure.step('test_check_answer_text_post_request_with_a_date_time_field_set_to_a_moment_in_the_past')
     def test_check_answer_text_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(self, add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_past):
         print("request_result_text : ", add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_past.text)
-        status = "{\"added\":3}"
+        status = '{"added":3}'
         assert status in add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_past.text, "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_past.text)
 
@@ -195,7 +195,7 @@ class Test_post_request_with_incorrectly_formatted_value_in_an_integer_field_one
     @allure.step('test_check_answer_text_post_request_with_incorrectly_formatted_value_in_an_integer_field_one_rec')
     def test_check_answer_text_post_request_with_incorrectly_formatted_value_in_an_integer_field_one_rec(self, add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_one_rec):
         print("request_result_text : ", add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_one_rec.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in str(
             add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_one_rec.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_one_rec.text)
@@ -395,7 +395,7 @@ class Test_post_request_without_parameters_empty_body():
     @allure.step('test_check_answer_text_post_request_without_parameters_empty_body')
     def test_check_answer_text_post_request_without_parameters_empty_body(self, add_many_records_post_request_without_parameters_empty_body):
         print("request_result_text : ", add_many_records_post_request_without_parameters_empty_body.text)
-        status = "{\"added\":0}"
+        status = '{"added":0}'
         assert status in str(
             add_many_records_post_request_without_parameters_empty_body.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_without_parameters_empty_body.text)

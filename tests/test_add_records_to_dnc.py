@@ -22,7 +22,7 @@ class Test_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_in
     @allure.step('test_check_answer_text_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not')
     def test_check_answer_text_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not(self, add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not):
         print("request_result_text : ", add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_containing_correctly_formatted_numbers_to_dnc_of_type_internal_duplicates_and_not.text)
 
@@ -45,7 +45,7 @@ class Test_post_request_containing_both_correctly_and_incorrectly_formatted_numb
     @allure.step('test_check_answer_text_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal')
     def test_check_answer_text_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal(self, add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal):
         print("request_result_text : ", add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal.text)
-        status = "{\"added\":3}"
+        status = '{"added":3}'
         assert status in add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_containing_both_correctly_and_incorrectly_formatted_numbers_to_dnc_of_type_internal.text)
 
@@ -67,7 +67,7 @@ class Test_post_request_containing_a_correctly_formatted_number_and_a_comment_to
     @allure.step('test_check_answer_text_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns')
     def test_check_answer_text_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns(self, add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns):
         print("request_result_text : ", add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns.text)
 
@@ -90,7 +90,7 @@ class Test_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion
     @allure.step('test_check_answer_text_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion')
     def test_check_answer_text_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion(self, add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion):
         print("request_result_text : ", add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion.text)
-        status = "{\"added\":1}"
+        status = '{"added":1}'
         assert status in add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion.text)
 
@@ -113,7 +113,7 @@ class Test_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_
     @allure.step('test_check_answer_text_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text')
     def test_check_answer_text_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(self, add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text):
         print("request_result_text : ", add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
-        status = "{\"added\":1}"
+        status = '{"added":1}'
         assert status in add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_a_new_and_an_existing_records_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
 
@@ -135,7 +135,7 @@ class Test_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_
     @allure.step('test_check_answer_text_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text')
     def test_check_answer_text_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text(self, add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text):
         print("request_result_text : ", add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
 
@@ -157,7 +157,7 @@ class Test_post_request_add_2_records_containing_a_special_symbols_postal_code_t
     @allure.step('test_check_answer_text_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text')
     def test_check_answer_text_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text(self, add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text):
         print("request_result_text : ", add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_postal_code_to_a_dnc_of_type_geographic_and_free_text.text)
 
@@ -179,7 +179,7 @@ class Test_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic():
     @allure.step('test_check_answer_text_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic')
     def test_check_answer_text_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic(self, add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic):
         print("request_result_text : ", add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_nothing_for_1_record_for_a_dnc_of_type_geographic.text)
 
@@ -202,7 +202,7 @@ class Test_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geogr
     @allure.step('test_check_answer_text_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic')
     def test_check_answer_text_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic(self, add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic):
         print("request_result_text : ", add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic.text)
-        status = "{\"added\":1}"
+        status = '{"added":1}'
         assert status in add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_only_1_record_with_a_comment_for_a_dnc_of_type_geographic.text)
 
@@ -224,7 +224,7 @@ class Test_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of
     @allure.step('test_check_answer_text_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text')
     def test_check_answer_text_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text(self, add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text):
         print("request_result_text : ", add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text.text)
-        status = "{\"added\":2}"
+        status = '{"added":2}'
         assert status in add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_a_record_containing_a_valid_us_area_code_to_a_dnc_of_type_area_codes_and_free_text.text)
 
@@ -246,7 +246,7 @@ class Test_post_request_add_a_record_containing_an_incorrectly_formatted_us_area
     @allure.step('test_check_answer_text_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes')
     def test_check_answer_text_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes(self, add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes):
         print("request_result_text : ", add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes.text)
-        status = "{\"added\":3}"
+        status = '{"added":3}'
         assert status in add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes.text, "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_formatted_us_area_code_to_a_dnc_of_type_area_codes.text)
 
