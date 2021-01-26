@@ -43,7 +43,7 @@ class Test_post_request_with_a_duplicate_earlier_created_keys():
     @allure.step('test_check_answer_text_post_request_with_a_duplicate_earlier_created_keys')
     def test_check_answer_text_post_request_with_a_duplicate_earlier_created_keys(self, add_many_records_post_request_with_a_duplicate_earlier_created_keys):
         print("request_result_text : ", add_many_records_post_request_with_a_duplicate_earlier_created_keys.text)
-        status = '{"added":2,"error":{"duplicateKey":[{"last name":"Name_Last20","first name":"Name_First20","agent id":"Test20","phone2":"9200","date/time":"01-07-2025","caller id":"Test20","integer":"123211","phone1":"9019"}]}}'
+        status = '{"added":2,"error":{"duplicateKey":[{"last name":"Name_Last20","first name":"Name_First20","agent id":"Test20","phone2":"9200","date/time":"01/07/2025 12:00 AM","caller id":"Test20","integer":"123211","phone1":"9019"}]}}'
         assert status in str(
             add_many_records_post_request_with_a_duplicate_earlier_created_keys.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_duplicate_earlier_created_keys.text)
@@ -65,7 +65,7 @@ class Test_post_request_with_a_missing_required_field():
     @allure.step('test_check_answer_text_post_request_with_a_missing_required_field')
     def test_check_answer_text_post_request_with_a_missing_required_field(self, add_many_records_post_request_with_a_missing_required_field):
         print("request_result_text : ", add_many_records_post_request_with_a_missing_required_field.text)
-        status = '{"added":1,"error":{"missingRequired":[{"last name":"Name_Last21","first name":"Name_First21","agent id":"Test21","date/time":"01-07-2025","caller id":"Test21","integer":"123211","phone1":"9021"}],"missingKey":[{"last name":"Name_Last21_2","first name":"Name_First21_2","agent id":"Test21_2","phone2":"9212","date/time":"02-07-2025","caller id":"Test21_2","integer":"123212"}]}}'
+        status = '{"added":1,"error":{"missingKey":[{"last name":"Name_Last21","first name":"Name_First21","agent id":"Test21","date/time":"01/07/2025 12:00 AM","caller id":"Test21","integer":"123211","phone1":"9021"},{"last name":"Name_Last21_2","first name":"Name_First21_2","agent id":"Test21_2","phone2":"9212","date/time":"01/07/2025 12:00 AM","caller id":"Test21_2","integer":"123212"}]}}'
         assert status in add_many_records_post_request_with_a_missing_required_field.text, "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_missing_required_field.text)
 
@@ -151,7 +151,7 @@ class Test_post_request_with_an_incorrectly_date_time_number_in_a_date_time_fiel
     @allure.step('test_check_answer_text_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field')
     def test_check_answer_text_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field(self, add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field):
         print("request_result_text : ", add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text)
-        status = '{"added":2,"error":{"formatError":[{"last name":"Name_Last25","first name":"Name_First25","agent id":"Test25.1","phone2":"9250","date/time":"`~!@#$%^&*()_+ <>-[]{}|?/,.1","caller id":"10025","integer":"123251","phone1":"9025"}]}}'
+        status = '{"added":2,"error":{"formatError":[{"last name":"Name_Last25","first name":"Name_First25","agent id":"Test25.1","phone2":"9250","date/time":"`~!@#$%^&*()_+ <>-[\\]{}|?/,.1","caller id":"10025","integer":"123251","phone1":"9025"}]}}'
         assert status in str(
             add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text)
@@ -225,28 +225,6 @@ class Test_post_request_without_a_phone_field_not_required_field():
             add_many_records_post_request_without_a_phone_field_not_required_field.text)
 
 
-#@pytest.mark.usefixtures("add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field")
-#class Test_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field():
-#    @allure.epic("test_add_many_records")
-#    @allure.feature("answer code 200")
-#    @allure.step('test_check_status_code_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field')
-#    def test_check_status_code_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field(self, add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field):
-#        print("request_result_status_code : ", add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.status_code)
-#        assert "200" in str(
-#            add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.status_code), "Answer status not 200 ; actual status code : " + str(
-#            add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.status_code)
-
-#    @allure.epic("test_add_many_records")
-#    @allure.feature("answer code 200")
-#    @allure.step('test_check_answer_text_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field')
-#    def test_check_answer_text_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field(self, add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field):
-#        print("request_result_text : ", add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text)
-#        status = '{"added":2,"error":{"formatError":[{"last name":"Name_Last25","first name":"Name_First25","agent id":"Test25.1","phone2":"9250","date/time":"`~!@#$%^&*()_+ <>-[]{}|?/,.1","caller id":"10025","integer":"123251","phone1":"9025"}]}}'
-#        assert status in str(
-#            add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text), "Answer text not " + status + " ; actual message : " + str(
-#            add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text)
-
-
 @pytest.mark.usefixtures("add_many_records_post_request_without_a_phone_field_required_field")
 class Test_post_request_without_a_phone_field_required_field():
     @allure.epic("test_add_many_records")
@@ -263,7 +241,7 @@ class Test_post_request_without_a_phone_field_required_field():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_required_field')
     def test_check_answer_text_post_request_without_a_phone_field_required_field(self, add_many_records_post_request_without_a_phone_field_required_field):
         print("request_result_text : ", add_many_records_post_request_without_a_phone_field_required_field.text)
-        status = '{"added":2,"error":{"missingRequired":[{"last name":"Name_Last30_2","first name":"Name_First30_2","agent id":"Test30.2","date/time":"02-07-2030","caller id":"100302","integer":"123302","phone1":"90302"}]}}'
+        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last30_2","first name":"Name_First30_2","agent id":"Test30.2","date/time":"01/07/2025 12:00 AM","caller id":"100302","integer":"123302","phone1":"90302"}]}}'
         assert status in str(
             add_many_records_post_request_without_a_phone_field_required_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_without_a_phone_field_required_field.text)
@@ -285,7 +263,7 @@ class Test_post_request_without_a_phone_field_required_field_and_key():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_required_field_and_key')
     def test_check_answer_text_post_request_without_a_phone_field_required_field_and_key(self, add_many_records_post_request_without_a_phone_field_required_field_and_key):
         print("request_result_text : ", add_many_records_post_request_without_a_phone_field_required_field_and_key.text)
-        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last31_2","first name":"Name_First31_2","agent id":"Test31.2","phone2":"9312","date/time":"02-07-2031","caller id":"100312","integer":"123312"}]}}'
+        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last31_2","first name":"Name_First31_2","agent id":"Test31.2","phone2":"9312","date/time":"01/07/2025 12:00 AM","caller id":"100312","integer":"123312"}]}}'
         assert status in str(
             add_many_records_post_request_without_a_phone_field_required_field_and_key.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_without_a_phone_field_required_field_and_key.text)
@@ -307,7 +285,7 @@ class Test_post_request_without_a_phone_field_empty_value():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_empty_value')
     def test_check_answer_text_post_request_without_a_phone_field_empty_value(self, add_many_records_post_request_without_a_phone_field_empty_value):
         print("request_result_text : ", add_many_records_post_request_without_a_phone_field_empty_value.text)
-        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last32_2","first name":"Name_First32_2","agent id":"Test32.2","phone2":"9322","date/time":"02-07-2032","caller id":"100322","integer":"123322","phone1":""}]}}'
+        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last32_2","first name":"Name_First32_2","agent id":"Test32.2","phone2":"9322","date/time":"01/07/2025 12:00 AM","caller id":"100322","integer":"123322","phone1":""}]}}'
         assert status in str(
             add_many_records_post_request_without_a_phone_field_empty_value.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_without_a_phone_field_empty_value.text)
@@ -329,7 +307,7 @@ class Test_post_request_without_a_phone_field_space_in_a_key_field():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_space_in_a_key_field')
     def test_check_answer_text_post_request_without_a_phone_field_space_in_a_key_field(self, add_many_records_post_request_without_a_phone_field_space_in_a_key_field):
         print("request_result_text : ", add_many_records_post_request_without_a_phone_field_space_in_a_key_field.text)
-        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last33_2","first name":"Name_First33_2","agent id":"Test33.2","phone2":"9332","date/time":"02-07-2033","caller id":"100332","integer":"123332","phone1":" "}]}}'
+        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last33_2","first name":"Name_First33_2","agent id":"Test33.2","phone2":"9332","date/time":"01/07/2025 12:00 AM","caller id":"100332","integer":"123332","phone1":" "}]}}'
         assert status in str(
             add_many_records_post_request_without_a_phone_field_space_in_a_key_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_without_a_phone_field_space_in_a_key_field.text)
@@ -520,7 +498,7 @@ class Test_post_request_with_incorrectly_formatted_value_in_an_integer_field_all
     def test_check_answer_text_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec(self,
                                                                                   add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec):
         print("request_result_text : ", add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec.text)
-        status = 'For input string: "`Ñ~!@#$%^&*()_+ <>-[]{}|?/,.1"'
+        status = 'withot exception!!! For input string: "`Ñ~!@#$%^&*()_+ <>-[]\{}|?/,.1'
         assert status in str(
             add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec.text)

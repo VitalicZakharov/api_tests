@@ -254,7 +254,7 @@ def mariadb_campaign_paused(camp_id):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -276,7 +276,7 @@ def add_record_post_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_a_duplicate_earlier_created_keys(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -316,12 +316,12 @@ def add_record_post_request_with_empty_key_field_account(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_date_time_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "1239",
-        "Date/Time": "03A@!#$%^&*()-_:''<>\,.[]{}|/",
+        "Date/Time": "03A@!#$%^&*()-_:''<>\\,.[]{}|/",
         "Caller id": "Test9",
         "Agent id": "Test9",
         "First name": "Name_First9",
@@ -357,13 +357,13 @@ def add_record_post_request_with_incorrectly_formatted_phone_number_country(get_
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrectly_formatted_phone_number_in_a_caller_id_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi/v2/callinglist/add/List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi/v2/callinglist/add/List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
         "Integer": "1238",
         "Date/Time": "01/07/2025 12:00 AM",
-        "Caller id": "1!@#$%^&*()Ab-_{}[\]/|?,.''2",
+        "Caller id": "1!@#$%^&*()Ab-_{}[\\]/|?,.''2",
         "Agent id": "Test8",
         "First name": "Name_First8",
         "Last name": "Name_Last8",
@@ -396,7 +396,7 @@ def add_record_post_request_with_incorrectly_formatted_phone_number_in_a_phone_f
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_missing_req_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -417,7 +417,7 @@ def add_record_post_request_with_missing_req_field(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_non_existent_agent_username_in_an_agent_login_id_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -457,7 +457,7 @@ def add_record_post_request_with_space_in_the_key_field(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -479,7 +479,7 @@ def add_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(g
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrectly_formatted_value_in_an_integer_field(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -501,7 +501,7 @@ def add_record_post_request_with_incorrectly_formatted_value_in_an_integer_field
 
 @pytest.fixture(scope='class')
 def add_record_post_request_without_a_phone_field_req(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -522,7 +522,7 @@ def add_record_post_request_without_a_phone_field_req(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_without_a_phone_field_req_and_key(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -605,7 +605,7 @@ def add_record_post_request_with_empty_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_a_first_name_field_only(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -668,7 +668,7 @@ def add_record_post_request_with_a_redundant_field(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrect_body_format_deleted_quotes(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     request_body = bytes('{"First Name: Test6, Phone1: 1006"}', 'utf-8')
@@ -679,7 +679,7 @@ def add_record_post_request_with_incorrect_body_format_deleted_quotes(get_user_t
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrect_body_format_typization(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes("First Name: Test6, Phone1: 1006", 'utf-8')
     print("request_url : ", request_url)
@@ -689,7 +689,7 @@ def add_record_post_request_with_incorrect_body_format_typization(get_user_token
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_incorrect_body_format_a_redundant_comma_in_the_end(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     request_body = bytes('{"First Name": "Test6", "Phone1": "1006",}', 'utf-8')
     print("request_url : ", request_url)
@@ -709,7 +709,7 @@ def add_record_post_request_with_a_duplicate_key_field_in_the_body(get_user_toke
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_empty_first_name_and_phone(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -814,7 +814,7 @@ def add_record_post_request_for_corrupted_on_importing_list_all_fields_are_corre
 
 @pytest.fixture(scope='class')
 def add_record_get_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -836,7 +836,7 @@ def add_record_get_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_put_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -858,7 +858,7 @@ def add_record_put_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_delete_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -880,7 +880,7 @@ def add_record_delete_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_record_post_request_with_correct_but_different_datetime_format(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//add//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -931,7 +931,7 @@ def add_record_post_request_with_body_from_other_list(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_correct_body(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1_new.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = [
@@ -1046,7 +1046,7 @@ def add_many_records_post_request_with_a_missing_required_field(get_user_token):
     body = [
         {
             "Integer": "123211",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test21",
             "Agent id": "Test21",
             "First name": "Name_First21",
@@ -1055,7 +1055,7 @@ def add_many_records_post_request_with_a_missing_required_field(get_user_token):
         },
         {
             "Integer": "123212",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test21_2",
             "Agent id": "Test21_2",
             "First name": "Name_First21_2",
@@ -1064,7 +1064,7 @@ def add_many_records_post_request_with_a_missing_required_field(get_user_token):
         },
         {
             "Integer": "123213",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test21_3",
             "Agent id": "Test21_3",
             "First name": "Name_First21_3",
@@ -1087,7 +1087,7 @@ def add_many_records_post_request_with_a_non_existent_field_name(get_user_token)
     body = [
         {
             "Integer": "123221",
-            "Date/Time": "01-07-2022",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test22",
             "Agent id": "Test22",
             "First name": "Name_First22",
@@ -1098,7 +1098,7 @@ def add_many_records_post_request_with_a_non_existent_field_name(get_user_token)
         {
             "Unknown field": "test22",
             "Integer": "123222",
-            "Date/Time": "02-07-2022",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test22_2",
             "Agent id": "Test22_2",
             "First name": "Name_First22_2",
@@ -1108,7 +1108,7 @@ def add_many_records_post_request_with_a_non_existent_field_name(get_user_token)
         },
         {
             "Integer": "123223",
-            "Date/Time": "03-07-2022",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test22_3",
             "Agent id": "Test22_3",
             "First name": "Name_First22_3",
@@ -1132,7 +1132,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
     body = [
         {
             "Integer": "123231",
-            "Date/Time": "01-07-2023",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10023",
             "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.1",
             "First name": "Name_First23",
@@ -1142,7 +1142,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
         },
         {
             "Integer": "123232",
-            "Date/Time": "02-07-2023",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100232",
             "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.2",
             "First name": "Name_First23_2",
@@ -1152,7 +1152,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
         },
         {
             "Integer": "123233",
-            "Date/Time": "03-07-2023",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100233",
             "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.3",
             "First name": "Name_First23_3",
@@ -1176,7 +1176,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
     body = [
         {
             "Integer": "123241",
-            "Date/Time": "01-07-2024",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.1",
             "Agent id": "Test24.1",
             "First name": "Name_First24",
@@ -1186,7 +1186,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         },
         {
             "Integer": "123242",
-            "Date/Time": "02-07-2024",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.2",
             "Agent id": "Test24.2",
             "First name": "Name_First24_2",
@@ -1196,7 +1196,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         },
         {
             "Integer": "123243",
-            "Date/Time": "03-07-2024",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.3",
             "Agent id": "Test24.3",
             "First name": "Name_First24_3",
@@ -1220,7 +1220,7 @@ def add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date
     body = [
         {
             "Integer": "123251",
-            "Date/Time": "`~!@#$%^&*()_+ <>-[]{}|?/,.1",
+            "Date/Time": "`~!@#$%^&*()_+ <>-[\\]{}|?/,.1",
             "Caller id": "10025",
             "Agent id": "Test25.1",
             "First name": "Name_First25",
@@ -1230,7 +1230,7 @@ def add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date
         },
         {
             "Integer": "123252",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100252",
             "Agent id": "Test25.2",
             "First name": "Name_First25_2",
@@ -1240,7 +1240,7 @@ def add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date
         },
         {
             "Integer": "123253",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100253",
             "Agent id": "Test25.3",
             "First name": "Name_First25_3",
@@ -1264,7 +1264,7 @@ def add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_
     body = [
         {
             "Integer": "123261",
-            "Date/Time": "01-07-826",
+            "Date/Time": "01/07/1993 12:00 AM",
             "Caller id": "10026",
             "Agent id": "Test26.1",
             "First name": "Name_First26",
@@ -1274,7 +1274,7 @@ def add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_
         },
         {
             "Integer": "123262",
-            "Date/Time": "02-07-826",
+            "Date/Time": "01/07/1993 12:00 AM",
             "Caller id": "100262",
             "Agent id": "Test26.2",
             "First name": "Name_First26_2",
@@ -1284,7 +1284,7 @@ def add_many_records_post_request_with_a_date_time_field_set_to_a_moment_in_the_
         },
         {
             "Integer": "123263",
-            "Date/Time": "03-07-826",
+            "Date/Time": "01/07/1993 12:00 AM",
             "Caller id": "100263",
             "Agent id": "Test26.3",
             "First name": "Name_First26_3",
@@ -1307,8 +1307,8 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
     # Request body
     body = [
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.1",
-            "Date/Time": "01-07-2027",
+            "Integer": "`ф~!@#$%^&*()_+ <>-[]\\{}|?/,.1",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10027",
             "Agent id": "Test27.1",
             "First name": "Name_First27",
@@ -1317,8 +1317,8 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
             "Phone2": "9260"
         },
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.2",
-            "Date/Time": "02-07-2027",
+            "Integer": "`ф~!@#$%^&*()_+ <>-\\[]{}|?/,.2",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100272",
             "Agent id": "Test27.2",
             "First name": "Name_First27_2",
@@ -1327,8 +1327,8 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
             "Phone2": "9272"
         },
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.3",
-            "Date/Time": "03-07-2027",
+            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}\\|?/,.3",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100273",
             "Agent id": "Test27.3",
             "First name": "Name_First27_3",
@@ -1352,7 +1352,7 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
     body = [
         {
             "Integer": "123281",
-            "Date/Time": "01-07-2028",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10028",
             "Agent id": "Test28.1",
             "First name": "Name_First28",
@@ -1361,8 +1361,8 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
             "Phone2": "9280"
         },
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.2",
-            "Date/Time": "02-07-2028",
+            "Integer": "`ф~!@#$%^&*()_+ <>-[]\\{}|?/,.2",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100282",
             "Agent id": "Test28.2",
             "First name": "Name_First28_2",
@@ -1372,7 +1372,7 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
         },
         {
             "Integer": "123283",
-            "Date/Time": "03-07-2028",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100283",
             "Agent id": "Test28.3",
             "First name": "Name_First28_3",
@@ -1423,7 +1423,7 @@ def add_many_records_post_request_without_a_phone_field_required_field(get_user_
     body = [
         {
             "Integer": "123301",
-            "Date/Time": "01-07-2030",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10030",
             "Agent id": "Test30.1",
             "First name": "Name_First30",
@@ -1433,7 +1433,7 @@ def add_many_records_post_request_without_a_phone_field_required_field(get_user_
         },
         {
             "Integer": "123302",
-            "Date/Time": "02-07-2030",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100302",
             "Agent id": "Test30.2",
             "First name": "Name_First30_2",
@@ -1442,7 +1442,7 @@ def add_many_records_post_request_without_a_phone_field_required_field(get_user_
         },
         {
             "Integer": "123303",
-            "Date/Time": "03-07-2030",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100303",
             "Agent id": "Test30.3",
             "First name": "Name_First30_3",
@@ -1466,7 +1466,7 @@ def add_many_records_post_request_without_a_phone_field_required_field_and_key(g
     body = [
         {
             "Integer": "123301",
-            "Date/Time": "01-07-2031",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10031",
             "Agent id": "Test31.1",
             "First name": "Name_First31",
@@ -1476,7 +1476,7 @@ def add_many_records_post_request_without_a_phone_field_required_field_and_key(g
         },
         {
             "Integer": "123312",
-            "Date/Time": "02-07-2031",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100312",
             "Agent id": "Test31.2",
             "First name": "Name_First31_2",
@@ -1486,7 +1486,7 @@ def add_many_records_post_request_without_a_phone_field_required_field_and_key(g
         },
         {
             "Integer": "123313",
-            "Date/Time": "03-07-2031",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100313",
             "Agent id": "Test31.3",
             "First name": "Name_First31_3",
@@ -1510,7 +1510,7 @@ def add_many_records_post_request_without_a_phone_field_empty_value(get_user_tok
     body = [
         {
             "Integer": "123321",
-            "Date/Time": "01-07-2032",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10032",
             "Agent id": "Test32.1",
             "First name": "Name_First32",
@@ -1520,7 +1520,7 @@ def add_many_records_post_request_without_a_phone_field_empty_value(get_user_tok
         },
         {
             "Integer": "123322",
-            "Date/Time": "02-07-2032",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100322",
             "Agent id": "Test32.2",
             "First name": "Name_First32_2",
@@ -1531,7 +1531,7 @@ def add_many_records_post_request_without_a_phone_field_empty_value(get_user_tok
         },
         {
             "Integer": "123323",
-            "Date/Time": "03-07-2032",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100323",
             "Agent id": "Test32.3",
             "First name": "Name_First32_3",
@@ -1555,7 +1555,7 @@ def add_many_records_post_request_without_a_phone_field_space_in_a_key_field(get
     body = [
         {
             "Integer": "123331",
-            "Date/Time": "01-07-2033",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10033",
             "Agent id": "Test33.1",
             "First name": "Name_First33",
@@ -1565,7 +1565,7 @@ def add_many_records_post_request_without_a_phone_field_space_in_a_key_field(get
         },
         {
             "Integer": "123332",
-            "Date/Time": "02-07-2033",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100332",
             "Agent id": "Test33.2",
             "First name": "Name_First33_2",
@@ -1576,7 +1576,7 @@ def add_many_records_post_request_without_a_phone_field_space_in_a_key_field(get
         },
         {
             "Integer": "123333",
-            "Date/Time": "03-07-2033",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100333",
             "Agent id": "Test33.3",
             "First name": "Name_First33_3",
@@ -1615,7 +1615,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
             "Agent id": "Test34.2",
             "First name": "Name_First34_2",
             "Last name": "Name_Last34_2",
-            "Phone1": "`ф~!@#$%^&*()_+ <>-[]{}|?/,.",
+            "Phone1": "`ф~!@#$%^&*()_+ <>\\-[]{}|?/,.",
             "Phone2": "9342"
 
         },
@@ -1677,7 +1677,7 @@ def add_many_records_post_request_with_do_not_authorize_session():
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -1687,7 +1687,7 @@ def add_many_records_post_request_with_do_not_authorize_session():
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -1697,7 +1697,7 @@ def add_many_records_post_request_with_do_not_authorize_session():
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
@@ -1721,7 +1721,7 @@ def add_many_records_post_request_with_authorize_session_for_user_without_permis
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -1731,7 +1731,7 @@ def add_many_records_post_request_with_authorize_session_for_user_without_permis
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -1741,7 +1741,7 @@ def add_many_records_post_request_with_authorize_session_for_user_without_permis
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
@@ -1861,7 +1861,7 @@ def add_many_records_get_request_with_correct_body(get_user_token):
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -1871,7 +1871,7 @@ def add_many_records_get_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -1881,7 +1881,7 @@ def add_many_records_get_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
@@ -1905,7 +1905,7 @@ def add_many_records_put_request_with_correct_body(get_user_token):
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -1915,7 +1915,7 @@ def add_many_records_put_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -1925,7 +1925,7 @@ def add_many_records_put_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
@@ -1949,7 +1949,7 @@ def add_many_records_delete_request_with_correct_body(get_user_token):
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -1959,7 +1959,7 @@ def add_many_records_delete_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -1969,7 +1969,7 @@ def add_many_records_delete_request_with_correct_body(get_user_token):
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
@@ -2631,7 +2631,7 @@ def update_record_post_request_with_existent_record_key(get_user_token):
     # Request body
     body = {
         "Integer": "36",
-        "Date/Time": "01-01-2036",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "36",
         "Agent id": "agent.id36",
         "First name": "Name_F36",
@@ -2653,7 +2653,7 @@ def update_record_post_request_with_a_non_existent_record_key(get_user_token):
     # Request body
     body = {
         "Integer": "37",
-        "Date/Time": "02-02-2037",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "37",
         "Agent id": "agent.id37",
         "First name": "Name_F37",
@@ -2675,7 +2675,7 @@ def update_record_post_request_with_an_incorrect_integer_value(get_user_token):
     # Request body
     body = {
         "Integer": "abc",
-        "Date/Time": "02-02-2038",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "38",
         "Agent id": "38",
         "First name": "Name_F38",
@@ -2719,7 +2719,7 @@ def update_record_post_request_with_an_incorrect_caller_id(get_user_token):
     # Request body
     body = {
         "Integer": "40",
-        "Date/Time": "02-02-2040",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "`~!@#$%^&*()_+[]{}|\\?/,.",
         "Agent id": "agent.id40",
         "First name": "Name_F40",
@@ -2741,7 +2741,7 @@ def update_record_post_request_with_an_incorrect_agent_id(get_user_token):
     # Request body
     body = {
         "Integer": "41",
-        "Date/Time": "02-02-2041",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "41",
         "Agent id": "`~!@#$%^&*()_+[]{}|\\?/,.",
         "First name": "Name_F41",
@@ -2763,7 +2763,7 @@ def update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_pas
     # Request body
     body = {
         "Integer": "42",
-        "Date/Time": "02-02-842",
+        "Date/Time": "01/07/1993 12:00 AM",
         "Caller id": "42",
         "Agent id": "agent.id42",
         "First name": "Name_F42",
@@ -2785,7 +2785,7 @@ def update_record_post_request_without_a_phone_field_required_field(get_user_tok
     # Request body
     body = {
         "Integer": "43",
-        "Date/Time": "02-02-2043",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "43",
         "Agent id": "agent.id43",
         "First name": "Name_F43",
@@ -2806,7 +2806,7 @@ def update_record_post_request_without_a_phone_field_required_field_and_key(get_
     # Request body
     body = {
         "Integer": "44",
-        "Date/Time": "02-02-2044",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "44",
         "Agent id": "agent.id44",
         "First name": "Name_F44",
@@ -2827,7 +2827,7 @@ def update_record_post_request_without_a_phone_field_empty_value(get_user_token)
     # Request body
     body = {
         "Integer": "45",
-        "Date/Time": "02-02-2045",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "45",
         "Agent id": "agent.id45",
         "First name": "Name_F45",
@@ -2849,7 +2849,7 @@ def update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_fie
     # Request body
     body = {
         "Integer": "46",
-        "Date/Time": "02-02-2046",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "46",
         "Agent id": "agent.id46",
         "First name": "Name_F46",
@@ -2890,7 +2890,7 @@ def update_record_post_request_with_a_non_existent_field_name(get_user_token):
     body = {
         "unknown": "un48",
         "Integer": "48",
-        "Date/Time": "02-02-2048",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "48",
         "Agent id": "agent.id48",
         "First name": "Name_F48",
@@ -2912,7 +2912,7 @@ def update_record_post_request_with_do_not_authorize_session():
     # Request body
     body = {
         "Integer": "36",
-        "Date/Time": "01-01-2036",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "36",
         "Agent id": "agent.id36",
         "First name": "Name_F36",
@@ -2934,7 +2934,7 @@ def update_record_post_request_with_authorize_session_for_user_without_permissio
     # Request body
     body = {
         "Integer": "36",
-        "Date/Time": "01-01-2036",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "36",
         "Agent id": "agent.id36",
         "First name": "Name_F36",
@@ -4236,7 +4236,7 @@ def query_a_record_post_request_with_an_existent_campaign_for_non_completed_reco
     body = {
         "unknown": "un49",
         "Integer": "49",
-        "Date/Time": "02-02-2049",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "49",
         "Agent id": "agent.id49",
         "First name": "Name_First0",
@@ -4281,7 +4281,7 @@ def query_a_record_post_request_with_a_non_existent_campaign(get_user_token):
     body = {
         "unknown": "un51",
         "Integer": "51",
-        "Date/Time": "02-02-2051",
+        "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "51",
         "Agent id": "agent.id51",
         "First name": "Name_F51",

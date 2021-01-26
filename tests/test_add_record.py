@@ -173,7 +173,7 @@ class Test_post_request_with_a_duplicate_earlier_created_keys():
     def test_check_answer_text_request_with_a_duplicate_earlier_created_keys(self,
                                                                              add_record_post_request_with_a_duplicate_earlier_created_keys):
         print("request_result_text : ", add_record_post_request_with_a_duplicate_earlier_created_keys.text)
-        status = 'E11000 duplicate key error collection: servicepattern.callingListe14fc92a1d264625a93f281e6135fbe4 index: f6_1_f7_1 dup key: { : "9003", : "900" }'
+        status = 'E11000 duplicate key error collection: servicepattern.callingList3d8261a098314352985e6ef72a83c193 index: f6_1_f7_1 dup key: { : "9003", : "900" }'
         assert status in str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text)
@@ -666,7 +666,7 @@ class Test_post_request_for_corrupted_on_importing_list_all_fields_are_correct()
     def test_check_answer_text_post_request_for_corrupted_on_importing_list_all_fields_are_correct(self,
                                                                                                    add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct):
         print("request_result_text : ", add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)
-        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy hh:mm a'"
+        status = "Error parsing datetime value, please enter date in the correct format 'MM/dd/yyyy HH:mm a'"
         assert status in str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_for_corrupted_on_importing_list_all_fields_are_correct.text)

@@ -596,7 +596,7 @@ class Test_post_request_with_body_from_other_list():
     @allure.step('test_check_answer_text_post_request_with_body_from_other_list')
     def test_check_answer_text_post_request_with_body_from_other_list(self, update_record_post_request_with_body_from_other_list):
         print("request_result_text : ", update_record_post_request_with_body_from_other_list.text)
-        status = "missing key: phone1"
+        status = "missing key: phone2, phone1"
         assert status in str(
             update_record_post_request_with_body_from_other_list.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_body_from_other_list.text)
