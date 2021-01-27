@@ -90,7 +90,8 @@ class Test_post_request_without_a_last_name_parameter():
     @allure.step('test_check_answer_text_post_request_without_a_last_name_parameter')
     def test_check_answer_text_post_request_without_a_last_name_parameter(self, query_a_record_post_request_without_a_last_name_parameter):
         print("request_result_text : ", query_a_record_post_request_without_a_last_name_parameter.text)
-        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
+#        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
+        status = '{"entry":{"last name":"Updatelistrequest","first name":"Test1","phone":"+1001","date/time":"","integer":"789"}}'
         assert status in str(
             query_a_record_post_request_without_a_last_name_parameter.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_without_a_last_name_parameter.text)
@@ -112,7 +113,8 @@ class Test_post_request_with_a_redundant_field():
     @allure.step('test_check_answer_text_post_request_with_a_redundant_field')
     def test_check_answer_text_post_request_with_a_redundant_field(self, query_a_record_post_request_with_a_redundant_field):
         print("request_result_text : ", query_a_record_post_request_with_a_redundant_field.text)
-        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
+#        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
+        status = '{"entry":{"last name":"Updatelistrequest","first name":"Test1","phone":"+1001","date/time":"","integer":"789"}}'
         assert status in str(
             query_a_record_post_request_with_a_redundant_field.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_a_redundant_field.text)
@@ -134,7 +136,8 @@ class Test_post_request_with_with_incorrectly_formatted_value_in_an_integer_fiel
     @allure.step('test_check_answer_text_post_request_with_with_incorrectly_formatted_value_in_an_integer_field')
     def test_check_answer_text_post_request_with_with_incorrectly_formatted_value_in_an_integer_field(self, query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field):
         print("request_result_text : ", query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field.text)
-        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
+#        status = '{"entry":{"last name":"User1","first name":"Test1","phone":"1001","date/time":"","integer":""}}'
+        status = '{"entry":{"last name":"Updatelistrequest","first name":"Test1","phone":"+1001","date/time":"","integer":"789"}}'
         assert status in str(
             query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_with_incorrectly_formatted_value_in_an_integer_field.text)

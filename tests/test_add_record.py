@@ -173,7 +173,7 @@ class Test_post_request_with_a_duplicate_earlier_created_keys():
     def test_check_answer_text_request_with_a_duplicate_earlier_created_keys(self,
                                                                              add_record_post_request_with_a_duplicate_earlier_created_keys):
         print("request_result_text : ", add_record_post_request_with_a_duplicate_earlier_created_keys.text)
-        status = 'E11000 duplicate key error collection: servicepattern.callingList3d8261a098314352985e6ef72a83c193 index: f6_1_f7_1 dup key: { : "9003", : "900" }'
+        status = 'E11000 duplicate key error collection: servicepattern.callingListeb3e7794085649949a502eed642b7d34 index: f6_1 dup key: { : "9003" }'
         assert status in str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text)
@@ -303,7 +303,7 @@ class Test_post_request_with_missing_req_field():
     @allure.step('test_check_answer_text_post_request_with_missing_req_field')
     def test_check_answer_text_post_request_with_missing_req_field(self, add_record_post_request_with_missing_req_field):
         print("request_result_text : ", add_record_post_request_with_missing_req_field.text)
-        status = "missing key: phone2"
+        status = "missing required field: phone2"
         assert status in str(
             add_record_post_request_with_missing_req_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_missing_req_field.text)
@@ -372,7 +372,7 @@ class Test_post_request_without_a_phone_field_req():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_req')
     def test_check_answer_text_post_request_without_a_phone_field_req(self, add_record_post_request_without_a_phone_field_req):
         print("request_result_text : ", add_record_post_request_without_a_phone_field_req.text)
-        status = "missing key: phone2"
+        status = "missing key: phone1"
         assert status in str(
             add_record_post_request_without_a_phone_field_req.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_without_a_phone_field_req.text)

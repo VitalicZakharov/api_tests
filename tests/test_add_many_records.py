@@ -65,7 +65,7 @@ class Test_post_request_with_a_missing_required_field():
     @allure.step('test_check_answer_text_post_request_with_a_missing_required_field')
     def test_check_answer_text_post_request_with_a_missing_required_field(self, add_many_records_post_request_with_a_missing_required_field):
         print("request_result_text : ", add_many_records_post_request_with_a_missing_required_field.text)
-        status = '{"added":1,"error":{"missingKey":[{"last name":"Name_Last21","first name":"Name_First21","agent id":"Test21","date/time":"01/07/2025 12:00 AM","caller id":"Test21","integer":"123211","phone1":"9021"},{"last name":"Name_Last21_2","first name":"Name_First21_2","agent id":"Test21_2","phone2":"9212","date/time":"01/07/2025 12:00 AM","caller id":"Test21_2","integer":"123212"}]}}'
+        status = '{"added":1,"error":{"missingRequired":[{"last name":"Name_Last21","first name":"Name_First21","agent id":"Test21","date/time":"01/07/2025 12:00 AM","caller id":"Test21","integer":"123211","phone1":"9021"}],"missingKey":[{"last name":"Name_Last21_2","first name":"Name_First21_2","agent id":"Test21_2","phone2":"9212","date/time":"01/07/2025 12:00 AM","caller id":"Test21_2","integer":"123212"}]}}'
         assert status in add_many_records_post_request_with_a_missing_required_field.text, "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_missing_required_field.text)
 
@@ -151,7 +151,8 @@ class Test_post_request_with_an_incorrectly_date_time_number_in_a_date_time_fiel
     @allure.step('test_check_answer_text_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field')
     def test_check_answer_text_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field(self, add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field):
         print("request_result_text : ", add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text)
-        status = '{"added":2,"error":{"formatError":[{"last name":"Name_Last25","first name":"Name_First25","agent id":"Test25.1","phone2":"9250","date/time":"`~!@#$%^&*()_+ <>-[\\]{}|?/,.1","caller id":"10025","integer":"123251","phone1":"9025"}]}}'
+        status = '{"added":2,"error":{"formatError":[{"last name":"Name_Last25","first name":"Name_First25","agent id":"Test25.1","phone2":"9250","date/time":"`~!@#$%^&*()_+ <>-[]{}|?/,.1","caller id":"10025","integer":"123251","phone1":"9025"}]}}'
+#        status = '{"added":2,"error":{"formatError":[{"last name":"Name_Last25","first name":"Name_First25","agent id":"Test25.1","phone2":"9250","date/time":"`~!@#$%^&*()_+ <>-[]{}|?\\/,.1","caller id":"10025","integer":"123251","phone1":"9025"}]}}'
         assert status in str(
             add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date_time_field.text)
@@ -241,7 +242,7 @@ class Test_post_request_without_a_phone_field_required_field():
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_required_field')
     def test_check_answer_text_post_request_without_a_phone_field_required_field(self, add_many_records_post_request_without_a_phone_field_required_field):
         print("request_result_text : ", add_many_records_post_request_without_a_phone_field_required_field.text)
-        status = '{"added":2,"error":{"missingKey":[{"last name":"Name_Last30_2","first name":"Name_First30_2","agent id":"Test30.2","date/time":"01/07/2025 12:00 AM","caller id":"100302","integer":"123302","phone1":"90302"}]}}'
+        status = '{"added":2,"error":{"missingRequired":[{"last name":"Name_Last30_2","first name":"Name_First30_2","agent id":"Test30.2","date/time":"01/07/2025 12:00 AM","caller id":"100302","integer":"123302","phone1":"90302"}]}}'
         assert status in str(
             add_many_records_post_request_without_a_phone_field_required_field.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_without_a_phone_field_required_field.text)

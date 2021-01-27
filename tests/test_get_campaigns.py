@@ -22,7 +22,7 @@ class Test_get_request_to_get_campaigns_info():
     @allure.step('test_check_answer_text_get_request_to_get_campaigns_info')
     def test_check_answer_text_get_request_to_get_campaigns_info(self, get_campaigns_get_request_to_get_campaigns_info):
         print("request_result_text : ", get_campaigns_get_request_to_get_campaigns_info.text)
-        status = '[{"name":"Camp","state":"STOPPED","lists":["List_9_3x.txt"]},{"name":"Camp_1","state":"STOPPED","lists":["List_1.txt","List_1000.csv","List_2.txt","List_Completed.txt","List_Delete1.txt","List_Delete2.txt"]},{"name":"Camp_2","state":"STOPPED","lists":[]}]'
+        status = '[{"name":"Camp","state":"STOPPED","lists":["List_9_3x.txt"]},{"name":"Camp_1","state":"RUNNING","lists":["List_1.txt","List_1000.csv","List_2.txt","List_Completed.txt","List_Delete1.txt","List_Delete2.txt"]},{"name":"Camp_2","state":"RUNNING","lists":[]}]'
         assert status in str(
             get_campaigns_get_request_to_get_campaigns_info.text), "Answer text not " + status + " ; actual message : " + str(
             get_campaigns_get_request_to_get_campaigns_info.text)
@@ -66,7 +66,7 @@ class Test_get_request_started_predictive_campaign():
     @allure.step('test_check_answer_text_get_request_started_predictive_campaign')
     def test_check_answer_text_get_request_started_predictive_campaign(self, get_campaigns_get_request_started_predictive_campaign):
         print("request_result_text : ", get_campaigns_get_request_started_predictive_campaign.text)
-        status = '[{"name":"Camp","state":"STOPPED","lists":["List_9_3x.txt"]},{"name":"Camp_1","state":"RUNNING","lists":["List_1.txt","List_1000.csv","List_2.txt","List_Completed.txt","List_Delete1.txt","List_Delete2.txt"]},{"name":"Camp_2","state":"STOPPED","lists":[]}]'
+        status = '[{"name":"Camp","state":"STOPPED","lists":["List_9_3x.txt"]},{"name":"Camp_1","state":"RUNNING","lists":["List_1.txt","List_1000.csv","List_2.txt","List_Completed.txt","List_Delete1.txt","List_Delete2.txt"]},{"name":"Camp_2","state":"RUNNING","lists":[]}]'
         assert status in str(
             get_campaigns_get_request_started_predictive_campaign.text), "Answer text not " + status + " ; actual message : " + str(
             get_campaigns_get_request_started_predictive_campaign.text)

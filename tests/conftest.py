@@ -264,7 +264,7 @@ def add_record_post_request_with_correct_body(get_user_token):
         "Agent id": "Test3",
         "First name": "Name_First3",
         "Last name": "Name_Last3",
-        "Phone1": "9003",
+        "Phone1": "9013",
         "Phone2": "9010"
     }
     # Convert body request to json
@@ -321,7 +321,7 @@ def add_record_post_request_with_incorrectly_formatted_date_time_number_in_a_dat
     # Request body
     body = {
         "Integer": "1239",
-        "Date/Time": "03A@!#$%^&*()-_:''<>\\,.[]{}|/",
+        "Date/Time": "03A@!#$%^&*()-_:''<>\,.[]{}|/",
         "Caller id": "Test9",
         "Agent id": "Test9",
         "First name": "Name_First9",
@@ -363,7 +363,7 @@ def add_record_post_request_with_incorrectly_formatted_phone_number_in_a_caller_
     body = {
         "Integer": "1238",
         "Date/Time": "01/07/2025 12:00 AM",
-        "Caller id": "1!@#$%^&*()Ab-_{}[\\]/|?,.''2",
+        "Caller id": "1!@#$%^&*()Ab-_{}[\]/|?,.''2",
         "Agent id": "Test8",
         "First name": "Name_First8",
         "Last name": "Name_Last8",
@@ -511,7 +511,7 @@ def add_record_post_request_without_a_phone_field_req(get_user_token):
         "Agent id": "Test12",
         "First name": "Name_First12",
         "Last name": "Name_Last12",
-        "Phone1": "9012"
+        "Phone2": "9012"
     }
     # Convert body request to json
     request_body = json.dumps(body)
@@ -936,13 +936,13 @@ def add_many_records_post_request_with_correct_body(get_user_token):
     # Request body
     body = [
         {
-            "Integer": "123171",
+            "Integer": "123174",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
             "Last name": "Name_Last19",
-            "Phone1": "9019",
+            "Phone1": "90194",
             "Phone2": "9190"
         },
         {
@@ -1134,7 +1134,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
             "Integer": "123231",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10023",
-            "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.1",
+            "Agent id": "`~!@#$%^&*()_+ []{}|\?/,.1",
             "First name": "Name_First23",
             "Last name": "Name_Last23",
             "Phone1": "9023",
@@ -1144,7 +1144,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
             "Integer": "123232",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100232",
-            "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.2",
+            "Agent id": "`~!@#$%^&*()_+ []{}|\?/,.2",
             "First name": "Name_First23_2",
             "Last name": "Name_Last23_2",
             "Phone1": "90232",
@@ -1154,7 +1154,7 @@ def add_many_records_post_request_with_non_existent_agent_username_in_an_agent_l
             "Integer": "123233",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100233",
-            "Agent id": "`~!@#$%^&*()_+ []{}|\\?/,.3",
+            "Agent id": "`~!@#$%^&*()_+ []{}|\?/,.3",
             "First name": "Name_First23_3",
             "Last name": "Name_Last23_3",
             "Phone1": "90233",
@@ -1177,7 +1177,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         {
             "Integer": "123241",
             "Date/Time": "01/07/2025 12:00 AM",
-            "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.1",
+            "Caller id": "`a~!@#$%^&*()_+ []{}|\?/,.1",
             "Agent id": "Test24.1",
             "First name": "Name_First24",
             "Last name": "Name_Last24",
@@ -1187,7 +1187,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         {
             "Integer": "123242",
             "Date/Time": "01/07/2025 12:00 AM",
-            "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.2",
+            "Caller id": "`a~!@#$%^&*()_+ []{}|\?/,.2",
             "Agent id": "Test24.2",
             "First name": "Name_First24_2",
             "Last name": "Name_Last24_2",
@@ -1197,7 +1197,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
         {
             "Integer": "123243",
             "Date/Time": "01/07/2025 12:00 AM",
-            "Caller id": "`a~!@#$%^&*()_+ []{}|\\?/,.3",
+            "Caller id": "`a~!@#$%^&*()_+ []{}|\?/,.3",
             "Agent id": "Test24.3",
             "First name": "Name_First24_3",
             "Last name": "Name_Last24_3",
@@ -1220,7 +1220,8 @@ def add_many_records_post_request_with_an_incorrectly_date_time_number_in_a_date
     body = [
         {
             "Integer": "123251",
-            "Date/Time": "`~!@#$%^&*()_+ <>-[\\]{}|?/,.1",
+            "Date/Time": "`~!@#$%^&*()_+ <>-[]{}|?/,.1",
+#            "Date/Time": "`~!@#$%^&*()_+ <>-[]{}|?\/,.1",
             "Caller id": "10025",
             "Agent id": "Test25.1",
             "First name": "Name_First25",
@@ -1307,7 +1308,7 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
     # Request body
     body = [
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]\\{}|?/,.1",
+            "Integer": "`ф~!@#$%^&*()_+ <>-[]\{}|?/,.1",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "10027",
             "Agent id": "Test27.1",
@@ -1317,7 +1318,7 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
             "Phone2": "9260"
         },
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-\\[]{}|?/,.2",
+            "Integer": "`ф~!@#$%^&*()_+ <>-\[]{}|?/,.2",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100272",
             "Agent id": "Test27.2",
@@ -1327,7 +1328,7 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
             "Phone2": "9272"
         },
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}\\|?/,.3",
+            "Integer": "`ф~!@#$%^&*()_+ <>-[]{}\|?/,.3",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100273",
             "Agent id": "Test27.3",
@@ -1361,7 +1362,7 @@ def add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer
             "Phone2": "9280"
         },
         {
-            "Integer": "`ф~!@#$%^&*()_+ <>-[]\\{}|?/,.2",
+            "Integer": "`ф~!@#$%^&*()_+ <>-[]\{}|?/,.2",
             "Date/Time": "01/07/2025 12:00 AM",
             "Caller id": "100282",
             "Agent id": "Test28.2",
@@ -1615,7 +1616,7 @@ def add_many_records_post_request_with_an_incorrectly_formatted_phone_number_in_
             "Agent id": "Test34.2",
             "First name": "Name_First34_2",
             "Last name": "Name_Last34_2",
-            "Phone1": "`ф~!@#$%^&*()_+ <>\\-[]{}|?/,.",
+            "Phone1": "`ф~!@#$%^&*()_+ <>\-[]{}|?/,.",
             "Phone2": "9342"
 
         },
@@ -1987,7 +1988,7 @@ def add_many_records_delete_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_body_from_other_list(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_TCTR.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = [
@@ -2100,11 +2101,11 @@ def add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2196,12 +2197,12 @@ def add_records_to_dnc_post_request_add_2_records_containing_a_special_symbols_p
     # Request body
     body = [
         [
-            "Comment1 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
-            "Comment11 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment1 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Comment11 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
-            "Comment2 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
-            "Comment22 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment2 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Comment22 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2289,8 +2290,8 @@ def add_records_to_dnc_post_request_add_a_record_containing_an_incorrectly_forma
             "Two"
         ],
         [
-            "T 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
-            "Three 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "T 3 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Three 3 !@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2308,11 +2309,11 @@ def add_records_to_dnc_post_request_with_do_not_authorize_session():
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2330,11 +2331,11 @@ def add_records_to_dnc_post_request_with_authorize_session_for_user_without_perm
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2362,11 +2363,11 @@ def add_records_to_dnc_get_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2384,11 +2385,11 @@ def add_records_to_dnc_put_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2406,11 +2407,11 @@ def add_records_to_dnc_delete_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -2697,7 +2698,7 @@ def update_record_post_request_with_an_incorrect_date_time_value(get_user_token)
     # Request body
     body = {
         "Integer": "39",
-        "Date/Time": "`~!@#$%^&*()_+[]{}|\\?/,.",
+        "Date/Time": "`~!@#$%^&*()_+[]{}|\?/,.",
         "Caller id": "39",
         "Agent id": "agent.id39",
         "First name": "Name_F39",
@@ -2720,7 +2721,7 @@ def update_record_post_request_with_an_incorrect_caller_id(get_user_token):
     body = {
         "Integer": "40",
         "Date/Time": "01/07/2025 12:00 AM",
-        "Caller id": "`~!@#$%^&*()_+[]{}|\\?/,.",
+        "Caller id": "`~!@#$%^&*()_+[]{}|\?/,.",
         "Agent id": "agent.id40",
         "First name": "Name_F40",
         "Last name": "Name_L40",
@@ -2743,7 +2744,7 @@ def update_record_post_request_with_an_incorrect_agent_id(get_user_token):
         "Integer": "41",
         "Date/Time": "01/07/2025 12:00 AM",
         "Caller id": "41",
-        "Agent id": "`~!@#$%^&*()_+[]{}|\\?/,.",
+        "Agent id": "`~!@#$%^&*()_+[]{}|\?/,.",
         "First name": "Name_F41",
         "Last name": "Name_L41",
         "Phone1": "7000",
@@ -2855,7 +2856,7 @@ def update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_fie
         "First name": "Name_F46",
         "Last name": "Name_L46",
         "Phone1": "7000",
-        "Phone2": "`~!@#$%^&*()_+[]{}|\\?/,."
+        "Phone2": "`~!@#$%^&*()_+[]{}|\?/,."
     }
     # Convert body request to json
     request_body = json.dumps(body)
@@ -4275,7 +4276,7 @@ def query_a_record_post_request_with_an_existent_campaign_for_completed_record(g
 
 @pytest.fixture(scope='class')
 def query_a_record_post_request_with_a_non_existent_campaign(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//get//List_1.txt//non_existent_campaign"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//get//List_Completed.txt//non_existent_campaign"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
@@ -4795,11 +4796,11 @@ def replace_records_in_dnc_post_request_containing_a_correctly_formatted_number_
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -4891,12 +4892,12 @@ def replace_records_in_dnc_post_request_add_2_records_containing_a_special_symbo
     # Request body
     body = [
         [
-            "Comment1 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
-            "Comment11 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment1 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Comment11 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
-            "Comment2 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
-            "Comment22 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment2 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Comment22 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -4984,8 +4985,8 @@ def replace_records_in_dnc_post_request_add_a_record_containing_an_incorrectly_f
             "Two"
         ],
         [
-            "T 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`",
-            "Three 3 !@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "T 3 !@#$%^&*()_+=-[]{}\|,.<>?/`",
+            "Three 3 !@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5003,11 +5004,11 @@ def replace_records_in_dnc_post_request_with_do_not_authorize_session():
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5025,11 +5026,11 @@ def replace_records_in_dnc_post_request_with_authorize_session_for_user_without_
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5057,11 +5058,11 @@ def replace_records_in_dnc_get_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5079,11 +5080,11 @@ def replace_records_in_dnc_put_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json
@@ -5101,11 +5102,11 @@ def replace_records_in_dnc_delete_request_with_correct_body(get_user_token):
     body = [
         [
             "9007",
-            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9007 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ],
         [
             "9008",
-            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\\|,.<>?/`"
+            "Comment for 9008 ~!@#$%^&*()_+=-[]{}\|,.<>?/`"
         ]
     ]
     # Convert body request to json

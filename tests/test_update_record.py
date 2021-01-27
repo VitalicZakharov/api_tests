@@ -83,7 +83,7 @@ class Test_post_request_with_a_date_time_field_set_to_a_moment_in_the_past():
     @allure.epic("test_update_record")
     @allure.feature("answer code 200")
     @allure.step('test_check_answer_text_post_request_with_a_date_time_field_set_to_a_moment_in_the_past')
-    def test_check_answer_text_post_request_with_an_incorrect_caller_id(self, update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past):
+    def test_check_answer_text_post_request_with_a_date_time_field_set_to_a_moment_in_the_past(self, update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past):
         print("request_result_text : ", update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past.text)
         assert len(str(
             update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_past.text)) == 0, "Answer text not empty ; actual message : " + str(
@@ -104,7 +104,7 @@ class Test_post_request_without_a_phone_field_required_field():
     @allure.epic("test_update_record")
     @allure.feature("answer code 200")
     @allure.step('test_check_answer_text_post_request_without_a_phone_field_required_field')
-    def test_check_answer_text_post_request_with_an_incorrect_caller_id(self, update_record_post_request_without_a_phone_field_required_field):
+    def test_check_answer_text_post_request_without_a_phone_field_required_field(self, update_record_post_request_without_a_phone_field_required_field):
         print("request_result_text : ", update_record_post_request_without_a_phone_field_required_field.text)
         assert len(str(
             update_record_post_request_without_a_phone_field_required_field.text)) == 0, "Answer text not empty ; actual message : " + str(
@@ -596,7 +596,7 @@ class Test_post_request_with_body_from_other_list():
     @allure.step('test_check_answer_text_post_request_with_body_from_other_list')
     def test_check_answer_text_post_request_with_body_from_other_list(self, update_record_post_request_with_body_from_other_list):
         print("request_result_text : ", update_record_post_request_with_body_from_other_list.text)
-        status = "missing key: phone2, phone1"
+        status = "missing key: phone1"
         assert status in str(
             update_record_post_request_with_body_from_other_list.text), "Answer text not " + status + " ; actual message : " + str(
             update_record_post_request_with_body_from_other_list.text)
