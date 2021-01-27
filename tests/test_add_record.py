@@ -173,7 +173,7 @@ class Test_post_request_with_a_duplicate_earlier_created_keys():
     def test_check_answer_text_request_with_a_duplicate_earlier_created_keys(self,
                                                                              add_record_post_request_with_a_duplicate_earlier_created_keys):
         print("request_result_text : ", add_record_post_request_with_a_duplicate_earlier_created_keys.text)
-        status = 'E11000 duplicate key error collection: servicepattern.callingListeb3e7794085649949a502eed642b7d34 index: f6_1 dup key: { : "9003" }'
+        status = 'E11000 duplicate key error collection: servicepattern.callingList25497fbc1dcd4ada9e262ff6728fd3f0 index: f6_1 dup key: { : "9003" }'
         assert status in str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_a_duplicate_earlier_created_keys.text)

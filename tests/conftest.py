@@ -762,8 +762,8 @@ def add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = {
-        "First name": "Name_Test11",
-        "Last name": "Name_Test11",
+        "First name": "Name_Test111",
+        "Last name": "Name_Test111",
         "Phone1": "9020abc"
     }
     # Convert body request to json
@@ -1789,7 +1789,7 @@ def add_many_records_post_request_with_an_incorrect_body_format(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    request_body = '[{"First Name":"Test17",Phone1:10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
+    request_body = '[{"First Name:"Test17",Phone1:10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
 
     print("request_url : ", request_url)
     print("request_body : ", request_body)

@@ -397,7 +397,7 @@ class Test_post_request_with_a_duplicated_in_one_request_values():
     @allure.step('test_check_answer_text_post_request_with_a_duplicated_in_one_request_values')
     def test_check_answer_text_post_request_with_a_duplicated_in_one_request_values(self, add_many_records_post_request_with_a_duplicated_in_one_request_values):
         print("request_result_text : ", add_many_records_post_request_with_a_duplicated_in_one_request_values.text)
-        status = '{"added":1,"error":{"missingRequired":[{"last name":"User8","first name":"Test8"}],"missingKey":[{"last name":"User6","phone1":"1006"},{"last name":"User7","incorrect":"Test7","phone1":"1007"}],"duplicateKey":[{"last name":"User11","first name":"Test11","phone":"1011"}]}}'
+        status = '{"added":1,"error":{"missingRequired":[{"last name":"User8","first name":"Test8"}],"missingKey":[{"last name":"User6","phone1":"1006"},{"last name":"User7","incorrect":"Test7","phone1":"1007"}],"duplicateKey":[{"last name":"User11","first name":"Test11","phone1":"1011"}]}}'
         assert status in str(
             add_many_records_post_request_with_a_duplicated_in_one_request_values.text), "Answer text not " + status + " ; actual message : " + str(
             add_many_records_post_request_with_a_duplicated_in_one_request_values.text)
