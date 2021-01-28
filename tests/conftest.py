@@ -1789,8 +1789,13 @@ def add_many_records_post_request_with_an_incorrect_body_format(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_2.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
-    request_body = '[{"First Name:"Test17",Phone1:10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
+    #request_body = '[{"First Name:"Test17",Phone1:10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
 
+    #Notes: {"First Name":"Test17",Phone1:10017} - 500 error
+    #{"First Name":"Test17",Phone1:"10017"} - all fine
+    #{"First Name:"Test17","Phone1":"10017"} - Expected ':' at line 1 column 17 path $[0].
+
+    request_body = '[{"First Name":"Test17",Phone1:10017},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
