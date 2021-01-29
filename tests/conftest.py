@@ -1791,11 +1791,11 @@ def add_many_records_post_request_with_an_incorrect_body_format(get_user_token):
     # Request body
     #request_body = '[{"First Name:"Test17",Phone1:10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
 
-    #Notes: {"First Name":"Test17",Phone1:10017} - 500 error
-    #{"First Name":"Test17",Phone1:"10017"} - all fine
-    #{"First Name:"Test17","Phone1":"10017"} - Expected ':' at line 1 column 17 path $[0].
+    #Notes: [{"First Name":"Test17","Phone1":10017},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}] - 500 error
+    #[{"First Name":"Test17","Phone1":"10017"},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}] - all fine
+    #[{"First Name":"Test17","Phone1":"10017},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}] - Unterminated object at line 1 column 45 path $[0].
 
-    request_body = '[{"First Name":"Test17",Phone1:10017},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
+    request_body = '[{"First Name":"Test17","Phone1":10017},{"First Name":"Test18","Last Name":"User18","Phone1":"10018"}]'
     print("request_url : ", request_url)
     print("request_body : ", request_body)
     return requests.post(request_url, data=request_body, headers=HEADERS)
@@ -1993,13 +1993,14 @@ def add_many_records_delete_request_with_correct_body(get_user_token):
 
 @pytest.fixture(scope='class')
 def add_many_records_post_request_with_body_from_other_list(get_user_token):
-    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_TCTR.txt"
+#    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_TCTR.txt"
+    request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//addAll//List_3.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
     body = [
         {
             "Integer": "123171",
-            "Date/Time": "01-07-2025",
+            "Date/Time": "01/07/25 12:00 AM",
             "Caller id": "Test19",
             "Agent id": "Test19",
             "First name": "Name_First19",
@@ -2009,7 +2010,7 @@ def add_many_records_post_request_with_body_from_other_list(get_user_token):
         },
         {
             "Integer": "123172",
-            "Date/Time": "02-07-2025",
+            "Date/Time": "01/07/25 12:00 AM",
             "Caller id": "Test19_2",
             "Agent id": "Test19_2",
             "First name": "Name_First19_2",
@@ -2019,7 +2020,7 @@ def add_many_records_post_request_with_body_from_other_list(get_user_token):
         },
         {
             "Integer": "123173",
-            "Date/Time": "03-07-2025",
+            "Date/Time": "01/07/25 12:00 AM",
             "Caller id": "Test19_3",
             "Agent id": "Test19_3",
             "First name": "Name_First19_3",
