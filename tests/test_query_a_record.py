@@ -22,7 +22,8 @@ class Test_post_request_with_an_existent_campaign_for_non_completed_record():
     @allure.step('test_check_answer_text_post_request_with_an_existent_campaign_for_non_completed_record')
     def test_check_answer_text_post_request_with_an_existent_campaign_for_non_completed_record(self, query_a_record_post_request_with_an_existent_campaign_for_non_completed_record):
         print("request_result_text : ", query_a_record_post_request_with_an_existent_campaign_for_non_completed_record.text)
-        status = '{"entry":{"last name":"Name_Last1","first name":"Name_First1","agent id":"Test.1","phone2":"8000","date/time":"02-07-2027","caller id":"Test1","integer":"1234568","phone1":"6000"},"status":{"totalAttempts":0,"completed":false}}'
+#        status = '{"entry":{"last name":"Name_Last1","first name":"Name_First1","agent id":"Test.1","phone2":"8000","date/time":"02-07-2027","caller id":"Test1","integer":"1234568","phone1":"6000"},"status":{"totalAttempts":0,"completed":false}}'
+        status = '{"entry":{"last name":"Name_Last1","first name":"Name_First1","agent id":"Test.1","phone2":"8000","date/time":"01/07/25 12:00 AM","caller id":"Test1","integer":"1234568","phone1":"6000"},"status":{"totalAttempts":0,"completed":false}}'
         assert status in str(
             query_a_record_post_request_with_an_existent_campaign_for_non_completed_record.text), "Answer text not " + status + " ; actual message : " + str(
             query_a_record_post_request_with_an_existent_campaign_for_non_completed_record.text)

@@ -4253,6 +4253,8 @@ def query_a_record_post_request_with_an_existent_campaign_for_non_completed_reco
     request_body = json.dumps(body)
     print("request_url : ", request_url)
     print("request_body : ", request_body)
+# trying walkaround absent part of answer - "status":{"totalAttempts":0,"completed":false}}
+#    mariadb_campaign_on('B0894D35-0F8F-4E5D-A3FD-D22A68B6AD05')
     return requests.post(request_url, data=request_body, headers=HEADERS)
 
 
