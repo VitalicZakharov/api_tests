@@ -72,7 +72,7 @@ class Test_post_request_containing_a_correctly_formatted_number_and_a_comment_to
             add_records_to_dnc_post_request_containing_a_correctly_formatted_number_and_a_comment_to_dnc_of_type_internal_comment_not_correspond_any_existing_campaigns.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/22859")
+#@allure.issue("https://trac.brightpattern.com/ticket/22859")
 #@allure.issue("https://trac.brightpattern.com/ticket/24636")
 @pytest.mark.usefixtures("add_records_to_dnc_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion")
 class Test_post_request_containing_a_free_text_to_a_dnc_of_type_record_exclusion():

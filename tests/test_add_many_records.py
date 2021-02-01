@@ -505,6 +505,7 @@ class Test_post_request_with_incorrect_body_format_typization():
             add_many_records_post_request_with_incorrect_body_format_typization.text)
 
 
+@allure.issue("https://trac.brightpattern.com/ticket/24424")
 @pytest.mark.usefixtures("add_many_records_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec")
 class Test_post_request_with_incorrectly_formatted_value_in_an_integer_field_all_rec():
     @allure.epic("test_add_many_records")

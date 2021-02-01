@@ -144,6 +144,36 @@ class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbo
             add_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)) == 0, "Answer text not empty ; actual message : " + str(
             add_record_post_request_with_the_value_phone_number_in_a_phone_field_using_symbol_plus.text)
 
+
+#@allure.issue("https://trac.brightpattern.com/ticket/24253")
+#@allure.issue("https://trac.brightpattern.com/ticket/22561")
+@pytest.mark.usefixtures(
+    "add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus")
+class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus():
+    @allure.epic("test_add_record")
+    @allure.feature("answer code 200")
+    @allure.step(
+        'test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
+    def test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(
+            self,
+            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
+        print("request_result_status_code : ", add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
+        assert "200" in str(
+            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code), "Answer status not 200 ; actual status code : " + str(
+            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
+
+    @allure.epic("test_add_record")
+    @allure.feature("answer code 200")
+    @allure.step(
+        'test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
+    def test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(
+            self,
+            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
+        print("request_result_text : ", add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
+        assert len(str(
+            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)) == 0, "Answer text not empty ; actual message : " + str(
+            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
+
 #=======================================================================================================================
 #=======================================================================================================================
 #=======================================================================================================================
@@ -154,7 +184,7 @@ class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbo
 
 #@allure.issue("https://trac.brightpattern.com/ticket/21499")
 #@allure.issue("https://trac.brightpattern.com/ticket/24228")
-@allure.issue("https://trac.brightpattern.com/ticket/24597")
+#@allure.issue("https://trac.brightpattern.com/ticket/24597")
 @pytest.mark.usefixtures("add_record_post_request_with_a_duplicate_earlier_created_keys")
 class Test_post_request_with_a_duplicate_earlier_created_keys():
     @allure.epic("test_add_record")
@@ -614,37 +644,6 @@ class Test_post_request_with_empty_first_name_and_phone():
         assert status in str(
             add_record_post_request_with_empty_first_name_and_phone.text), "Answer text not " + status + " ; actual message : " + str(
             add_record_post_request_with_empty_first_name_and_phone.text)
-
-
-#@allure.issue("https://trac.brightpattern.com/ticket/24253")
-@allure.issue("https://trac.brightpattern.com/ticket/22561")
-@pytest.mark.usefixtures(
-    "add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus")
-class Test_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus():
-    @allure.epic("test_add_record")
-    @allure.feature("answer code 400")
-    @allure.step(
-        'test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
-    def test_check_status_code_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(
-            self,
-            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
-        print("request_result_status_code : ", add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
-        assert "400" in str(
-            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code), "Answer status not 400 ; actual status code : " + str(
-            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.status_code)
-
-    @allure.epic("test_add_record")
-    @allure.feature("answer code 400")
-    @allure.step(
-        'test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus')
-    def test_check_answer_text_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus(
-            self,
-            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus):
-        print("request_result_text : ", add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
-        status = "Some error message that Phone should be numeric"
-        assert status in str(
-            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text), "Answer text not " + status + " ; actual message : " + str(
-            add_record_post_request_with_the_incorrectly_formatted_value_phone_number_in_a_phone_field_non_numeric_symbol_other_than_plus.text)
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/24229")

@@ -325,7 +325,7 @@ class Test_post_request_with_the_value_phone_number_in_a_phone_field_using_symbo
 #==================================================== Code 400 =========================================================
 #=======================================================================================================================
 
-@allure.issue("https://trac.brightpattern.com/ticket/22527")
+@allure.issue("https://trac.brightpattern.com/ticket/24880")
 @pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_integer_value")
 class Test_post_request_with_an_incorrect_integer_value():
     @allure.epic("test_update_record")
@@ -350,7 +350,7 @@ class Test_post_request_with_an_incorrect_integer_value():
 
 
 #@allure.issue("https://trac.brightpattern.com/ticket/22524")
-@allure.issue("https://trac.brightpattern.com/ticket/24641")
+#@allure.issue("https://trac.brightpattern.com/ticket/24641")
 @pytest.mark.usefixtures("update_record_post_request_with_an_incorrect_date_time_value")
 class Test_post_request_with_an_incorrect_date_time_value():
     @allure.epic("test_update_record")
@@ -464,8 +464,9 @@ class Test_post_request_incorrectly_formatted_phone_number_in_a_phone_field_the_
             update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_field_the_country_set_for_us_and_canada_the_number_starts_with_1_and_has_less_than_11_digits.text)
 
 
-@allure.issue("https://trac.brightpattern.com/ticket/21500")
-@allure.issue("https://trac.brightpattern.com/ticket/24597")
+#@allure.issue("https://trac.brightpattern.com/ticket/21500")
+#@allure.issue("https://trac.brightpattern.com/ticket/24597")
+@allure.issue("https://trac.brightpattern.com/ticket/24879")
 @pytest.mark.usefixtures("update_record_post_request_with_a_non_existent_field_name")
 class Test_post_request_with_a_non_existent_field_name():
     @allure.epic("test_update_record")
