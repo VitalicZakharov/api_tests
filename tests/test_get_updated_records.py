@@ -1,5 +1,6 @@
 import pytest
 import allure
+import json
 
 #=======================================================================================================================
 #==================================================== Code 200 =========================================================
@@ -66,10 +67,9 @@ class Test_post_request_with_maxsize_set_to_1000():
     @allure.step('test_check_answer_text_post_request_with_maxsize_set_to_1000')
     def test_check_answer_text_post_request_with_maxsize_set_to_1000(self, get_updated_records_post_request_with_maxsize_set_to_1000):
         print("request_result_text : ", get_updated_records_post_request_with_maxsize_set_to_1000.text)
-        status = 'some answer'
-        assert status in str(
-            get_updated_records_post_request_with_maxsize_set_to_1000.text), "Answer text not " + status + " ; actual message : " + str(
-            get_updated_records_post_request_with_maxsize_set_to_1000.text)
+        status = len(json.loads(get_updated_records_post_request_with_maxsize_set_to_1000.text))
+        print("status_length : ", status)
+        assert status == 1000, "Answer text length not 1000 ; actual message length : " + str(status)
 
 
 @pytest.mark.usefixtures("get_updated_records_post_request_with_valid_url_and_change_maxsize_and_fromtime_future_date")
