@@ -395,7 +395,7 @@ class Test_post_request_with_incorrect_body_format_typization():
     def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
                                                                                       add_records_to_dnc_post_request_with_incorrect_body_format_typization):
         print("request_result_text : ", add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)
-        status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
+        status = "Expected BEGIN_ARRAY but was STRING at line 1 column 1 path $"
         assert status in str(
             add_records_to_dnc_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
             add_records_to_dnc_post_request_with_incorrect_body_format_typization.text)

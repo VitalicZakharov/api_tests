@@ -254,7 +254,7 @@ class Test_post_request_with_incorrect_body_format_typization():
     def test_check_answer_text_post_request_with_incorrect_body_format_typization(self,
                                                                                   get_all_records_post_request_with_incorrect_body_format_typization):
         print("request_result_text : ", get_all_records_post_request_with_incorrect_body_format_typization.text)
-        status = "Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
+        status = "Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $"
         assert status in str(
             get_all_records_post_request_with_incorrect_body_format_typization.text), "Answer text not " + status + " ; actual message : " + str(
             get_all_records_post_request_with_incorrect_body_format_typization.text)
