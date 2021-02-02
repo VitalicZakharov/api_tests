@@ -2628,7 +2628,7 @@ def delete_all_records_post_request_with_csv_list_format(get_user_token):
 #=======================================================================================================================
 
 #=======================================================================================================================
-#========================================= GetUpdatedRecords fixtures ==================================================
+#============================================== UpdateRecord fixtures ==================================================
 #=======================================================================================================================
 
 @pytest.fixture(scope='class')
@@ -2636,16 +2636,27 @@ def update_record_post_request_with_existent_record_key(get_user_token):
     request_url = "https://" + DOMAIN + "//configapi//v2//callinglist//update//List_1.txt"
     HEADERS.update({'Authorization': 'Bearer ' + str(get_user_token)})
     # Request body
+#    body = {
+#        "Integer": "36",
+#        "Date/Time": "01/07/2025 12:00 AM",
+#        "Caller id": "36",
+#        "Agent id": "agent.id36",
+#        "First name": "Name_F36",
+#        "Last name": "Name_L36",
+#        "Phone1": "7000",
+#        "Phone2": "1036"
+#    }
     body = {
-        "Integer": "36",
+        "Integer": "37",
         "Date/Time": "01/07/2025 12:00 AM",
-        "Caller id": "36",
-        "Agent id": "agent.id36",
-        "First name": "Name_F36",
-        "Last name": "Name_L36",
-        "Phone1": "7000",
-        "Phone2": "1036"
+        "Caller id": "37",
+        "Agent id": "agent.id37",
+        "First name": "Name_F37",
+        "Last name": "Name_L37",
+        "Phone1": "7036",
+        "Phone2": "1037"
     }
+
     # Convert body request to json
     request_body = json.dumps(body)
     print("request_url : ", request_url)
@@ -2687,7 +2698,7 @@ def update_record_post_request_with_an_incorrect_integer_value(get_user_token):
         "Agent id": "38",
         "First name": "Name_F38",
         "Last name": "Name_L38",
-        "Phone1": "7000",
+        "Phone1": "7038",
         "Phone2": "1038"
     }
     # Convert body request to json
@@ -2709,7 +2720,7 @@ def update_record_post_request_with_an_incorrect_date_time_value(get_user_token)
         "Agent id": "agent.id39",
         "First name": "Name_F39",
         "Last name": "Name_L39",
-        "Phone1": "7000",
+        "Phone1": "7039",
         "Phone2": "1039"
     }
     # Convert body request to json
@@ -2731,7 +2742,7 @@ def update_record_post_request_with_an_incorrect_caller_id(get_user_token):
         "Agent id": "agent.id40",
         "First name": "Name_F40",
         "Last name": "Name_L40",
-        "Phone1": "7000",
+        "Phone1": "7040",
         "Phone2": "1040"
     }
     # Convert body request to json
@@ -2753,7 +2764,7 @@ def update_record_post_request_with_an_incorrect_agent_id(get_user_token):
         "Agent id": "`~!@#$%^&*()_+[]{}|\?/,.",
         "First name": "Name_F41",
         "Last name": "Name_L41",
-        "Phone1": "7000",
+        "Phone1": "7041",
         "Phone2": "1041"
     }
     # Convert body request to json
@@ -2775,7 +2786,7 @@ def update_record_post_request_with_a_date_time_field_set_to_a_moment_in_the_pas
         "Agent id": "agent.id42",
         "First name": "Name_F42",
         "Last name": "Name_L42",
-        "Phone1": "7000",
+        "Phone1": "7042",
         "Phone2": "1042"
     }
     # Convert body request to json
@@ -2797,7 +2808,7 @@ def update_record_post_request_without_a_phone_field_required_field(get_user_tok
         "Agent id": "agent.id43",
         "First name": "Name_F43",
         "Last name": "Name_L43",
-        "Phone1": "7000"
+        "Phone1": "7043"
     }
     # Convert body request to json
     request_body = json.dumps(body)
@@ -2861,7 +2872,7 @@ def update_record_post_request_incorrectly_formatted_phone_number_in_a_phone_fie
         "Agent id": "agent.id46",
         "First name": "Name_F46",
         "Last name": "Name_L46",
-        "Phone1": "7000",
+        "Phone1": "7046",
         "Phone2": "`~!@#$%^&*()_+[]{}|\?/,."
     }
     # Convert body request to json
@@ -2902,7 +2913,7 @@ def update_record_post_request_with_a_non_existent_field_name(get_user_token):
         "Agent id": "agent.id48",
         "First name": "Name_F48",
         "Last name": "Name_L48",
-        "Phone1": "7000",
+        "Phone1": "7048",
         "Phone2": "1048"
     }
     # Convert body request to json
