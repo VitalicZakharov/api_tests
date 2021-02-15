@@ -332,6 +332,27 @@ class Test_post_request_with_an_invalid_list_and_valid_campaign():
             get_completed_records_post_request_with_an_invalid_list_and_valid_campaign.text)
 
 
+@pytest.mark.usefixtures("get_completed_records_post_request_with_invalid_url")
+class Test_post_request_with_invalid_url():
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_status_code_post_request_with_invalid_url')
+    def test_check_status_code_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
+        print("request_result_status_code : ", get_completed_records_post_request_with_invalid_url.status_code)
+        assert "404" in str(
+            get_completed_records_post_request_with_invalid_url.status_code), "Answer status not 404 ; actual status code : " + str(
+            get_completed_records_post_request_with_invalid_url.status_code)
+
+    @allure.epic("test_get_completed_records")
+    @allure.feature("answer code 404")
+    @allure.step('test_check_answer_text_post_request_with_invalid_url')
+    def test_check_answer_text_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
+        print("request_result_text : ", get_completed_records_post_request_with_invalid_url.text)
+        status = "HTTP 404 Not Found"
+        assert status in str(
+            get_completed_records_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
+            get_completed_records_post_request_with_invalid_url.text)
+
 #=======================================================================================================================
 #=======================================================================================================================
 #=======================================================================================================================
@@ -362,58 +383,6 @@ class Test_post_request_with_do_not_authorize_session():
         assert status in str(
             get_completed_records_post_request_with_do_not_authorize_session.text), "Answer text not " + status + " ; actual message : " + str(
             get_completed_records_post_request_with_do_not_authorize_session.text)
-
-#=======================================================================================================================
-#=======================================================================================================================
-#=======================================================================================================================
-
-#=======================================================================================================================
-#==================================================== Code 404 =========================================================
-#=======================================================================================================================
-
-@pytest.mark.usefixtures("get_completed_records_post_request_with_invalid_url")
-class Test_post_request_with_invalid_url():
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_status_code_post_request_with_invalid_url')
-    def test_check_status_code_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
-        print("request_result_status_code : ", get_completed_records_post_request_with_invalid_url.status_code)
-        assert "404" in str(
-            get_completed_records_post_request_with_invalid_url.status_code), "Answer status not 404 ; actual status code : " + str(
-            get_completed_records_post_request_with_invalid_url.status_code)
-
-    @allure.epic("test_get_completed_records")
-    @allure.feature("answer code 404")
-    @allure.step('test_check_answer_text_post_request_with_invalid_url')
-    def test_check_answer_text_post_request_with_invalid_url(self, get_completed_records_post_request_with_invalid_url):
-        print("request_result_text : ", get_completed_records_post_request_with_invalid_url.text)
-        status = "HTTP 404 Not Found"
-        assert status in str(
-            get_completed_records_post_request_with_invalid_url.text), "Answer text not " + status + " ; actual message : " + str(
-            get_completed_records_post_request_with_invalid_url.text)
-
-
-#@pytest.mark.usefixtures("get_completed_records_post_request_to_the_non_existent_list")
-#class Test_post_request_to_the_non_existent_list():
-#    @allure.epic("test_get_completed_records")
-#    @allure.feature("answer code 404")
-#    @allure.step('test_check_status_code_post_request_to_the_non_existent_list')
-#    def test_check_status_code_post_request_to_the_non_existent_list(self, get_completed_records_post_request_to_the_non_existent_list):
-#        print("request_result_status_code : ", get_completed_records_post_request_to_the_non_existent_list.status_code)
-#        assert "404" in str(
-#            get_completed_records_post_request_to_the_non_existent_list.status_code), "Answer status not 404 ; actual status code : " + str(
-#            get_completed_records_post_request_to_the_non_existent_list.status_code)
-#
-#    @allure.epic("test_get_completed_records")
-#    @allure.feature("answer code 404")
-#    @allure.step('test_check_answer_text_post_request_to_the_non_existent_list')
-#    def test_check_answer_text_post_request_to_the_non_existent_list(self, get_completed_records_post_request_to_the_non_existent_list):
-#        print("request_result_text : ", get_completed_records_post_request_to_the_non_existent_list.text)
-#        status = "calling list not found"
-#        assert status in str(
-#            get_completed_records_post_request_to_the_non_existent_list.text), "Answer text not " + status + " ; actual message : " + str(
-#            get_completed_records_post_request_to_the_non_existent_list.text)
-
 
 #=======================================================================================================================
 #=======================================================================================================================
